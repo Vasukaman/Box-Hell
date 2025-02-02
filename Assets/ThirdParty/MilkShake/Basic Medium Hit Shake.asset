@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Basic Medium Hit Shake
   m_EditorClassIdentifier: 
   shakeType: 0
-  strength: 0.15
-  roughness: 20
+  strength: 0.07
+  roughness: 10
   fadeIn: 0.05
-  fadeOut: 0.3
-  positionInfluence: {x: 2, y: 2, z: 4}
-  rotationInfluence: {x: 10, y: 10, z: 10}
+  fadeOut: 0.2
+  positionInfluence: {x: 2, y: 2, z: 1}
+  rotationInfluence: {x: 2, y: 2, z: 2}

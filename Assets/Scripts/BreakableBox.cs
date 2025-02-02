@@ -1,5 +1,7 @@
 // BreakableBox.cs (Example implementation)
 using UnityEngine;
+using System.Collections;
+
 
 public class BreakableBox : DamageableBase
 {
@@ -10,6 +12,9 @@ public class BreakableBox : DamageableBase
 
 
     [SerializeField] private Rigidbody rigidBody;
+    [SerializeField] private LootConfiguration lootConfig;
+
+
 
     protected override void Break()
     {
@@ -20,13 +25,20 @@ public class BreakableBox : DamageableBase
         }
 
         float luck = 0;
-        LootManager.GenerateBoxLoot(BoxType.Regular, 1, luck, transform.position);
+        LootManager.GenerateBoxLoot(lootConfig, 1, luck, transform.position);
 
         meshExploder.explosionInitSpeed = Random.Range(minExplosionSpeed, maxExplosionSpeed);
         meshExploder.EXPLODE();
-
+        StartCoroutine(WaitAndDestroy());
 
        // base.Break();
+    }
+
+    IEnumerator WaitAndDestroy()
+    {
+        yield return new WaitForSeconds(5);
+
+        Destroy(this.gameObject);
     }
 
     public override void TakePush(Vector3 position, Vector3 force)
@@ -35,4 +47,6 @@ public class BreakableBox : DamageableBase
 
         rigidBody.AddForceAtPosition(force, position, ForceMode.Impulse);
     }
+
+    
 }

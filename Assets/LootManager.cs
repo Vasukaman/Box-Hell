@@ -3,67 +3,103 @@ using System.Collections.Generic;
 
 public class LootManager : MonoBehaviour
 {
-    public static LootManager Instance;
-    public LootTable regularBoxLootTable;
-    public float luckMultiplier = 0.5f;
+    public static LootManager Instance { get; private set; }
 
-    void Awake() => Instance = this;
+    [SerializeField] private GameData _gameData;
 
-    public static void GenerateBoxLoot(BoxType boxType, int tier, float luck, Vector3 position)
+    public static GameData GameData => Instance._gameData;
+
+    void Awake()
     {
-        Debug.LogError("Generating loot");
-        if (Instance == null)
+        if (Instance != null && Instance != this)
         {
-            Debug.LogError("LootManager instance not found!");
+            Destroy(gameObject);
             return;
         }
 
-        // Get appropriate loot table
-        var lootTable = boxType switch
-        {
-            BoxType.Regular => Instance.regularBoxLootTable,
-            _ => Instance.regularBoxLootTable
-        };
-
-        // Calculate drops
-        var drops = CalculateDrops(lootTable, tier, luck);
-
-        // Process drops
-        foreach (var item in drops)
-        {
-            if (item.type == ItemType.Points)
-            {
-                // Empty for now - add later
-            }
-            else if (item.worldItemPrefab != null)
-            {
-                Instantiate(item.worldItemPrefab, position, Quaternion.identity);
-            }
-        }
-
-        // Add Box Coins (implementation left empty)
-        AddBoxCoins(tier);
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
-
-    static List<Item> CalculateDrops(LootTable table, int tier, float luck)
+  
+    public static void GenerateBoxLoot(LootConfiguration config, int tier, float luck, Vector3 position)
     {
-        List<Item> drops = new List<Item>();
+        if (config == null) return;
 
-        foreach (var entry in table.lootEntries)
-        {
-            if (tier < entry.minTier || tier > entry.maxTier) continue;
+        int coinAmmount = Random.Range(config.minCoins, config.maxCoins);
 
-            float effectiveChance = Mathf.Clamp(
-                entry.baseDropChance + (luck * Instance.luckMultiplier),
-                0f, 100f
-            );
+        AddRandomCoins(position, coinAmmount);
 
-            if (Random.Range(0f, 100f) <= effectiveChance)
-                drops.Add(entry.item);
-        }
+        // Roll for loot pack
+        var selectedPack = SelectFromEntries(config.lootPacks, config.noDropScore, luck);
+        if (selectedPack == null) return;
 
-        return drops;
+        // Roll for loot group
+        var selectedGroup = SelectFromEntries(selectedPack.lootGroups, selectedPack.noDropScore, luck);
+        if (selectedGroup == null) return;
+
+        // Roll for final item
+        var selectedItem = SelectFromItems(selectedGroup.items, selectedGroup.noDropScore, luck);
+        if (selectedItem == null) return;
+
+        SpawnItem(selectedItem, position);
     }
 
-    static void AddBoxCoins(int tier) { /* Empty */ }
+    static T SelectFromEntries<T>(DropScoreEntry<T>[] entries, int noDropScore, float luck) where T : UnityEngine.Object
+    {
+        int totalScore = CalculateTotalScore(entries, noDropScore);
+        if (totalScore <= 0) return null;
+
+        int roll = Random.Range(0, totalScore) + Mathf.FloorToInt(luck);
+        int current = 0;
+
+        foreach (var entry in entries)
+        {
+            current += entry.dropScore;
+            if (roll < current) return entry.value;
+        }
+
+        return null; // No drop
+    }
+
+    static Item SelectFromItems(DropScoreItem[] items, int noDropScore, float luck)
+    {
+        int totalScore = CalculateTotalScore(items, noDropScore);
+        if (totalScore <= 0) return null;
+
+        int roll = Random.Range(0, totalScore) + Mathf.FloorToInt(luck);
+        int current = 0;
+
+        foreach (var item in items)
+        {
+            current += item.dropScore;
+            if (roll < current) return item.item;
+        }
+
+        return null; // No drop
+    }
+
+    static int CalculateTotalScore<T>(DropScoreEntry<T>[] entries, int noDropScore) where T : UnityEngine.Object
+    {
+        int total = noDropScore;
+        foreach (var entry in entries) total += entry.dropScore;
+        return total;
+    }
+
+    static int CalculateTotalScore(DropScoreItem[] items, int noDropScore)
+    {
+        int total = noDropScore;
+        foreach (var item in items) total += item.dropScore;
+        return total;
+    }
+
+    static void SpawnItem(Item item, Vector3 position)
+    {
+        if (item?.worldItemPrefab != null)
+            Instantiate(item.worldItemPrefab, position, Quaternion.identity);
+    }
+
+    static void AddRandomCoins(Vector3 position, int ammount)
+    {
+        GameData.playerCore.ModifyCoins(ammount);   
+    }
 }

@@ -140,7 +140,7 @@ public class InventorySystem : MonoBehaviour
 
     public void UseCurrentTool()
     {
-        currentTool.Use();
+        currentTool?.Use();
     }
 
 }
