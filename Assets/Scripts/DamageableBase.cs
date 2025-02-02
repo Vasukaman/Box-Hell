@@ -27,6 +27,13 @@ public abstract class DamageableBase : MonoBehaviour, IDamageable
         }
     }
 
+
+    public virtual void TakePush(Vector3 position, Vector3 force)
+    {
+
+
+    }
+
     protected virtual void Break()
     {
         OnBreak?.Invoke(lastDamageSource);

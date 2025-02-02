@@ -2,6 +2,8 @@
 using UnityEngine;
 using System;
 
+
+
 public class InventorySystem : MonoBehaviour
 {
     public event Action OnInventoryUpdated;
@@ -16,6 +18,7 @@ public class InventorySystem : MonoBehaviour
     public Item[] Items => items;
 
     [SerializeField] private Transform itemHolder;
+
     private Tool currentTool;
 
     private Camera mainCamera;
@@ -24,7 +27,13 @@ public class InventorySystem : MonoBehaviour
     {
         mainCamera = Camera.main;
         items = new Item[slotCount];
+
+
+       
+
     }
+
+
 
     public bool AddItem(Item item)
     {
@@ -104,6 +113,8 @@ public class InventorySystem : MonoBehaviour
         ClearCurrentTool();
 
         items[selectedSlot] = null;
+
+
         OnInventoryUpdated?.Invoke();
         return true;
     }

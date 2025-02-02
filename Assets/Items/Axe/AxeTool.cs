@@ -15,6 +15,8 @@ public class AxeTool : Tool
 
     [SerializeField] private MilkShake.ShakePreset cameraShakePreset;
 
+    [SerializeField] private float hitForce;
+
 
     private void Start()
     {
@@ -32,6 +34,17 @@ public class AxeTool : Tool
         }
     }
 
+    protected void TryImpulse(RaycastHit hit)
+    {
+        var damageable = hit.collider.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            Vector3 force = hit.point - mainCamera.transform.position;
+            force = force.normalized * hitForce;
+            damageable.TakePush(hit.point, force);
+            Shaker.ShakeAll(cameraShakePreset);
+        }
+    }
 
     public override void Use()
     {
@@ -39,6 +52,7 @@ public class AxeTool : Tool
         //PerformRaycast();
         Debug.Log($"Axe used");
         TryAttacking();
+      
     }
 
     private void TryAttacking()
@@ -49,6 +63,7 @@ public class AxeTool : Tool
         if (Physics.Raycast(ray, out RaycastHit hit, range, damageableLayers))
         {
             TryDamage(hit);
+            TryImpulse(hit);
             Debug.Log($"Hit {hit.collider.name} with ");
             // Add your interaction logic here
         }

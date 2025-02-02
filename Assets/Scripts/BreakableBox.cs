@@ -8,6 +8,9 @@ public class BreakableBox : DamageableBase
     [SerializeField] private float minExplosionSpeed;
     [SerializeField] private float maxExplosionSpeed;
 
+
+    [SerializeField] private Rigidbody rigidBody;
+
     protected override void Break()
     {
         // Play effects
@@ -21,5 +24,12 @@ public class BreakableBox : DamageableBase
 
 
        // base.Break();
+    }
+
+    public override void TakePush(Vector3 position, Vector3 force)
+    {
+        if (!rigidBody) return;
+
+        rigidBody.AddForceAtPosition(force, position, ForceMode.Impulse);
     }
 }
