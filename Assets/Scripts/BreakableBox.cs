@@ -19,6 +19,9 @@ public class BreakableBox : DamageableBase
             Instantiate(breakEffect, transform.position, Quaternion.identity);
         }
 
+        float luck = 0;
+        LootManager.GenerateBoxLoot(BoxType.Regular, 1, luck, transform.position);
+
         meshExploder.explosionInitSpeed = Random.Range(minExplosionSpeed, maxExplosionSpeed);
         meshExploder.EXPLODE();
 

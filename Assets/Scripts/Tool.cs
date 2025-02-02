@@ -11,7 +11,9 @@ public abstract class Tool : MonoBehaviour
 
     public virtual void Use()
     {
+
         OnToolUsed?.Invoke();
+       
     }
 
     public virtual void StopUsing()

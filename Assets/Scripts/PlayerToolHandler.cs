@@ -43,12 +43,13 @@ public class PlayerToolHandler : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            inventory.GetSelectedItem()?.linkedTool?.Use();
+            
+           inventory.UseCurrentTool();
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            inventory.GetSelectedItem()?.linkedTool?.StopUsing();
+           // inventory.GetSelectedItem()?.linkedTool?.StopUsing();
         }
     }
 

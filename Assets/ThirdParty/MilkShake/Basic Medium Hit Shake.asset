@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 955f6c9be248dc249a31bad716cc6963, type: 3}
-  m_Name: Basic Hit Shake
+  m_Name: Basic Medium Hit Shake
   m_EditorClassIdentifier: 
   shakeType: 0
   strength: 0.15

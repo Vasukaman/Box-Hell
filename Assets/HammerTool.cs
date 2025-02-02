@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MilkShake;
 
-public class AxeTool : Tool
+public class HammerTool : Tool
 {
     [SerializeField] private float range = 5f;
 
@@ -11,7 +11,7 @@ public class AxeTool : Tool
     [Header("Damage")]
     [SerializeField] protected float damage = 100f;
     [SerializeField] protected LayerMask damageableLayers;
-    [SerializeField]  private Camera mainCamera;
+    [SerializeField] private Camera mainCamera;
 
     [SerializeField] private MilkShake.ShakePreset cameraShakePreset;
 
@@ -50,9 +50,9 @@ public class AxeTool : Tool
     {
         base.Use();
         //PerformRaycast();
-     
+        Debug.Log($"Axe used");
         TryAttacking();
-      
+
     }
 
     private void TryAttacking()
@@ -69,6 +69,3 @@ public class AxeTool : Tool
         }
     }
 }
-
-
-
