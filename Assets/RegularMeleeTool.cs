@@ -55,7 +55,7 @@ public class RegularMeleeTool : Tool
 
     }
 
-    private void TryAttacking()
+    public void TryAttacking()
     {
 
         mainCamera = Camera.main;

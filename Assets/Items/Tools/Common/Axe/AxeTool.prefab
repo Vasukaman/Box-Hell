@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6775310444231213787}
   - component: {fileID: 6452513781915210787}
   - component: {fileID: 7842052417400239556}
-  - component: {fileID: 5980634182378801292}
-  m_Layer: 6
+  - component: {fileID: 9149543031042943197}
+  m_Layer: 0
   m_Name: AxeAnim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_LocalRotation: {x: -0.41332692, y: -0, z: -0, w: 0.9105827}
   m_LocalPosition: {x: 0, y: -0.110000074, z: -0.100000024}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2453796688763772507}
   m_Father: {fileID: 3481291194294011866}
@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 7842052417400239556}
-  tool: {fileID: 1526023441498419066}
+  tool: {fileID: 8295851304353828717}
+  procAnim: {fileID: 9149543031042943197}
 --- !u!111 &7842052417400239556
 Animation:
   m_ObjectHideFlags: 0
@@ -65,7 +66,7 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &5980634182378801292
+--- !u!114 &9149543031042943197
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,18 +75,111 @@ MonoBehaviour:
   m_GameObject: {fileID: 1197060912688839472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a81c475236669841b4ceff54e052716, type: 3}
+  m_Script: {fileID: 11500000, guid: 162c9e732014ce24a89f2e2af3ed5ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: d72cd3b7289450f41ad8ddf51119f163, type: 2}
-  range: 5
-  damage: 40
-  damageableLayers:
+  weaponTransform: {fileID: 6775310444231213787}
+  playerCamera: {fileID: 0}
+  preparePoint: {fileID: 5304293538075837586}
+  restingPoint: {fileID: 6796261701611776698}
+  finalHitTransform: {fileID: 2885541376476798096}
+  regularMeleeTool: {fileID: 8295851304353828717}
+  swingCurve:
     serializedVersion: 2
-    m_Bits: 4294967295
-  mainCamera: {fileID: 0}
-  hitShakePreset: {fileID: 11400000, guid: 2541f5ff4b0c04f41b61397de0d833bf, type: 2}
-  hitForce: 7
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  prepareDuration: 0.5
+  attackDuration: 0.2
+  returnDuration: 0.2
+  postHitPause: 0.05
+  attackDistance: 4.69
+  arcPower: 1.62
+  arcAngle: 0
+  debugMode: 0
+  debugPreview: 0
+  debugArcPreview: 1
+--- !u!1 &1356589399322482830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2885541376476798096}
+  m_Layer: 0
+  m_Name: Hit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2885541376476798096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356589399322482830}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.15738246, y: 0, z: 0, w: 0.98753774}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3481291194294011866}
+  m_LocalEulerAnglesHint: {x: 18.11, y: 0, z: 0}
+--- !u!1 &3717462920224700587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5304293538075837586}
+  m_Layer: 0
+  m_Name: Prepare
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5304293538075837586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717462920224700587}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.779324, y: 0.000000006906623, z: 0.000000028990979, w: 0.6266211}
+  m_LocalPosition: {x: -0, y: 0.03, z: -0.193}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3481291194294011866}
+  m_LocalEulerAnglesHint: {x: -102.397, y: 0, z: 0}
 --- !u!1 &4135487586174393645
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +191,7 @@ GameObject:
   - component: {fileID: 2453796688763772507}
   - component: {fileID: 7536703722965497616}
   - component: {fileID: 1685166505931659059}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +208,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.07877847, y: -0.7027048, z: 0.07877847, w: 0.7027048}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6775310444231213787}
@@ -178,8 +272,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3481291194294011866}
-  - component: {fileID: 1526023441498419066}
-  m_Layer: 6
+  - component: {fileID: 8295851304353828717}
+  m_Layer: 0
   m_Name: AxeTool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,22 +294,25 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6775310444231213787}
+  - {fileID: 5304293538075837586}
+  - {fileID: 6796261701611776698}
+  - {fileID: 2885541376476798096}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -48.828, y: 0, z: 0}
---- !u!114 &1526023441498419066
+--- !u!114 &8295851304353828717
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5268361170107177908}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a81c475236669841b4ceff54e052716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: d72cd3b7289450f41ad8ddf51119f163, type: 2}
-  range: 2.2
+  range: 5
   damage: 40
   damageableLayers:
     serializedVersion: 2
@@ -223,3 +320,34 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   hitShakePreset: {fileID: 11400000, guid: 2541f5ff4b0c04f41b61397de0d833bf, type: 2}
   hitForce: 7
+--- !u!1 &7191498666949968388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6796261701611776698}
+  m_Layer: 0
+  m_Name: Rest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6796261701611776698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191498666949968388}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.41332695, y: -0, z: -0, w: 0.9105827}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3481291194294011866}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

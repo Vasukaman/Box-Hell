@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 3
   itemName: Axe
   icon: {fileID: 0}
-  linkedTool: {fileID: 1526023441498419066, guid: 068630b0ef6e527438bf9fc612dce6ed,
+  linkedTool: {fileID: 8295851304353828717, guid: 068630b0ef6e527438bf9fc612dce6ed,
     type: 3}
   worldItemPrefab: {fileID: 1180561652757582554, guid: dba8279af9c368e48b7a61c05663d694,
     type: 3}

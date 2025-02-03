@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 3
   itemName: Hammer
   icon: {fileID: 0}
-  linkedTool: {fileID: -433569969448344714, guid: 560048343c79277429190a90c3140e1c,
+  linkedTool: {fileID: 3672413324151409380, guid: 78b8361b2411d9a40abc31e51226fc95,
     type: 3}
   worldItemPrefab: {fileID: 4648883692656644607, guid: 9b2c9185e9a34ab4eaebc6b299bb8286,
     type: 3}
