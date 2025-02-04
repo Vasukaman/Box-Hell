@@ -29,13 +29,11 @@ public class ItemInteractionHandler : MonoBehaviour
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         if (Physics.Raycast(ray, out RaycastHit hit, pickupRange, interactableLayers))
         {
-            var worldItem = hit.collider.GetComponent<WorldItem>();
-            if (worldItem != null)
+            ItemCore item = hit.collider.GetComponentInParent<ItemCore>();
+            if (item != null)
             {
-                if (inventory.AddItem(worldItem.ContainedItem))
-                {
-                    Destroy(worldItem.gameObject);
-                }
+                inventory.AddItem(item);
+              
             }
         }
     }

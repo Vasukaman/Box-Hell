@@ -11,16 +11,24 @@ public class WorldItem : MonoBehaviour
 
     public Item ContainedItem => item;
 
-    public void Initialize(Item newItem, bool applyThrowForce = false)
+    public void Throw()
     {
-        item = newItem;
-        gameObject.name = $"{item.itemName}_World";
+      
+       
 
-        if (applyThrowForce && rb != null)
-        {
-            rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
-        }
+    
+            rb.AddForce(Camera.main.transform.forward * throwForce, ForceMode.Impulse);
+        
     }
 
+    public void DisableWorldItemExtra()
+    {
+        rb.isKinematic = true;
+    }   
+    
+    public void EnableWorldItemExtra()
+    {
+        rb.isKinematic = false;
+    }
     // Optional: Add visual effects or custom behavior here
 }

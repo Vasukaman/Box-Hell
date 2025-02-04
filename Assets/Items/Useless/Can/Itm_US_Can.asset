@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97cbf55e48797b4f9c27ddcb2f643f7, type: 3}
   m_Name: Itm_US_Can
   m_EditorClassIdentifier: 
-  type: 1
+  icon: {fileID: 21300000, guid: fe3608a63b99ef241b7ad9beb70933e1, type: 3}
   itemName: Can
-  icon: {fileID: 0}
-  linkedTool: {fileID: 5394815117233551494, guid: 2466b1ebc3dcbbf4ebefe81997851431,
-    type: 3}
-  worldItemPrefab: {fileID: 8896419525895641423, guid: 03698e955aa48a644b51f285c226b3c3,
+  type: 1
+  itemCore: {fileID: 5966167781460266336, guid: 0e774e3298e0fad4986aa9ec9e0c5493,
     type: 3}

@@ -4,11 +4,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Inventory/Item")]
 public class Item : ScriptableObject
 {
-    public ItemType type;
-
-
-    public string itemName;
+    // Add this
+    [Header("UI Settings")]
     public Sprite icon;
-    public Tool linkedTool;
-    public WorldItem worldItemPrefab; // New reference
+    public string itemName;
+
+    // Rest of your existing fields
+    [SerializeField] private ItemType type;
+    [SerializeField] public ItemCore itemCore;
 }

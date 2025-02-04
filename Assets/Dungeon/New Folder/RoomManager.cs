@@ -17,18 +17,26 @@ public class RoomManager : MonoBehaviour
     
     [Header("References")]
     public List<DoorController> doors;
+    public DoorController enterDoor;
 
     [Header("Boxes")]
     [SerializeField] private List<BoxSpawner> boxSpawners;
 
     public event System.Action<RoomConnectionPoint> OnExitSelected;
+    public event System.Action OnEnterTrigger;
+
 
     void Start()
     {
         InitializeDoors();
    
         PrepareRoom();
+
+        
     }
+
+
+
 
     void PrepareRoom()
     {
@@ -62,6 +70,7 @@ public class RoomManager : MonoBehaviour
         {
             door.OnDoorInteracted += HandleDoorInteraction;
         }
+       enterDoor.TryOpenningDoor();
     }
 
     void HandleDoorInteraction(DoorController door, RoomConnectionPoint connection)
@@ -71,6 +80,11 @@ public class RoomManager : MonoBehaviour
             Debug.Log("Exit seleted");
             OnExitSelected?.Invoke(connection);
         }
+    }
+
+    public void HandleEnterTrigger()
+    {
+        OnEnterTrigger?.Invoke();
     }
 
     public void ActivateRoom()
@@ -86,13 +100,43 @@ public class RoomManager : MonoBehaviour
         SetDoorStates(DoorState.Unlocked);
     }
 
+    public void CloseAllDoors()
+    {
+        foreach (var door in doors)
+        {
+
+            door.CloseDoor();
+        }
+    }
+
    protected  void SetDoorStates(DoorState state)
     {
         foreach (var door in doors)
         {
+
             door.SetState(state);
         }
+    }   
+    
+    protected  void CloseDoors(DoorState state)
+    {
+        foreach (var door in doors)
+        {
+            door.CloseDoor();
+        }
     }
+
+
+    public void BeginRoom()
+    {
+        CloseEnterDoor();
+    }
+    public void CloseEnterDoor()
+    {
+        enterDoor.CloseDoor();
+    }
+
+
 
 
     public RoomConnectionPoint GetEntryPoint(ConnectionDirection direction)
@@ -123,5 +167,10 @@ public class RoomManager : MonoBehaviour
                 return exit;
         }
         return exitPoints[0]; // Fallback
+    }
+
+    public void FinishRoom()
+    {
+        CloseAllDoors();
     }
 }

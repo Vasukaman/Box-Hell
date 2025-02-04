@@ -7,8 +7,12 @@ public class DungeonManager : MonoBehaviour
     [SerializeField] Transform worldAnchor;
 
     RoomManager currentRoom;
+    private RoomManager previousRoom;
     CorridorManager currentCorridor;
+    CorridorManager previousCorridor;
     int currentTier; // Track current progression tier
+   
+
 
     void Start()
     {
@@ -22,6 +26,7 @@ public class DungeonManager : MonoBehaviour
         currentRoom = Instantiate(initialRoomConfig.roomPrefab, worldAnchor).GetComponent<RoomManager>();
         currentRoom.tier = currentTier; // Set initial tier
         currentRoom.OnExitSelected += HandleExitSelected;
+
         currentRoom.ActivateRoom();
     }
 
@@ -32,9 +37,41 @@ public class DungeonManager : MonoBehaviour
 
     }
 
+    void HandleExitTrigger()
+    {
+        previousRoom.FinishRoom();
+      
+    }  
+    void HandleEnterRoomTrigger()
+    {
+
+        StartCoroutine(BeginRoomWaitAndCleanUp());
+    }
+
+    System.Collections.IEnumerator BeginRoomWaitAndCleanUp()
+    {
+        currentRoom.BeginRoom();
+        yield return new WaitForSeconds(0.5f);
+
+        CleanUpPreviousRoom();
+        CleanUpPreviousCorridor();
+    }
+
+
+
+        private void CleanUpPreviousRoom()
+    {
+        Destroy(previousRoom.gameObject);
+    }
+
+    private void CleanUpPreviousCorridor()
+    {
+        Destroy(previousCorridor.gameObject);
+    }
+
     System.Collections.IEnumerator RoomTransitionSequence(RoomConnectionPoint exitPoint)
     {
-        yield return new WaitForSeconds(0.5f);
+      
 
         // Determine next tier (example: increment by 1)
         int nextTier = currentTier + 1;
@@ -44,9 +81,9 @@ public class DungeonManager : MonoBehaviour
         var corridorConfig = GetRandomCorridorConfig(currentTier);
 
         SpawnNewSection(exitPoint, nextRoomConfig, corridorConfig, nextTier);
-
+        yield return new WaitForSeconds(0.1f);
         //Destroy(currentCorridor?.gameObject);
-       // Destroy(currentRoom.gameObject);
+        // Destroy(currentRoom.gameObject);
     }
     void SpawnNewSection(RoomConnectionPoint exitPoint, RoomConfiguration nextRoomConfig, CorridorConfiguration corridorConfig, int newTier)
     {
@@ -71,11 +108,24 @@ public class DungeonManager : MonoBehaviour
         newRoom.transform.position += positionOffset;
 
         //Disconecct old room. TODO MAKE A FUNCTION
-        currentRoom.OnExitSelected -= HandleExitSelected;
+        if (currentRoom)
+        { 
+            currentRoom.OnExitSelected -= HandleExitSelected;
+            currentRoom.OnEnterTrigger -= HandleEnterRoomTrigger;
+        }
+
+        if (currentCorridor)
+        currentCorridor.OnExitTrigger -= HandleExitTrigger;
+
+ 
         // Finalize connections
+        previousCorridor = currentCorridor;
         currentCorridor = corridorManager;
+        previousRoom = currentRoom;
         currentRoom = roomManager;
         currentRoom.OnExitSelected += HandleExitSelected;
+        currentRoom.OnEnterTrigger += HandleEnterRoomTrigger;
+        currentCorridor.OnExitTrigger += HandleExitTrigger;
         currentRoom.ActivateRoom();
 
 

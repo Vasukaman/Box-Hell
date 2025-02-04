@@ -17,6 +17,6 @@ MonoBehaviour:
     dropScore: 20
   - value: {fileID: 11400000, guid: 0134d6f17ec623646a15e7204f8cf18e, type: 2}
     dropScore: 20
-  noDropScore: 80
+  noDropScore: 30
   minCoins: 1
   maxCoins: 5

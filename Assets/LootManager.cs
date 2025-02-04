@@ -94,8 +94,8 @@ public class LootManager : MonoBehaviour
 
     static void SpawnItem(Item item, Vector3 position)
     {
-        if (item?.worldItemPrefab != null)
-            Instantiate(item.worldItemPrefab, position, Quaternion.identity);
+        if (item?.itemCore != null)
+            Instantiate(item.itemCore.gameObject, position, Quaternion.identity);
     }
 
     static void AddRandomCoins(Vector3 position, int ammount)

@@ -10,23 +10,23 @@ public class InventorySystem : MonoBehaviour
     public event Action<int> OnSelectedSlotChanged;
 
     [SerializeField] private int slotCount = 4;
-    [SerializeField] private Item[] items;
+    [SerializeField] private ItemCore[] items;
     private int selectedSlot = -1;
 
     public int SlotCount => slotCount;
     public int SelectedSlot => selectedSlot;
-    public Item[] Items => items;
+    public ItemCore[] Items => items;
 
     [SerializeField] private Transform itemHolder;
 
-    private Tool currentTool;
+
 
     private Camera mainCamera;
 
     private void Awake()
     {
         mainCamera = Camera.main;
-        items = new Item[slotCount];
+        items = new ItemCore[slotCount];
 
 
        
@@ -35,13 +35,16 @@ public class InventorySystem : MonoBehaviour
 
 
 
-    public bool AddItem(Item item)
+    public bool AddItem(ItemCore item)
     {
         for (int i = 0; i < items.Length; i++)
         {
             if (items[i] == null)
             {
                 items[i] = item;
+                item.transform.SetParent(itemHolder);
+                item.transform.localPosition = Vector3.zero;
+                item.MakeItTool();
                 OnInventoryUpdated?.Invoke();
                 SelectSlot(i);
                 return true;
@@ -59,10 +62,12 @@ public class InventorySystem : MonoBehaviour
 
     private void ClearCurrentTool()
     {
-        if (currentTool != null)
+        if (GetSelectedItem() != null)
         {
-            Destroy(currentTool.gameObject);
-            currentTool = null;
+            ItemCore currentItem = GetSelectedItem();
+            currentItem.transform.SetParent(null);
+            currentItem.MakeItWorldItem();
+            items[selectedSlot] = null;
         }
     }
 
@@ -70,18 +75,22 @@ public class InventorySystem : MonoBehaviour
     {
         if (slotIndex < 0 || slotIndex >= items.Length) return;
 
+        GetSelectedItem()?.gameObject.SetActive(false);
+
+        Debug.Log($"Slot changed");
+
+
         selectedSlot = slotIndex;
 
 
-        Debug.Log($"Slot changed");
-        ClearCurrentTool();
+    
 
-        Tool selectedTool = GetSelectedItem().linkedTool;
-        if (GetSelectedItem() != null && selectedTool != null)
+        ItemCore selectedItem = items[selectedSlot];
+        if (GetSelectedItem() != null)
         {
-            currentTool = Instantiate(selectedTool, itemHolder);
-            currentTool.transform.localPosition = Vector3.zero;
-            currentTool.transform.localRotation = Quaternion.identity;
+
+
+            GetSelectedItem().gameObject.SetActive(true);
         }
 
 
@@ -90,7 +99,7 @@ public class InventorySystem : MonoBehaviour
 
 
 
-    public Item GetSelectedItem()
+    public ItemCore GetSelectedItem()
     {
         if (selectedSlot >= 0 && selectedSlot < items.Length)
         {
@@ -102,7 +111,7 @@ public class InventorySystem : MonoBehaviour
 
 
 
-    public bool TryRemoveSelectedItem(out Item removedItem)
+    public bool TryRemoveSelectedItem(out ItemCore removedItem)
     {
         removedItem = null;
         if (selectedSlot < 0 || selectedSlot >= items.Length) return false;
@@ -124,23 +133,17 @@ public class InventorySystem : MonoBehaviour
  
      
 
-        if (TryRemoveSelectedItem(out Item thrownItem))
+        if (TryRemoveSelectedItem(out ItemCore thrownItem))
         {
             Debug.Log(thrownItem);
-            Vector3 throwDirection = mainCamera.transform.forward;
-
-         WorldItemFactory.CreateWorldItem(
-         thrownItem,
-         itemHolder.position,
-         Quaternion.LookRotation(throwDirection),
-         true
-     );
+          
+            thrownItem.worldItem.Throw();
         }
     }
 
     public void UseCurrentTool()
     {
-        currentTool?.Use();
+        GetSelectedItem()?.tool?.Use();
     }
 
 }

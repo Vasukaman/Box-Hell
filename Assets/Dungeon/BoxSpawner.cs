@@ -26,7 +26,7 @@ public class BoxSpawner : MonoBehaviour
         if (boxEntry.prefab == null) return null;
 
         // Instantiate box
-        return Instantiate(boxEntry.prefab, transform.position, transform.rotation);
+        return Instantiate(boxEntry.prefab, transform.position, transform.rotation, transform.parent);
     }
 
     // Helper structs for weighted selection
@@ -52,5 +52,10 @@ public class BoxSpawner : MonoBehaviour
             prefab = entry.prefab;
             Weight = entry.weight;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, 0.15f);
     }
 }
