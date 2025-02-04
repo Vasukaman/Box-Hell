@@ -235,7 +235,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2425771348369547132}
@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 5515511175572986563}
   - component: {fileID: 7454356468567296731}
   - component: {fileID: 1029234318435516320}
+  - component: {fileID: 5942682239961718902}
   m_Layer: 0
   m_Name: AxeAnim
   m_TagString: Untagged
@@ -371,6 +372,8 @@ MonoBehaviour:
   anim: {fileID: 7454356468567296731}
   tool: {fileID: 8358781761311567897}
   procAnim: {fileID: 1029234318435516320}
+  useProcAnim: 0
+  restartAnimOnClick: 1
 --- !u!111 &7454356468567296731
 Animation:
   m_ObjectHideFlags: 0
@@ -380,9 +383,9 @@ Animation:
   m_GameObject: {fileID: 3301281649566704384}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: df14ad6941981244ab189cbe2f36435c, type: 2}
+  m_Animation: {fileID: 7400000, guid: dc629c14d0a66784b9534c9931f8408f, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: df14ad6941981244ab189cbe2f36435c, type: 2}
+  - {fileID: 7400000, guid: dc629c14d0a66784b9534c9931f8408f, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -439,6 +442,33 @@ MonoBehaviour:
   debugMode: 0
   debugPreview: 0
   debugArcPreview: 1
+--- !u!114 &5942682239961718902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3301281649566704384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61f5b759aff5cd4ab95c25775dfbd76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnActivate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8358781761311567897}
+        m_TargetAssemblyTypeName: RegularMeleeTool, Assembly-CSharp
+        m_MethodName: TryAttacking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8377573754791259271
 GameObject:
   m_ObjectHideFlags: 0

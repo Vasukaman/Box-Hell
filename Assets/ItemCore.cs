@@ -45,6 +45,14 @@ public class ItemCore : MonoBehaviour
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
 
+
+        visual.layer = 6;
+        foreach (Transform child in visual.transform)
+        {
+            child.gameObject.layer = 6;
+        }
+       
+
     } 
     
     private void TurnIntoWorldItem()
@@ -55,6 +63,13 @@ public class ItemCore : MonoBehaviour
         worldItem.EnableWorldItemExtra();
         visual.transform.localPosition = Vector3.zero;
         visual.transform.localRotation = Quaternion.identity;
+
+        visual.layer = 0;
+        foreach (Transform child in visual.transform)
+        {
+            child.gameObject.layer = 0;
+        }
+
     }
 
 

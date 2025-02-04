@@ -7,6 +7,8 @@ public class ToolAnimController : MonoBehaviour
     [SerializeField] private Animation anim;
     [SerializeField] private Tool tool;
     [SerializeField]  ProceduralWeaponAnimator procAnim;
+    [SerializeField] private bool useProcAnim;
+    [SerializeField] private bool restartAnimOnClick;
 
     private void Awake()
     {
@@ -31,15 +33,23 @@ public class ToolAnimController : MonoBehaviour
 
     public void AxeSwing()
     {
+        if (useProcAnim)
         procAnim.StartSwing();
+        else
+        {
+            if (restartAnimOnClick)
+             anim.Stop();
 
-     //   anim.Stop();
+             anim.Play();
 
-        //  anim.Play();
+        }
+
 
     }
     private void OnDestroy()
     {
         tool.OnToolUsed -= AxeSwing;
     }
+
+
 }
