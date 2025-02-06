@@ -5,9 +5,6 @@ public class RoomManager : MonoBehaviour
 {
       public int tier;
     
-    [Header("Connections")]
-    public List<RoomConnectionPoint> entryPoints;
-    public List<RoomConnectionPoint> exitPoints;
 
 
     
@@ -145,33 +142,9 @@ public class RoomManager : MonoBehaviour
 
     public RoomConnectionPoint GetEntryPoint(ConnectionDirection direction)
     {
-        foreach (var entry in entryPoints)
-        {
-            if (entry.direction == direction)
-                return entry;
-        }
-        return default;
+        return enterDoor.connectionPoint;
     }
 
-    public RoomConnectionPoint GetCompatibleExit(ConnectionDirection incomingDirection)
-    {
-        // Get opposite direction for exit selection
-        ConnectionDirection targetDirection = incomingDirection switch
-        {
-            ConnectionDirection.North => ConnectionDirection.South,
-            ConnectionDirection.East => ConnectionDirection.West,
-            ConnectionDirection.South => ConnectionDirection.North,
-            ConnectionDirection.West => ConnectionDirection.East,
-            _ => ConnectionDirection.North
-        };
-
-        foreach (var exit in exitPoints)
-        {
-            if (exit.direction == targetDirection)
-                return exit;
-        }
-        return exitPoints[0]; // Fallback
-    }
 
     public void FinishRoom()
     {

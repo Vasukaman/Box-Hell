@@ -107,6 +107,18 @@ public class DungeonManager : MonoBehaviour
         Vector3 positionOffset = corridorEndPosition - roomEntry.spawnAnchor.position;
         newRoom.transform.position += positionOffset;
 
+
+        // Get the current local rotation of the newRoom
+        Quaternion currentRotation = newRoom.transform.localRotation;
+
+        // Get the rotation of the spawn anchor
+        Quaternion additionalRotation = roomEntry.spawnAnchor.localRotation;
+
+        // Combine the rotations by multiplying the Quaternions
+        newRoom.transform.localRotation = currentRotation * additionalRotation;
+
+
+
         //Disconecct old room. TODO MAKE A FUNCTION
         if (currentRoom)
         { 

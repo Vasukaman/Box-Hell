@@ -136,7 +136,7 @@ public class InventorySystem : MonoBehaviour
         if (TryRemoveSelectedItem(out ItemCore thrownItem))
         {
             Debug.Log(thrownItem);
-          
+            thrownItem.HandleItemThrowed();
             thrownItem.worldItem.Throw();
         }
     }

@@ -12,6 +12,7 @@ public class ToolAnimController : MonoBehaviour
 
     private void Awake()
     {
+        tool.OnToolThrown += OnToolThrown;
     }
 
     // Start is called before the first frame update
@@ -21,7 +22,8 @@ public class ToolAnimController : MonoBehaviour
         if (tool == null)
             tool = GetComponent<Tool>(); // Get the Tool component on this GameObject
 
-        tool.OnToolUsed += AxeSwing;
+        tool.OnToolUsed += PlayAnimation;
+
 
     }
 
@@ -31,7 +33,7 @@ public class ToolAnimController : MonoBehaviour
 
     }
 
-    public void AxeSwing()
+    public void PlayAnimation()
     {
         if (useProcAnim)
         procAnim.StartSwing();
@@ -46,9 +48,25 @@ public class ToolAnimController : MonoBehaviour
 
 
     }
+
+    private void OnToolThrown()
+    {
+        Debug.Log("STOP ANIMATION");
+        StopAnimation();
+    }
+    public void StopAnimation()
+    {
+        if (useProcAnim)
+            procAnim.PauseAnimation();
+        else
+        {
+                anim.Stop();
+
+        }
+    }
     private void OnDestroy()
     {
-        tool.OnToolUsed -= AxeSwing;
+        tool.OnToolUsed -= PlayAnimation;
     }
 
 

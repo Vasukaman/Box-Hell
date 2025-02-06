@@ -1322,14 +1322,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tier: 0
-  entryPoints:
-  - direction: 0
-    doorTransform: {fileID: 3839186111512212331}
-    spawnAnchor: {fileID: 3839186111512212331}
-  exitPoints:
-  - direction: 0
-    doorTransform: {fileID: 9071461594489400765}
-    spawnAnchor: {fileID: 9071461594489400765}
   roomType: 0
   isActive: 1
   doors:
@@ -2211,7 +2203,7 @@ PrefabInstance:
         type: 3}
       propertyPath: connectionPoint.spawnAnchor
       value: 
-      objectReference: {fileID: 9071461594489400765}
+      objectReference: {fileID: 3839186111512212331}
     - target: {fileID: 6260969564842498685, guid: 602352b04882c0c408604bfcbe7918d4,
         type: 3}
       propertyPath: m_PlayAutomatically

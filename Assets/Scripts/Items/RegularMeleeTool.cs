@@ -18,9 +18,10 @@ public class RegularMeleeTool : Tool
     [SerializeField] private float hitForce;
 
 
-    private void Start()
+    protected  void Start()
     {
         mainCamera = Camera.main;
+        itemCore.OnItemThrowed += ToolThrown;
 
     }
 

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: d5c968a225c4cad4295e3793c51b11b5, type: 2}
+  itemCore: {fileID: 3898864334834387110}
   range: 5
   damage: 60
   damageableLayers:

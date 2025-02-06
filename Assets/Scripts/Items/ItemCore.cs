@@ -14,7 +14,7 @@ public class ItemCore : MonoBehaviour
     public event Action OnItemEquipped;
     public event Action OnItemThrowed;
 
-    private void Start()
+    protected void Start()
     {
       
     }

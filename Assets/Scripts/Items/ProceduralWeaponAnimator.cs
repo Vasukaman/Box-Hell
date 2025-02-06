@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ProceduralWeaponAnimator : MonoBehaviour
 {
-
+    private bool pause = false;
     public enum SwingState { Resting, Preparing, Attacking, Pausing, Returning }
 
     [Header("References")]
@@ -42,10 +42,12 @@ public class ProceduralWeaponAnimator : MonoBehaviour
     private void Start()
     {
         playerCamera = Camera.main;
+
+
     }
     void Update()
     {
-
+        if (pause) return;
 
         switch (currentState)
         {
@@ -71,10 +73,21 @@ public class ProceduralWeaponAnimator : MonoBehaviour
         }
     }
 
+    public void PauseAnimation()
+    {
+        pause = true;
+    }
+
+    public void ResumeAnimation()
+    {
+        pause = false;  
+    }
+
    public void StartSwing()
     {
         currentState = SwingState.Preparing;
         stateProgress = 0f;
+        ResumeAnimation();
     }
 
     void UpdatePreparation()
@@ -263,4 +276,6 @@ public class ProceduralWeaponAnimator : MonoBehaviour
     {
         regularMeleeTool.TryAttacking();
     }
+
+
 }
