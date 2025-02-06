@@ -1024,7 +1024,7 @@ GameObject:
   - component: {fileID: 2912601501392112115}
   - component: {fileID: 794054716485092985}
   - component: {fileID: 5319477812415757498}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnterTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

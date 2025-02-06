@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ca78e32381d174e8945adfffbe10b5, type: 3}
+  m_Name: UncommonRarity
+  m_EditorClassIdentifier: 
+  name: Uncommon
+  rank: 1
+  dropEffect: {fileID: 6186083135284723102, guid: 695e37dc2ade1de49909619b6e1ee5ec,
+    type: 3}
+  holdEffect: {fileID: 6211125795773073634, guid: 12a56ee4630040c4eb17ae9707ed4cef,
+    type: 3}

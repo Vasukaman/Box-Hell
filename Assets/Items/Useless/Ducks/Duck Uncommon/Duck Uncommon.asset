@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97cbf55e48797b4f9c27ddcb2f643f7, type: 3}
   m_Name: Duck Uncommon
   m_EditorClassIdentifier: 
-  type: 1
-  itemName: Duck Uncommon
   icon: {fileID: 0}
-  linkedTool: {fileID: 2680978117664038094, guid: 2fcec7faf35810b47ad9c60b1e6d9fc1,
+  itemName: Duck Uncommon
+  type: 1
+  itemCore: {fileID: 3019041458159033974, guid: 0536b832833788a41ba5cdbdce52e85c,
     type: 3}
-  worldItemPrefab: {fileID: 5324683135074455194, guid: cd99ab5e76e2bd341abfd90a57aeebe8,
-    type: 3}
+  raritySO: {fileID: 11400000, guid: 9048ffd3fa54c1345952f22805d8cb83, type: 2}

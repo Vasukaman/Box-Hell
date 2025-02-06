@@ -24,7 +24,7 @@ public class RoomManager : MonoBehaviour
 
     public event System.Action<RoomConnectionPoint> OnExitSelected;
     public event System.Action OnEnterTrigger;
-
+    private bool entered;
 
     void Start()
     {
@@ -81,10 +81,14 @@ public class RoomManager : MonoBehaviour
             OnExitSelected?.Invoke(connection);
         }
     }
-
+        
     public void HandleEnterTrigger()
     {
+        if (entered) return;
+        
         OnEnterTrigger?.Invoke();
+        entered = true;
+        
     }
 
     public void ActivateRoom()

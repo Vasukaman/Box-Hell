@@ -303,8 +303,8 @@ MonoBehaviour:
   anim: {fileID: 909151652633275823}
   tool: {fileID: 3733363470532971904}
   procAnim: {fileID: 3061873587047604795}
-  useProcAnim: 0
-  restartAnimOnClick: 1
+  useProcAnim: 1
+  restartAnimOnClick: 0
 --- !u!114 &3061873587047604795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,12 +347,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  prepareDuration: 0.06
-  attackDuration: 0.15
-  returnDuration: 0.07
+  prepareDuration: 0
+  attackDuration: 0.3
+  returnDuration: 0.12
   postHitPause: 0.02
   attackDistance: 5
-  arcPower: 1.68
+  arcPower: 0.93
   arcAngle: 312
   debugMode: 0
   debugPreview: 2
@@ -433,7 +433,7 @@ MonoBehaviour:
   damage: 35
   damageableLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2035
   mainCamera: {fileID: 0}
   hitShakePreset: {fileID: 11400000, guid: fb4b31b75fc51fd499fca6aca2d07f84, type: 2}
   hitForce: 17
@@ -492,10 +492,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9181851116039907835}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.27228028, y: -0, z: -0, w: 0.96221805}
-  m_LocalPosition: {x: 0, y: 0.3899994, z: -0.8999996}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.09106705, y: -0, z: -0, w: 0.9958448}
+  m_LocalPosition: {x: 0, y: -0.11000061, z: 0.4699993}
+  m_LocalScale: {x: 3.183598, y: 3.1835976, z: 3.1835976}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3028733045229593934}
-  m_LocalEulerAnglesHint: {x: -31.6, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -10.45, y: 0, z: 0}

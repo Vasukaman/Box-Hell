@@ -17,3 +17,4 @@ MonoBehaviour:
   type: 0
   itemCore: {fileID: 3898864334834387110, guid: 3277f4678868a134ea9d24cf8878b64c,
     type: 3}
+  raritySO: {fileID: 11400000, guid: 9048ffd3fa54c1345952f22805d8cb83, type: 2}
