@@ -290,6 +290,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90ba6530d9bfda47abb4610956b2f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionCheckDistance: 3
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 0
   playerCamera: {fileID: 4459864851310106426}
   fov: 60
   invertCamera: 0
@@ -348,8 +352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotCount: 4
   items:
-  - {fileID: 11400000, guid: caf67787a4fe5184ab982006fd20b8e4, type: 2}
-  - {fileID: 11400000, guid: caf67787a4fe5184ab982006fd20b8e4, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   itemHolder: {fileID: 5254192501789605461}
 --- !u!114 &1351280990961688772
 MonoBehaviour:
@@ -672,7 +676,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 1975
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
