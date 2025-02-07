@@ -16,6 +16,12 @@ public class RegularMeleeTool : Tool
     [SerializeField] private MilkShake.ShakePreset hitShakePreset;
 
     [SerializeField] private float hitForce;
+    [SerializeField] private List<DecalTextureData> decals;
+    [SerializeField] private Transform vfxParticlePosition;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private ToolSoundManager soundManager;
+    [SerializeField] private List<ParticleSystem> hitVFX;
+
 
 
     protected  void Start()
@@ -25,6 +31,10 @@ public class RegularMeleeTool : Tool
 
     }
 
+    DecalTextureData PickDecal()
+    {
+        return decals[Random.Range(0, decals.Count)];
+    }
     protected void TryHit(RaycastHit hit)    
     {
 
@@ -35,9 +45,29 @@ public class RegularMeleeTool : Tool
             force = force.normalized * hitForce;
             DecalTextureData decal = new DecalTextureData();
             HitData hitData = new HitData(damage, itemCore, hit.point, force, decal);
+            Vector3 pos = hit.point + hit.normal * 0.1f;
+            DecalFactory.Instance.SpawnDecal(PickDecal(), pos, hit.normal,hit.collider.transform);
             damageable.TakeHit(hitData);
             Shaker.ShakeAll(hitShakePreset);
+            SpawnHitVFX();
+
+            PlayHitSound();
         }
+    }
+
+    private void PlayHitSound()
+    {
+        soundManager.PlayHitSound();
+    }  
+
+    private ParticleSystem PickHitVFX()
+    {
+        return hitVFX[Random.Range(0, hitVFX.Count)];
+    }
+
+    private void SpawnHitVFX()
+    {
+        Instantiate(PickHitVFX(), vfxParticlePosition.position, vfxParticlePosition.rotation);
     }
 
     protected void TryImpulse(RaycastHit hit)
@@ -71,7 +101,7 @@ public class RegularMeleeTool : Tool
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, range, damageableLayers))
         {
-            TryHit      (hit);
+            TryHit(hit);
             TryImpulse(hit);
             Debug.Log($"Hit {hit.collider.name} with ");
             // Add your interaction logic here

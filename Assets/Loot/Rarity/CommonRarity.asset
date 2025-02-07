@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Common
   rank: 0
-  dropEffect: {fileID: 0}
+  dropEffect: {fileID: 715165127304888926, guid: 4d860797a0050e14e936ab0ec1670228,
+    type: 3}
+  holdEffect: {fileID: 6211125795773073634, guid: 8ac8def83486eca4fa863824f47d05fe,
+    type: 3}
+  spawnSound: {fileID: 8300000, guid: b6f3fb827e6e7a54fb7ef6408e7653d6, type: 3}

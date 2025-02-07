@@ -82,7 +82,7 @@ public class ItemCore : MonoBehaviour
 
 
         visual.layer = 6;
-        foreach (Transform child in visual.transform)
+        foreach (Transform child in visual.transform.GetComponentsInChildren<Transform>())
         {
             child.gameObject.layer = 6;
         }
@@ -100,8 +100,8 @@ public class ItemCore : MonoBehaviour
         visual.transform.localRotation = Quaternion.identity;
 
         visual.layer = 0;
-        foreach (Transform child in visual.transform)
-        {
+        foreach (Transform child in visual.transform.GetComponentsInChildren<Transform>())
+        { 
             child.gameObject.layer = 0;
         }
 

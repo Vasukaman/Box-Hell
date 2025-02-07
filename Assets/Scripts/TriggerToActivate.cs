@@ -16,6 +16,7 @@ public class TriggerToActivate : MonoBehaviour
     public UnityEvent onTriggerDeactivated;
 
     private Collider triggerCollider;
+    [SerializeField] bool destroyAfterActivate;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class TriggerToActivate : MonoBehaviour
         if (ShouldTrigger(other.tag))
         {
             onTriggerActivated.Invoke();
+            if (destroyAfterActivate) Destroy(this.gameObject);
         }
     }
 

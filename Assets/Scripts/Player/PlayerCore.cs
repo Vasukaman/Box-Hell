@@ -22,6 +22,23 @@ public class PlayerCore : MonoBehaviour
     {
         gameData.playerCore = this;
     }
+
+
+    private RoomManager currentRoomManager;
+
+
+    public  void Respawn()
+    {
+        Transform respawnPoint = currentRoomManager.GetRespawnTransform();
+        transform.position = respawnPoint.position;
+        transform.rotation = respawnPoint.rotation;
+    }
+
+    public void SetCurrentRoomManager(RoomManager newRoomManager)
+    {
+        currentRoomManager = newRoomManager;
+    }
+
     public void ModifyHealth(int amount)
     {
         _currentHealth = Mathf.Max(0, _currentHealth + amount);

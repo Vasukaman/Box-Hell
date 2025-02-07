@@ -19,6 +19,8 @@ public class RoomManager : MonoBehaviour
     [Header("Boxes")]
     [SerializeField] private List<BoxSpawner> boxSpawners;
 
+    [SerializeField] private Transform respawnTransform;
+    [SerializeField] private PlayerCore playerCore;
     public event System.Action<RoomConnectionPoint> OnExitSelected;
     public event System.Action OnEnterTrigger;
     private bool entered;
@@ -32,7 +34,16 @@ public class RoomManager : MonoBehaviour
         
     }
 
+    public Transform GetRespawnTransform()
+    {
+        if (respawnTransform==null)
+        {
+            Debug.LogWarning("No respawn transform. Will give room transform. Pray this works.");
+            return transform;
+        }
 
+        return respawnTransform;
+    }
 
 
     void PrepareRoom()
@@ -91,8 +102,7 @@ public class RoomManager : MonoBehaviour
     public void ActivateRoom()
     {
         isActive = true;
-     //   SetDoorStates(DoorState.Locked);
-        // Room-specific activation logic
+
     }
 
     public void DeactivateRoom()

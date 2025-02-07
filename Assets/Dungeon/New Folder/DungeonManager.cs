@@ -11,8 +11,7 @@ public class DungeonManager : MonoBehaviour
     CorridorManager currentCorridor;
     CorridorManager previousCorridor;
     int currentTier; // Track current progression tier
-   
-
+    [SerializeField] PlayerCore playerCore;
 
     void Start()
     {
@@ -26,7 +25,7 @@ public class DungeonManager : MonoBehaviour
         currentRoom = Instantiate(initialRoomConfig.roomPrefab, worldAnchor).GetComponent<RoomManager>();
         currentRoom.tier = currentTier; // Set initial tier
         currentRoom.OnExitSelected += HandleExitSelected;
-
+        playerCore.SetCurrentRoomManager(currentRoom);
         currentRoom.ActivateRoom();
     }
 
@@ -100,6 +99,7 @@ public class DungeonManager : MonoBehaviour
         // Instantiate new room at corridor end
         var newRoom = Instantiate(nextRoomConfig.roomPrefab, corridorEndPosition, corridorEndRotation);
         var roomManager = newRoom.GetComponent<RoomManager>();
+        playerCore.SetCurrentRoomManager(roomManager);
         roomManager.tier = newTier;
 
         // Fine-tune room position using entry point

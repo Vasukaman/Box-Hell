@@ -16,7 +16,7 @@ public class BreakableBox : HittableBase
 
     [SerializeField] Transform fragmentsParent;
     [SerializeField] Transform lootSpawnPoint;
-
+    [SerializeField] BoxSoundManager soundManager;
 
     protected override void Break(Vector3 hitPoint)
     {
@@ -27,11 +27,21 @@ public class BreakableBox : HittableBase
         Item droppedItem = LootManager.GenerateBoxLoot(lootConfig, 1, luck, lootSpawnPoint.position);
 
 
-        if (droppedItem!=null)
-        if (droppedItem.raritySO.dropEffect != null)
+        if (droppedItem != null)
+
         {
-            Instantiate(droppedItem.raritySO.dropEffect, breakEffectPoint.position, Quaternion.identity);
+            if (droppedItem.raritySO.dropEffect != null)
+            {
+                Instantiate(droppedItem.raritySO.dropEffect, breakEffectPoint.position, Quaternion.identity);
+
+            }
+            if (droppedItem.raritySO.spawnSound != null)
+            {
+  
+            soundManager.PlaySound(droppedItem.raritySO.spawnSound);
+            }
         }
+
 
 
         fragmentsParent.gameObject.SetActive(true);
@@ -43,14 +53,24 @@ public class BreakableBox : HittableBase
         {
             fragment.AddExplosionForce(breakFragmentsForce, hitPoint, 10);
         }
+        soundManager.transform.SetParent(fragmentsParent);
+        soundManager.PlayBreakSound();
+
         Destroy(this.gameObject);
       
 
        // base.Break();
     }
 
-   
+    public override void TakeHit(HitData hitData)
+    {
+        base.TakeHit(hitData);
+
+       // soundManager.PlayHitSound();
+    }
 
 
-    
+
+
+
 }

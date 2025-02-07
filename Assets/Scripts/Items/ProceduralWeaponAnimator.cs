@@ -38,6 +38,7 @@ public class ProceduralWeaponAnimator : MonoBehaviour
 
     private Vector3 finalHitPosition;
     private Quaternion finalHitRotation;
+    [SerializeField] private ToolSoundManager soundManager;
     public enum DebugPose { Resting, Prepare, Hit, FinalHitTransform }
     private void Start()
     {
@@ -52,9 +53,11 @@ public class ProceduralWeaponAnimator : MonoBehaviour
         switch (currentState)
         {
             case SwingState.Preparing:
+            
                 UpdatePreparation();
                 break;
             case SwingState.Attacking:
+              
                 UpdateAttack();
                 break;
             case SwingState.Pausing:
@@ -88,6 +91,8 @@ public class ProceduralWeaponAnimator : MonoBehaviour
         currentState = SwingState.Preparing;
         stateProgress = 0f;
         ResumeAnimation();
+
+        soundManager.PlayPrepareSound();
     }
 
     void UpdatePreparation()
@@ -102,6 +107,7 @@ public class ProceduralWeaponAnimator : MonoBehaviour
         {
             CalculateAttackArc();
             currentState = SwingState.Attacking;
+            soundManager.PlaySwingSound();
             stateProgress = 0f;
         }
     }
@@ -173,6 +179,7 @@ public class ProceduralWeaponAnimator : MonoBehaviour
         stateProgress += Time.deltaTime;
         if (stateProgress >= postHitPause)
         {
+            soundManager.PlayReturnSound();
             currentState = SwingState.Returning;
             stateProgress = 0f;
         }
