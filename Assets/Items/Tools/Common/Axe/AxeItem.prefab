@@ -53,7 +53,7 @@ MonoBehaviour:
     m_Bits: 2035
   mainCamera: {fileID: 0}
   hitShakePreset: {fileID: 11400000, guid: 2541f5ff4b0c04f41b61397de0d833bf, type: 2}
-  hitForce: 9
+  hitForce: 35
 --- !u!1 &2277225821159953768
 GameObject:
   m_ObjectHideFlags: 0

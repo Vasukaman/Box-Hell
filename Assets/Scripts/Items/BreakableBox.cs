@@ -3,15 +3,15 @@ using UnityEngine;
 using System.Collections;
 
 
-public class BreakableBox : DamageableBase
+public class BreakableBox : HittableBase
 {
     [SerializeField] private ParticleSystem breakEffect;
     [SerializeField] private Transform breakEffectPoint;
     [SerializeField] private float minExplosionSpeed;
     [SerializeField] private float maxExplosionSpeed;
     [SerializeField] private float breakFragmentsForce;
+    
 
-    [SerializeField] private Rigidbody rigidBody;
     [SerializeField] private LootConfiguration lootConfig;
 
     [SerializeField] Transform fragmentsParent;
@@ -51,13 +51,6 @@ public class BreakableBox : DamageableBase
 
    
 
-    public override void TakePush(Vector3 position, Vector3 force)
-    {
-        Debug.Log("Push");
-        if (!rigidBody) return;
-        Debug.Log("Pushed");
-        rigidBody.AddForceAtPosition(force, position, ForceMode.Impulse);
-    }
 
     
 }

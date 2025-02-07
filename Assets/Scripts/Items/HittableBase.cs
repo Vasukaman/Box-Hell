@@ -1,22 +1,31 @@
 // DamageableBase.cs
 using UnityEngine;
 using System;
-public abstract class DamageableBase : MonoBehaviour, IDamageable
+public abstract class HittableBase : MonoBehaviour, IHittable
 {
     [SerializeField] protected float maxHealth = 100f;
     [SerializeField] protected bool destroyOnBreak = true;
+    [SerializeField] protected Rigidbody rigidBody;
 
-    public event Action<Item> OnBreak;
+
+    public event Action<ItemCore> OnBreak;
 
     protected float currentHealth;
-    protected Item lastDamageSource;
+    protected ItemCore lastDamageSource;
 
     protected virtual void Awake()
     {
         currentHealth = maxHealth;
+        rigidBody = GetComponent<Rigidbody>();
     }
 
-    public virtual void TakeDamage(float damage, Item damageSource, Vector3 hitPoint)
+    public virtual void TakeHit(HitData hitData)
+    {
+        TakeDamage(hitData.damage, hitData.sourseItem, hitData.position);
+        TakePush(hitData.position, hitData.hitForce);
+    }
+
+    public virtual void TakeDamage(float damage, ItemCore damageSource, Vector3 hitPoint)
     {
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         lastDamageSource = damageSource;
@@ -31,6 +40,8 @@ public abstract class DamageableBase : MonoBehaviour, IDamageable
     public virtual void TakePush(Vector3 position, Vector3 force)
     {
 
+        if (!rigidBody) return;
+        rigidBody.AddForceAtPosition(force, position, ForceMode.Impulse);
 
     }
 

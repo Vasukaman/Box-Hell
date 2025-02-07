@@ -25,30 +25,34 @@ public class RegularMeleeTool : Tool
 
     }
 
-    protected void TryDamage(RaycastHit hit)    
+    protected void TryHit(RaycastHit hit)    
     {
 
-        var damageable = hit.collider.GetComponentInParent<IDamageable>();
+        var damageable = hit.collider.GetComponentInParent<IHittable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(damage, item, hit.transform.position);
+            Vector3 force = hit.point - mainCamera.transform.position;
+            force = force.normalized * hitForce;
+            DecalTextureData decal = new DecalTextureData();
+            HitData hitData = new HitData(damage, itemCore, hit.point, force, decal);
+            damageable.TakeHit(hitData);
             Shaker.ShakeAll(hitShakePreset);
         }
     }
 
     protected void TryImpulse(RaycastHit hit)
     {
-        Debug.Log("Try Pushing");
-        var damageable = hit.collider.GetComponentInParent<IDamageable>();
-        Debug.Log(damageable);
-        if (damageable != null)
-        {
-            Debug.Log("Pushing");
-            Vector3 force = hit.point - mainCamera.transform.position;
-            force = force.normalized * hitForce;
-            damageable.TakePush(hit.point, force);
-            Shaker.ShakeAll(hitShakePreset);
-        }
+        //Debug.Log("Try Pushing");
+        //var damageable = hit.collider.GetComponentInParent<IHittable>();
+        //Debug.Log(damageable);
+        //if (damageable != null)
+        //{
+        //    Debug.Log("Pushing");
+        //    Vector3 force = hit.point - mainCamera.transform.position;
+        //    force = force.normalized * hitForce;
+        //    damageable.TakePush(hit.point, force);
+        //    Shaker.ShakeAll(hitShakePreset);
+        //}
     }
 
     public override void Use()
@@ -67,7 +71,7 @@ public class RegularMeleeTool : Tool
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, range, damageableLayers))
         {
-            TryDamage(hit);
+            TryHit      (hit);
             TryImpulse(hit);
             Debug.Log($"Hit {hit.collider.name} with ");
             // Add your interaction logic here

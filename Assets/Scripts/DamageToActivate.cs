@@ -4,10 +4,16 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
-public class DamageToActivate : MonoBehaviour, IDamageable
+public class DamageToActivate : MonoBehaviour, IHittable
 {
     [SerializeField] UnityEvent OnActivate;
-    public void TakeDamage(float damage, Item damageSource, Vector3 hitPoint)
+
+    public virtual void TakeHit(HitData hitData)
+    {
+        TakeDamage(hitData.damage, hitData.sourseItem, hitData.position);
+        TakePush(hitData.position, hitData.hitForce);
+    }
+    public void TakeDamage(float damage, ItemCore damageSource, Vector3 hitPoint)
     {
         OnActivate.Invoke();
     }
