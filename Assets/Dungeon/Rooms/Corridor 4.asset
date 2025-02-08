@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ced4fc2466672e3468ee81eba90ac4be, type: 3}
-  m_Name: Corridor 2
+  m_Name: Corridor 4
   m_EditorClassIdentifier: 
   weight: 1
   corridorName: Corridor 2
-  corridorPrefab: {fileID: 2843696903311778110, guid: bd681cfa5ed99564e9d079e7a0e5d324,
+  corridorPrefab: {fileID: 2843696903311778110, guid: 9de9cb39b86033348ae14fc6c538cfd8,
     type: 3}
