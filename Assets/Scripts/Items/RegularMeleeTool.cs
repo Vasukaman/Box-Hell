@@ -17,6 +17,7 @@ public class RegularMeleeTool : Tool
 
     [SerializeField] private float hitForce;
     [SerializeField] private List<DecalTextureData> decals;
+    [SerializeField] private bool spawnParticlesOnHitPos;
     [SerializeField] private Transform vfxParticlePosition;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private ToolSoundManager soundManager;
@@ -49,7 +50,13 @@ public class RegularMeleeTool : Tool
             DecalFactory.Instance.SpawnDecal(PickDecal(), pos, hit.normal,hit.collider.transform);
             damageable.TakeHit(hitData);
             Shaker.ShakeAll(hitShakePreset);
-            SpawnHitVFX();
+
+
+            if (spawnParticlesOnHitPos)
+                SpawnHitVFX(pos, Quaternion.LookRotation(hit.normal));
+            else
+                SpawnHitVFX(vfxParticlePosition.position, vfxParticlePosition.rotation);
+
 
             PlayHitSound();
         }
@@ -65,9 +72,12 @@ public class RegularMeleeTool : Tool
         return hitVFX[Random.Range(0, hitVFX.Count)];
     }
 
-    private void SpawnHitVFX()
+    private void SpawnHitVFX(Vector3 position, Quaternion rotation)
     {
-        Instantiate(PickHitVFX(), vfxParticlePosition.position, vfxParticlePosition.rotation);
+        ParticleSystem partSys = PickHitVFX();
+
+       ParticleSystem particles =  Instantiate(partSys, position, rotation);
+        particles.transform.localScale = partSys.transform.localScale;
     }
 
     protected void TryImpulse(RaycastHit hit)

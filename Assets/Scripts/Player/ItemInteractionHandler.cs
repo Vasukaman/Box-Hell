@@ -20,8 +20,10 @@ public class ItemInteractionHandler : MonoBehaviour
     {
         HandleItemPickup();
         HandleItemThrow();
+
     }
 
+ 
     private void HandleItemPickup()
     {
         if (!Input.GetKeyDown(KeyCode.E)) return;

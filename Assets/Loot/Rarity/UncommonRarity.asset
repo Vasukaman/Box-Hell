@@ -18,4 +18,6 @@ MonoBehaviour:
     type: 3}
   holdEffect: {fileID: 6211125795773073634, guid: 12a56ee4630040c4eb17ae9707ed4cef,
     type: 3}
-  spawnSound: {fileID: 8300000, guid: 51c5e033a9f1b6d4389c90dccda27a6b, type: 3}
+  spawnSound:
+    sound: {fileID: 8300000, guid: 51c5e033a9f1b6d4389c90dccda27a6b, type: 3}
+    volume: 1

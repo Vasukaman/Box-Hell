@@ -12,6 +12,7 @@ public class DungeonManager : MonoBehaviour
     CorridorManager previousCorridor;
     int currentTier; // Track current progression tier
     [SerializeField] PlayerCore playerCore;
+    [SerializeField] RoomConfiguration initialRoom;
 
     void Start()
     {
@@ -21,8 +22,10 @@ public class DungeonManager : MonoBehaviour
 
     void GenerateInitialRoom()
     {
-        var initialRoomConfig = GetRandomRoomConfig(currentTier);
-        currentRoom = Instantiate(initialRoomConfig.roomPrefab, worldAnchor).GetComponent<RoomManager>();
+        if (initialRoom == null)
+         initialRoom= GetRandomRoomConfig(currentTier);
+
+        currentRoom = Instantiate(initialRoom.roomPrefab, worldAnchor).GetComponent<RoomManager>();
         currentRoom.tier = currentTier; // Set initial tier
         currentRoom.OnExitSelected += HandleExitSelected;
         playerCore.SetCurrentRoomManager(currentRoom);

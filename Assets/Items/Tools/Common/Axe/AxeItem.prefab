@@ -88,6 +88,7 @@ MonoBehaviour:
   decals:
   - sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     scale: {x: 0.06, y: 0.8, z: 1}
+  spawnParticlesOnHitPos: 0
   vfxParticlePosition: {fileID: 1826731000632429956}
   audioSource: {fileID: 8585393712107697153}
   soundManager: {fileID: 7826928329472550394}
@@ -568,7 +569,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: RegularBoxSoundPack
   m_EditorClassIdentifier: 
   breakSounds:
-  - {fileID: 8300000, guid: b66e351c502fabd41aa1325b68804d41, type: 3}
+  - sound: {fileID: 8300000, guid: b66e351c502fabd41aa1325b68804d41, type: 3}
+    volume: 1
   hitSounds:
-  - {fileID: 8300000, guid: 279a3f7b590ed824dad53f7a8236162b, type: 3}
+  - sound: {fileID: 8300000, guid: 279a3f7b590ed824dad53f7a8236162b, type: 3}
+    volume: 0.08

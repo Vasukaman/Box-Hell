@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   corridorName: Corridor 2
-  corridorPrefab: {fileID: 2843696903311778110, guid: 9de9cb39b86033348ae14fc6c538cfd8,
+  corridorPrefab: {fileID: 2843696903311778110, guid: 1621c8f25b01924498066c33ff358ff5,
     type: 3}

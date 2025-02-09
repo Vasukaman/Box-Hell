@@ -7,6 +7,6 @@ public class ItemRarityConfiguration : ScriptableObject
     public int rank;
     public ParticleSystem dropEffect;
     public ParticleSystem holdEffect;
-    public AudioClip spawnSound;
+    public SoundData spawnSound;
 
 }

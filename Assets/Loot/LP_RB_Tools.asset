@@ -16,5 +16,5 @@ MonoBehaviour:
   - value: {fileID: 11400000, guid: 4ed845c782779ba4ebb6a54debfadc6d, type: 2}
     dropScore: 50
   - value: {fileID: 11400000, guid: c2bcf04dd309daa4baa708bde128450b, type: 2}
-    dropScore: 10
+    dropScore: 20
   noDropScore: 0

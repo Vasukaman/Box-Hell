@@ -35,7 +35,7 @@ public class BreakableBox : HittableBase
                 Instantiate(droppedItem.raritySO.dropEffect, breakEffectPoint.position, Quaternion.identity);
 
             }
-            if (droppedItem.raritySO.spawnSound != null)
+            if (droppedItem.raritySO.spawnSound.sound != null)
             {
   
             soundManager.PlaySound(droppedItem.raritySO.spawnSound);
@@ -66,7 +66,7 @@ public class BreakableBox : HittableBase
     {
         base.TakeHit(hitData);
 
-       // soundManager.PlayHitSound();
+        soundManager.PlayHitSound();
     }
 
 

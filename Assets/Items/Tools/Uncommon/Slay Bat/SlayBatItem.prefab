@@ -57,7 +57,11 @@ MonoBehaviour:
   decals:
   - sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     scale: {x: 0.3, y: 0.3, z: 1}
+  spawnParticlesOnHitPos: 0
   vfxParticlePosition: {fileID: 0}
+  audioSource: {fileID: 0}
+  soundManager: {fileID: 0}
+  hitVFX: []
 --- !u!1 &2277225821159953768
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tool: {fileID: 8358781761311567897}
   worldItem: {fileID: 835459004083991541}
-  item: {fileID: 11400000, guid: d72cd3b7289450f41ad8ddf51119f163, type: 2}
+  item: {fileID: 11400000, guid: d5c968a225c4cad4295e3793c51b11b5, type: 2}
   visual: {fileID: 3301281649566704384}
   currentState: 0
 --- !u!1 &2712251893611968764
@@ -447,6 +451,7 @@ MonoBehaviour:
   debugMode: 0
   debugPreview: 0
   debugArcPreview: 1
+  soundManager: {fileID: 0}
 --- !u!114 &2807818784275317142
 MonoBehaviour:
   m_ObjectHideFlags: 0

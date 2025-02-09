@@ -8,14 +8,14 @@ public class BoxSoundManager : MonoBehaviour
     public AudioSource audioSource;
     public void PlayBreakSound()
     {
-        audioSource.PlayOneShot(soundPack.PickBreakSound());
+        PlaySound(soundPack.PickBreakSound());
     }
-    public void PlaySound(AudioClip audio)
-    {if (audio == null) return;
-        audioSource.PlayOneShot(audio);
+    public void PlaySound(SoundData audio)
+    {if (audio.sound == null) return;
+        audioSource.PlayOneShot(audio.sound, audio.volume);
     }
     public void PlayHitSound()
     {
-        audioSource.PlayOneShot(soundPack.PickHitSound());
+        PlaySound(soundPack.PickHitSound());
     }
 }

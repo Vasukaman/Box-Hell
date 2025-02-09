@@ -19,7 +19,7 @@ public class InventorySystem : MonoBehaviour
 
     [SerializeField] private Transform itemHolder;
 
-
+    [SerializeField] private Tool fistTool;
 
     private Camera mainCamera;
 
@@ -143,6 +143,14 @@ public class InventorySystem : MonoBehaviour
 
     public void UseCurrentTool()
     {
+        if (GetSelectedItem() == null)
+        {
+            if (fistTool != null)
+                fistTool.Use();
+                      
+        }
+
+
         GetSelectedItem()?.tool?.Use();
     }
 

@@ -11,16 +11,16 @@ public class BoxSoundPackSO : ScriptableObject
 {
 
 
-    public List<AudioClip> breakSounds;
-    public List<AudioClip> hitSounds;
+    public List<SoundData> breakSounds;
+    public List<SoundData> hitSounds;
 
 
-    public AudioClip PickBreakSound()
+    public SoundData PickBreakSound()
     {
         return breakSounds[Random.Range(0, breakSounds.Count)];
     } 
     
-    public AudioClip PickHitSound()
+    public SoundData PickHitSound()
     {
         return hitSounds[Random.Range(0, hitSounds.Count)];
     }

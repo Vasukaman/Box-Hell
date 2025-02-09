@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FistTool : RegularMeleeTool
+{
+    // Start is called before the first frame update
+    private bool canUse = true;
+    [SerializeField] private float timeToReload;
+    public override void Use()
+    {
+        if (!canUse) return;
+
+        canUse = false;
+
+        StartCoroutine(PauseAndAllowHit());
+
+        TryAttacking();
+        base.Use();
+
+     
+    }
+
+    IEnumerator PauseAndAllowHit()
+    {
+        yield return new WaitForSeconds(timeToReload);
+        canUse = true;
+    }
+
+}

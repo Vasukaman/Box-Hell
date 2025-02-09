@@ -23,6 +23,23 @@ public class ItemCore : MonoBehaviour
         OnItemEquipped?.Invoke();
     }
 
+    private void HandleBeingSelected()
+    {
+
+    }
+
+    private void OnSelected()
+    {
+
+
+    }
+
+    private void OnDeselected()
+    {
+
+
+    }
+
     private void OnDestroy()
     {
      
@@ -81,7 +98,7 @@ public class ItemCore : MonoBehaviour
         transform.localRotation = Quaternion.identity;
 
 
-        visual.layer = 6;
+        visual.layer = 6;       
         foreach (Transform child in visual.transform.GetComponentsInChildren<Transform>())
         {
             child.gameObject.layer = 6;
