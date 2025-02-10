@@ -7,8 +7,7 @@ public class BreakableBox : HittableBase
 {
     [SerializeField] private ParticleSystem breakEffect;
     [SerializeField] private Transform breakEffectPoint;
-    [SerializeField] private float minExplosionSpeed;
-    [SerializeField] private float maxExplosionSpeed;
+
     [SerializeField] private float breakFragmentsForce;
     
 
@@ -46,12 +45,12 @@ public class BreakableBox : HittableBase
 
         fragmentsParent.gameObject.SetActive(true);
         Vector3 globalPos =  fragmentsParent.position;
-        fragmentsParent.SetParent(null);
+        fragmentsParent.SetParent(null);    
         fragmentsParent.position = globalPos;
 
         foreach(Rigidbody fragment in fragmentsParent.GetComponentsInChildren<Rigidbody>())
         {
-            fragment.AddExplosionForce(breakFragmentsForce, hitPoint, 10);
+            fragment.AddExplosionForce(breakFragmentsForce, transform.position, 10);
         }
         soundManager.transform.SetParent(fragmentsParent);
         soundManager.PlayBreakSound();

@@ -1,30 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public static class ExplosionFactory
+public class ExplosionFactory : MonoBehaviour
 {
-    private static GameObject _explosionPrefab;
+    public static ExplosionFactory Instance { get; private set; }
 
-    public static void Initialize(GameObject explosionPrefab)
-    {
-        _explosionPrefab = explosionPrefab;
-    }
+    [Header("Configuration")]
+    [SerializeField] private GameObject _explosionPrefab;
 
-    public static void CreateExplosion(Vector3 position, ExplosionData data)
+    private void Awake()
     {
-        if (_explosionPrefab == null)
+        if (Instance != null && Instance != this)
         {
-            Debug.LogError("Explosion prefab not initialized!");
+            Destroy(gameObject);
             return;
         }
 
-        GameObject explosionInstance = Object.Instantiate(_explosionPrefab, position, Quaternion.identity);
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void CreateExplosion(Vector3 position, ExplosionData data)
+    {
+        if (_explosionPrefab == null)
+        {
+            Debug.LogError("Explosion prefab not assigned in factory!");
+            return;
+        }
+
+        GameObject explosionInstance = Instantiate(_explosionPrefab, position, Quaternion.identity);
         Explosion explosionComponent = explosionInstance.GetComponent<Explosion>();
 
         if (explosionComponent != null)
         {
             explosionComponent.SetExplosionData(data);
         }
+        else
+        {
+            Debug.LogWarning("Explosion prefab is missing Explosion component!");
+        }
+    }
+
+    // Optional: Preload explosions using object pooling
+    public void WarmPool(int count)
+    {
+        // Implement object pooling here if needed
     }
 }

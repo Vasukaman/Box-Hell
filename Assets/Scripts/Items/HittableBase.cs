@@ -1,11 +1,13 @@
 // DamageableBase.cs
 using UnityEngine;
 using System;
-public abstract class HittableBase : MonoBehaviour, IHittable
+using System.Collections;
+public abstract class HittableBase : MonoBehaviour, IHittable, IDamageableByExplosion
 {
     [SerializeField] protected float maxHealth = 100f;
     [SerializeField] protected bool destroyOnBreak = true;
     [SerializeField] protected Rigidbody rigidBody;
+    [SerializeField] protected float timeBeforeExploionDamage;
 
 
     public event Action<ItemCore> OnBreak;
@@ -61,4 +63,15 @@ public abstract class HittableBase : MonoBehaviour, IHittable
     }
 
     public void Heal(float amount) => currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+
+    public void TakeExplosionDamage(ExplosionData explosionData, Vector3 explosionOrigin)
+    {
+        StartCoroutine(PauseAndTakeDamage(explosionData.baseDamage, null, Vector3.zero));
+    }
+
+    IEnumerator PauseAndTakeDamage(float damage, ItemCore damageSource, Vector3 hitPoint)
+    {
+        yield return new WaitForSeconds(timeBeforeExploionDamage);
+        TakeDamage(damage, damageSource, hitPoint);
+    }
 }

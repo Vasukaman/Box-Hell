@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Explosion
   m_EditorClassIdentifier: 
   shakeType: 0
-  strength: 0.3
+  strength: 0.23
   roughness: 20
   fadeIn: 0.05
   fadeOut: 0.5

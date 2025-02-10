@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using MilkShake;
 
 
 public class Explosion : MonoBehaviour
 {
     [SerializeField] private ExplosionData _explosionData;
     [SerializeField] private ParticleSystem _particles;
+    [SerializeField] private MilkShake.ShakePreset shakePreset;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class Explosion : MonoBehaviour
 
     private void TriggerExplosion()
     {
+       
         // Find all colliders in explosion radius
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _explosionData.radius, _explosionData.affectedLayers);
 
@@ -55,9 +57,13 @@ public class Explosion : MonoBehaviour
             if (_explosionData.applyForce && target.TryGetComponent(out Rigidbody rb))
             {
                 Vector3 forceDirection = (target.transform.position - transform.position).normalized;
-                rb.AddForce(forceDirection * _explosionData.force, ForceMode.Impulse);
+                rb.AddExplosionForce(_explosionData.force, transform.position, _explosionData.radius);
             }
         }
+
+        if (shakePreset!=null)
+        Shaker.ShakeAll(shakePreset);
+        _particles?.Play();
     }
 
     private void OnDrawGizmosSelected()

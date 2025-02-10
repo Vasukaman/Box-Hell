@@ -21714,12 +21714,11 @@ MonoBehaviour:
   maxHealth: 100
   destroyOnBreak: 0
   rigidBody: {fileID: 601204725709746812}
+  timeBeforeExploionDamage: 0.1
   breakEffect: {fileID: 6186083135284723102, guid: 695e37dc2ade1de49909619b6e1ee5ec,
     type: 3}
   breakEffectPoint: {fileID: 7802374339391750015}
-  minExplosionSpeed: 0.1
-  maxExplosionSpeed: 7
-  breakFragmentsForce: 70
+  breakFragmentsForce: 100
   lootConfig: {fileID: 11400000, guid: 064aa42cf25eb0941865799038742026, type: 2}
   fragmentsParent: {fileID: 7159584645096770900}
   lootSpawnPoint: {fileID: 583686285563299821}

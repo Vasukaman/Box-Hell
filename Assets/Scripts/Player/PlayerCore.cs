@@ -1,11 +1,11 @@
 using UnityEngine;
 using System;
 
-public class PlayerCore : MonoBehaviour
+public class PlayerCore : MonoBehaviour, IDamageableByExplosion
 {
     [Header("Stats")]
-    [SerializeField] private int _currentHealth = 100;
-    [SerializeField] private int _currentCoins;
+    [SerializeField] private int _currentHealth = 6;
+    [SerializeField] private int _currentCoins = 0;
 
     [Header("Extra")]
     [SerializeField] private GameData gameData;
@@ -26,7 +26,10 @@ public class PlayerCore : MonoBehaviour
 
     private RoomManager currentRoomManager;
 
-
+    private void Start()
+    {
+        onHealthChanged?.Invoke(_currentHealth);
+    }
     public  void Respawn()
     {
         Transform respawnPoint = currentRoomManager.GetRespawnTransform();
@@ -39,10 +42,10 @@ public class PlayerCore : MonoBehaviour
         currentRoomManager = newRoomManager;
     }
 
-    public void ModifyHealth(int amount)
+    private void ModifyHealth(int amount)
     {
         _currentHealth = Mathf.Max(0, _currentHealth + amount);
-        onHealthChanged?.Invoke(amount);
+        onHealthChanged?.Invoke(_currentHealth);
 
         if (_currentHealth <= 0)
             HandleDeath();
@@ -58,5 +61,14 @@ public class PlayerCore : MonoBehaviour
     {
         onDeath?.Invoke();
         // Add custom death logic later
+    }
+
+    public void TakeDamage()
+    {
+        ModifyHealth(-1);
+    }
+    public void TakeExplosionDamage(ExplosionData explosionData, Vector3 explosionOrigin)
+    {
+        TakeDamage();
     }
 }
