@@ -82,7 +82,7 @@ public class RoomManager : MonoBehaviour
         }
        
        enterDoor.TryOpenningDoor();
-        enterDoor.price = -1;
+        enterDoor.SetPrice(0);
     }
 
     void HandleDoorInteraction(DoorController door, RoomConnectionPoint connection)

@@ -20,6 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b45f7efad8a4f224cace98e73cc9e55c, type: 2}
   corridorConfigurations:
   - {fileID: 11400000, guid: 58efd7964c4463a419d6bf7c643561d4, type: 2}
-  - {fileID: 11400000, guid: 6337d2ff3745e594199d1d483599cfc0, type: 2}
-  - {fileID: 11400000, guid: 513ecae9cd17b60439f216545f9bcd9b, type: 2}
   - {fileID: 11400000, guid: d6462cdff3382a5418773465321eeb31, type: 2}
