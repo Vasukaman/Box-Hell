@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4358978889196436111}
   - component: {fileID: 4829330042660089998}
   - component: {fileID: 8282749538745880193}
-  - component: {fileID: 4487234026039257300}
+  - component: {fileID: 4156385812760753428}
   m_Layer: 0
   m_Name: DamageButton
   m_TagString: Untagged
@@ -137,7 +137,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4487234026039257300
+--- !u!114 &4156385812760753428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,24 +146,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 926994091702001716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca5481d9e21065444a80790b7bd3a029, type: 3}
+  m_Script: {fileID: 11500000, guid: d640ab36f9ad63c48b143fee7d9b8225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnActivate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3002915045338388640}
-        m_TargetAssemblyTypeName: DoorController, Assembly-CSharp
-        m_MethodName: TryOpenningDoor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  door: {fileID: 3002915045338388640}
 --- !u!1 &1227995960823758138
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +346,7 @@ GameObject:
   - component: {fileID: 8389431595948872177}
   - component: {fileID: 1021484343017741104}
   - component: {fileID: 918179137574824048}
-  - component: {fileID: 8200423535221915475}
+  - component: {fileID: 2649233642834993343}
   m_Layer: 0
   m_Name: DamageButton
   m_TagString: Untagged
@@ -454,7 +440,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8200423535221915475
+--- !u!114 &2649233642834993343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -463,24 +449,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4923012320936443636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca5481d9e21065444a80790b7bd3a029, type: 3}
+  m_Script: {fileID: 11500000, guid: d640ab36f9ad63c48b143fee7d9b8225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnActivate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 610695037815137787}
-        m_TargetAssemblyTypeName: DoorController, Assembly-CSharp
-        m_MethodName: TryOpenningDoor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  door: {fileID: 610695037815137787}
 --- !u!1 &5704592764898813754
 GameObject:
   m_ObjectHideFlags: 0
@@ -26058,6 +26030,7 @@ MonoBehaviour:
   - {fileID: 8480504929432212888}
   respawnTransform: {fileID: 4129538113872379027}
   playerCore: {fileID: 0}
+  roomNumber: 0
 --- !u!1 &8844936891236784739
 GameObject:
   m_ObjectHideFlags: 0
@@ -26643,22 +26616,22 @@ PrefabInstance:
     - target: {fileID: 1495364617133225439, guid: 602352b04882c0c408604bfcbe7918d4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495364617133225439, guid: 602352b04882c0c408604bfcbe7918d4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495364617133225439, guid: 602352b04882c0c408604bfcbe7918d4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1495364617133225439, guid: 602352b04882c0c408604bfcbe7918d4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495364617133225439, guid: 602352b04882c0c408604bfcbe7918d4,
         type: 3}
@@ -26668,7 +26641,7 @@ PrefabInstance:
     - target: {fileID: 1495364617133225439, guid: 602352b04882c0c408604bfcbe7918d4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 1495364617133225439, guid: 602352b04882c0c408604bfcbe7918d4,
         type: 3}

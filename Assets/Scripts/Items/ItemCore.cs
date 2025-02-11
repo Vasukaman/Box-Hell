@@ -10,6 +10,8 @@ public class ItemCore : MonoBehaviour
     [SerializeField] public Item item;
     [SerializeField] private GameObject visual;
     [SerializeField] private ItemState currentState;
+    public PlayerCore owner;
+
 
     public event Action OnItemEquipped;
     public event Action OnItemThrowed;
@@ -17,6 +19,16 @@ public class ItemCore : MonoBehaviour
     protected void Start()
     {
       
+    }
+
+    public void SetOwner(PlayerCore newOwner)
+    {
+        owner = newOwner;
+    }
+
+    public void ClearOwner()
+    {
+        owner = null;
     }
     public void Equip()
     {

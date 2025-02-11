@@ -20,6 +20,7 @@ public class InventorySystem : MonoBehaviour
     [SerializeField] private Transform itemHolder;
 
     [SerializeField] private Tool fistTool;
+    [SerializeField] private PlayerCore playerCore;
 
     private Camera mainCamera;
 
@@ -45,6 +46,7 @@ public class InventorySystem : MonoBehaviour
                 item.transform.SetParent(itemHolder);
                 item.transform.localPosition = Vector3.zero;
                 item.MakeItTool();
+                item.SetOwner(playerCore);
                 OnInventoryUpdated?.Invoke();
                 SelectSlot(i);
                 return true;
@@ -67,6 +69,7 @@ public class InventorySystem : MonoBehaviour
             ItemCore currentItem = GetSelectedItem();
             currentItem.transform.SetParent(null);
             currentItem.MakeItWorldItem();
+            currentItem.ClearOwner();
             items[selectedSlot] = null;
         }
     }

@@ -13,7 +13,7 @@ public class DungeonManager : MonoBehaviour
     int currentTier; // Track current progression tier
     [SerializeField] PlayerCore playerCore;
     [SerializeField] RoomConfiguration initialRoom;
-
+    private int roomNumber=0;
     void Start()
     {
         currentTier = 0;
@@ -25,11 +25,16 @@ public class DungeonManager : MonoBehaviour
         if (initialRoom == null)
          initialRoom= GetRandomRoomConfig(currentTier);
 
+ 
+
         currentRoom = Instantiate(initialRoom.roomPrefab, worldAnchor).GetComponent<RoomManager>();
         currentRoom.tier = currentTier; // Set initial tier
         currentRoom.OnExitSelected += HandleExitSelected;
         playerCore.SetCurrentRoomManager(currentRoom);
         currentRoom.ActivateRoom();
+
+        //roomNumber++;
+        currentRoom.roomNumber = roomNumber;
     }
 
     void HandleExitSelected(RoomConnectionPoint exitPoint)
@@ -89,7 +94,7 @@ public class DungeonManager : MonoBehaviour
     }
     void SpawnNewSection(RoomConnectionPoint exitPoint, RoomConfiguration nextRoomConfig, CorridorConfiguration corridorConfig, int newTier)
     {
-        Debug.Log("SPAWNING");
+        
         // Instantiate and align corridor first
         var newCorridor = Instantiate(corridorConfig.corridorPrefab);
         var corridorManager = newCorridor.GetComponent<CorridorManager>();
@@ -143,7 +148,8 @@ public class DungeonManager : MonoBehaviour
         currentCorridor.OnExitTrigger += HandleExitTrigger;
         currentRoom.ActivateRoom();
 
-
+        roomNumber++;
+        currentRoom.roomNumber = roomNumber;    
         //// Cleanup old room after delay
         //StartCoroutine(CleanupOldRoom());
     }

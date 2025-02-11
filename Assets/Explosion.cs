@@ -47,17 +47,17 @@ public class Explosion : MonoBehaviour
                 _explosionData.baseDamage * _explosionData.damageFalloff.Evaluate(normalizedDistance) :
                 _explosionData.baseDamage;
 
-            // Apply explosion effects
-            if (target.TryGetComponent(out IDamageableByExplosion damageable))
+            // Apply explosion effects  
+            if (target.TryGetComponent(out IDamageableByExplosion damageasble))
             {
-                damageable.TakeExplosionDamage(_explosionData, transform.position);
+                damageasble.TakeExplosionDamage(_explosionData, transform.position);
             }
 
             // Apply physics force
             if (_explosionData.applyForce && target.TryGetComponent(out Rigidbody rb))
             {
-                Vector3 forceDirection = (target.transform.position - transform.position).normalized;
-                rb.AddExplosionForce(_explosionData.force, transform.position, _explosionData.radius);
+                Debug.Log("Tried pushing " + rb);
+                rb.AddExplosionForce(_explosionData.force, transform.position, _explosionData.radius*4, _explosionData.forceUpwardsModifier, ForceMode.Impulse);
             }
         }
 

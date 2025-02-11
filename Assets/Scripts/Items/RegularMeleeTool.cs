@@ -38,6 +38,7 @@ public class RegularMeleeTool : Tool
     }
     protected void TryHit(RaycastHit hit)    
     {
+        
 
         var damageable = hit.collider.GetComponentInParent<IHittable>();
         if (damageable != null)
@@ -58,9 +59,11 @@ public class RegularMeleeTool : Tool
                 SpawnHitVFX(vfxParticlePosition.position, vfxParticlePosition.rotation);
 
 
+            ReduceDurabilityUse();
+
             PlayHitSound();
         }
-    }
+    }   
 
     private void PlayHitSound()
     {

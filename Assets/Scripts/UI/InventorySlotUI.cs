@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
@@ -13,8 +12,9 @@ public class InventorySlotUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private RectTransform selectionTransform;
     [SerializeField] private CanvasGroup textCanvasGroup;
+    [SerializeField] private TextMeshProUGUI durabilityText;
 
-    private Item currentItem;
+    private ItemCore currentItem;
     private bool isSelected;
     private float selectionSpeed = 0.2f;
     private Vector3 baseScale;
@@ -26,16 +26,38 @@ public class InventorySlotUI : MonoBehaviour
         Deselect();
     }
 
-    public void SetItem(Item item)
+    public void SetItem(ItemCore item)
     {
+        if (currentItem!=null && currentItem.tool!=null)
+        {
+            currentItem.tool.OnDurabilityChanged -= UpdateDurability;
+        }
+
         currentItem = item;
         iconImage.enabled = item != null;
+        durabilityText.enabled = false;
+
+
 
         if (item != null)
         {
-            iconImage.sprite = item.icon;
-            nameText.text = item.itemName;
+            iconImage.sprite = item.item.icon;
+            nameText.text = item.item.itemName;
+
+            if (currentItem.tool != null)
+            {
+                durabilityText.enabled = true;
+                durabilityText.text = item.tool.currentDurability.ToString();
+
+                currentItem.tool.OnDurabilityChanged += UpdateDurability;
+            }
+  
         }
+    }
+
+    public void UpdateDurability()
+    {
+        durabilityText.text = currentItem.tool.currentDurability.ToString();
     }
 
     public void Select()

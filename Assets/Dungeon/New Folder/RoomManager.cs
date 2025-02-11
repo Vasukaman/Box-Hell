@@ -24,6 +24,7 @@ public class RoomManager : MonoBehaviour
     public event System.Action<RoomConnectionPoint> OnExitSelected;
     public event System.Action OnEnterTrigger;
     private bool entered;
+    public int roomNumber;
 
     void Start()
     {
@@ -77,8 +78,11 @@ public class RoomManager : MonoBehaviour
         foreach (var door in doors)
         {
             door.OnDoorInteracted += HandleDoorInteraction;
+            door.GeneratePrice(roomNumber);
         }
+       
        enterDoor.TryOpenningDoor();
+        enterDoor.price = -1;
     }
 
     void HandleDoorInteraction(DoorController door, RoomConnectionPoint connection)

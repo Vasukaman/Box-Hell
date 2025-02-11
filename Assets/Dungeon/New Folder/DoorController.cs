@@ -1,12 +1,15 @@
 using UnityEngine;
-
+using TMPro;
 public class DoorController : MonoBehaviour
 {
+
+    [SerializeField] private TextMeshProUGUI priceText;
     public DoorState currentState;
     public RoomConnectionPoint connectionPoint;
     public System.Action<DoorController, RoomConnectionPoint> OnDoorInteracted; //Actually on Door opened
     public System.Action OnDoorClosed; //Actually on Door opened
     public int price;
+
     public bool startOpened = false;
 
     private void Start()
@@ -14,6 +17,20 @@ public class DoorController : MonoBehaviour
         if (startOpened) OpenDoor();
     }
     
+    public void GeneratePrice(int currentRoomNumber)
+    {
+        SetPrice(currentRoomNumber * 10);
+    }
+
+    public void SetPrice(int newPrice)
+    {
+        price = newPrice;
+        priceText.text = price.ToString();
+
+        if (price < 1)
+            priceText.text = "";
+    }
+
     public void SetState(DoorState newState)
     {
         Debug.Log("Set state " + newState);

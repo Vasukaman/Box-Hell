@@ -54,8 +54,8 @@ public class InventoryUI : MonoBehaviour
     {
         for (int i = 0; i < slots.Count; i++)
         {
-            var item = inventory.Items[i]?.item;    
-            slots[i].SetItem(item);
+       
+            slots[i].SetItem(inventory.Items[i]);
             Debug.Log("Updated slot # " + i);
         }
 

@@ -57,9 +57,18 @@ public class PlayerCore : MonoBehaviour, IDamageableByExplosion
         onCoinsChanged?.Invoke(amount);
     }
 
+    public bool TryBuying(int price)
+    {
+        if (_currentCoins < price) return false;
+
+        ModifyCoins(-price);
+        return true;
+    }
+
     void HandleDeath()
     {
         onDeath?.Invoke();
+        Application.LoadLevel(Application.loadedLevel);
         // Add custom death logic later
     }
 
