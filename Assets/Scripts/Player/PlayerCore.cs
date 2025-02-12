@@ -57,6 +57,12 @@ public class PlayerCore : MonoBehaviour, IDamageableByExplosion
         onCoinsChanged?.Invoke(amount);
     }
 
+    public void GiveCoins(int amount)
+    {
+        ModifyCoins(amount);
+    }
+
+
     public bool TryBuying(int price)
     {
         if (_currentCoins < price) return false;

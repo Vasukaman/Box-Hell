@@ -8,6 +8,9 @@ public class Item : ScriptableObject
     [Header("UI Settings")]
     public Sprite icon;
     public string itemName;
+    public string description;
+    public int price;
+
 
 
     // Rest of your existing fields

@@ -93,8 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9096319980657675837}
   - component: {fileID: 9104043898865553335}
-  - component: {fileID: 9115057117136996087}
   - component: {fileID: 9202535013246049535}
+  - component: {fileID: 9115057117136996087}
   m_Layer: 0
   m_Name: Heavy Wrench 01
   m_TagString: Weapon
@@ -126,6 +126,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9091339172927490087}
   m_Mesh: {fileID: 4300000, guid: 2fef246f9fc27fb49a4b0637a4593f47, type: 3}
+--- !u!114 &9202535013246049535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9091339172927490087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70fc9194066db764e8f709219c4cceae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 9ae0ff07b8883004ab31c5e2a1281963, type: 3}
 --- !u!23 &9115057117136996087
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -168,19 +181,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &9202535013246049535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9091339172927490087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70fc9194066db764e8f709219c4cceae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 9ae0ff07b8883004ab31c5e2a1281963, type: 3}
 --- !u!1001 &5499068119682955634
 PrefabInstance:
   m_ObjectHideFlags: 0

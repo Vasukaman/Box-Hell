@@ -10,6 +10,7 @@ public class ItemCore : MonoBehaviour
     [SerializeField] public Item item;
     [SerializeField] private GameObject visual;
     [SerializeField] private ItemState currentState;
+    [SerializeField] public int price;
     public PlayerCore owner;
 
 
@@ -18,7 +19,12 @@ public class ItemCore : MonoBehaviour
 
     protected void Start()
     {
-      
+        UpdatePrice();
+    }
+
+    private void UpdatePrice()
+    {
+        price = item.price;
     }
 
     public void SetOwner(PlayerCore newOwner)

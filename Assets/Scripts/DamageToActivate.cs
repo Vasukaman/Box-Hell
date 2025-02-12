@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class DamageToActivate : MonoBehaviour, IHittable
 {
     [SerializeField] UnityEvent OnActivate;
-
+    public event Action<PlayerCore> OnActivateEvent;
     public virtual void TakeHit(HitData hitData)
     {
         TakeDamage(hitData.damage, hitData.sourseItem, hitData.position);
@@ -16,6 +16,7 @@ public class DamageToActivate : MonoBehaviour, IHittable
     public void TakeDamage(float damage, ItemCore damageSource, Vector3 hitPoint)
     {
         OnActivate.Invoke();
+        OnActivateEvent?.Invoke(damageSource.owner);
     }
     public void TakePush(Vector3 position, Vector3 force)
     {
