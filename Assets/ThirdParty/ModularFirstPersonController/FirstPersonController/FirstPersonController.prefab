@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2432367886072654238}
   - component: {fileID: 1732697923275863973}
   - component: {fileID: 1588589026317936459}
+  - component: {fileID: 2755352662850007667}
   m_Layer: 10
   m_Name: FistTool
   m_TagString: Untagged
@@ -46,8 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631f04f090f7e654db3f38863a7e1aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDurability: 100
+  durabilityLossPerUse: 1
+  throwDurabilityCost: 0
   item: {fileID: 0}
-  itemCore: {fileID: 0}
+  itemCore: {fileID: 2755352662850007667}
+  currentDurability: 0
   range: 5
   damage: 15
   damageableLayers:
@@ -67,6 +72,7 @@ MonoBehaviour:
   - {fileID: 484368387861551534, guid: 9b21333b068a5084ba09535839bee3c8, type: 3}
   - {fileID: 3891973445508218817, guid: e190bf97c041e58448af6b043116cba0, type: 3}
   timeToReload: 0.25
+  playerCore: {fileID: 6297388126607558992}
 --- !u!114 &1732697923275863973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +183,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2755352662850007667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2688167729170521399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dfefd370852fca4e8a0351df22f7110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tool: {fileID: 0}
+  worldItem: {fileID: 0}
+  item: {fileID: 0}
+  visual: {fileID: 0}
+  currentState: 0
+  price: 0
+  owner: {fileID: 0}
 --- !u!1 &2840322066191185599
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +348,7 @@ GameObject:
   - component: {fileID: 1351280990961688772}
   - component: {fileID: 5990080704200744061}
   - component: {fileID: 6297388126607558992}
+  - component: {fileID: 5144731840571040738}
   m_Layer: 10
   m_Name: FirstPersonController
   m_TagString: Player
@@ -463,7 +489,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   playerCamera: {fileID: 4459864851310106426}
-  fov: 90
+  fov: 75
   invertCamera: 0
   cameraCanMove: 1
   mouseSensitivity: 2
@@ -524,6 +550,7 @@ MonoBehaviour:
   - {fileID: 0}
   itemHolder: {fileID: 5254192501789605461}
   fistTool: {fileID: 2432367886072654238}
+  playerCore: {fileID: 6297388126607558992}
 --- !u!114 &1351280990961688772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,9 +593,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39173b3e422565f40beed61799110d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 100
+  _currentHealth: 3
   _currentCoins: 0
   gameData: {fileID: 11400000, guid: 33a6ec13cc55ad640bcee01477c08b2c, type: 2}
+--- !u!114 &5144731840571040738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459864850019384750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d6b82204e7f18488ad1e6e3965ffe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionRange: 5
+  _interactableLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &4459864850190357393
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,6 +824,7 @@ GameObject:
   - component: {fileID: 4459864851310106426}
   - component: {fileID: 4459864851310106427}
   - component: {fileID: 8227638520653232997}
+  - component: {fileID: 2790989899839479298}
   m_Layer: 10
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -889,8 +933,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -910,6 +954,66 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &2790989899839479298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459864851310106424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 4459864851310106429}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 2
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 1
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 1
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &4459864851397454630
 GameObject:
   m_ObjectHideFlags: 0

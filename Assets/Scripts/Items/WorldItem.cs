@@ -15,9 +15,7 @@ public class WorldItem : MonoBehaviour
     public void Throw()
     {
       
-       
-
-    
+     
             rb.AddForce(Camera.main.transform.forward * throwForce, ForceMode.Impulse);
         
     }

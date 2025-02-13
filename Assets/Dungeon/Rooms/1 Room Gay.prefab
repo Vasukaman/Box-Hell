@@ -26427,6 +26427,7 @@ MonoBehaviour:
   settings: {fileID: 11400000, guid: 330829339fd29e9448b0a26e951eca40, type: 2}
   regularLights: {fileID: 1006575913392096776}
   preparationLights: {fileID: 8085633943068577231}
+  alarmAnimation: {fileID: 0}
   timeBetweenLights: 1.5
   _roomTrigger: {fileID: 320029773115200882}
 --- !u!65 &320029773115200882

@@ -97,7 +97,7 @@ public abstract class Tool : MonoBehaviour
     {
         if (maxDurability == -1) currentDurability = 100;
         currentDurability = newDurability;
-        OnDurabilityChanged.Invoke();
+        OnDurabilityChanged?.Invoke();
     }
     protected virtual void Update() { }
 }

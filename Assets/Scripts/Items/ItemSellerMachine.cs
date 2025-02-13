@@ -11,7 +11,9 @@ public class ItemSellerMachine : MonoBehaviour
     [SerializeField] private GameObject greenLight;
     [SerializeField] private GameObject redLight;
     [SerializeField] private Animation animationComponent;
+    [SerializeField] private BoxCollider triggerCollider;   
 
+    private HashSet<Collider> currentColliders = new HashSet<Collider>();
     private List<ItemCore> itemsInTrigger = new List<ItemCore>();
     private ItemCore currentItem;
     private bool isProcessing;
@@ -21,6 +23,9 @@ public class ItemSellerMachine : MonoBehaviour
     [SerializeField] private DamageToActivate collectCoinsButton;
     private void Awake()
     {
+        UpdateMoneyDisplay();
+        TryGetComponent(out triggerCollider);
+
         activateButton.OnActivateEvent += TryActivating;
         collectCoinsButton.OnActivateEvent += CollectMoney;
 
@@ -36,37 +41,56 @@ public class ItemSellerMachine : MonoBehaviour
         UpdateMoneyDisplay();
     }
 
-    private void CleanNullItems()
+    private void Update()
     {
-        // Remove all null items using LINQ Where filter
-        itemsInTrigger = itemsInTrigger.Where(item => item != null).ToList();
+        CleanupDestroyedItems();
+        UpdateTriggerState();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        CleanNullItems();
-        ItemCore item = other.GetComponentInParent<ItemCore>();
-        if (item != null && !itemsInTrigger.Contains(item))
-        {
-            itemsInTrigger.Add(item);
-            UpdateDisplay();
-        }
+        if (other.isTrigger) return;
+        currentColliders.Add(other);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void CleanupDestroyedItems()
     {
-        CleanNullItems();
-        ItemCore item = other.GetComponentInParent<ItemCore>();
-        if (item != null && itemsInTrigger.Contains(item))
-        {
-            itemsInTrigger.Remove(item);
-            UpdateDisplay();
-        }
+        // Remove colliders from destroyed GameObjects
+        currentColliders.RemoveWhere(c => c == null || c.gameObject == null);
+        //Add ItemCores
+        itemsInTrigger = currentColliders
+            .Select(c => c.GetComponentInParent<ItemCore>())
+            .Where(item => item != null)
+            .Distinct()
+            .ToList();
+    }
+
+    private void UpdateTriggerState()
+    {
+        bool isValidState = itemsInTrigger.Count == 1;
+        greenLight.SetActive(isValidState);
+        redLight.SetActive(!isValidState);
+        priceText.text = isValidState ? itemsInTrigger[0].price.ToString() : "";
+
+       // if (!isValidState) StopProcessing 
+        // Clear stored colliders each frame
+        currentColliders.Clear();
+    }
+
+    private void StopProcessing()
+    {
+        animationComponent.Stop();
+        animationComponent.Rewind();
+
+        isProcessing = false;
     }
 
     private void UpdateDisplay()
     {
         bool isValidState = itemsInTrigger.Count == 1;
+        Debug.Log("Valid State? " + isValidState);
+        Debug.Log("itemsInTrigger? " + itemsInTrigger);
+
         greenLight.SetActive(isValidState);
         redLight.SetActive(!isValidState);
         priceText.text = isValidState ? itemsInTrigger[0].price.ToString() : "";
@@ -79,21 +103,23 @@ public class ItemSellerMachine : MonoBehaviour
 
     public void TryActivating(PlayerCore player)
     {
-        CleanNullItems();
+      //  CleanNullItems();
         if (itemsInTrigger.Count != 1 || isProcessing) return;
 
         currentItem = itemsInTrigger[0];
         isProcessing = true;
         animationComponent.Play();
+
     }
 
     public void TrySelling()
-    {CleanNullItems();
+    {
+        //CleanNullItems();
         if (currentItem != null)
         {
             storedMoney += currentItem.price;
             Destroy(currentItem.gameObject);
-            CleanNullItems();
+            //CleanNullItems();
 
             UpdateMoneyDisplay();
             UpdateDisplay();

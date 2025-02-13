@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c0a670b2488a049b8311d971cc7599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 5
+  throwForce: 15
   rb: {fileID: 2808413443627614663}
   col: {fileID: 2831289181409367631}
   item: {fileID: 11400000, guid: d72cd3b7289450f41ad8ddf51119f163, type: 2}

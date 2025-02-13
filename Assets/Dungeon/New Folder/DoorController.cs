@@ -9,7 +9,10 @@ public class DoorController : MonoBehaviour
     public System.Action<DoorController, RoomConnectionPoint> OnDoorInteracted; //Actually on Door opened
     public System.Action OnDoorClosed; //Actually on Door opened
     public int price;
-
+    [SerializeField] private int stableDoorPriceMultiplier = 5;
+    [SerializeField] private int randomDoorPriceMinMultiplier = 1;
+    [SerializeField] private int randomDoorPriceMaxMultiplier = 5;
+        
     public bool startOpened = false;
 
     private void Start()
@@ -19,7 +22,13 @@ public class DoorController : MonoBehaviour
     
     public void GeneratePrice(int currentRoomNumber)
     {
-        SetPrice(currentRoomNumber * 10);
+        int newPrice = currentRoomNumber * stableDoorPriceMultiplier;
+
+        for (int i = 0; i < currentRoomNumber; i++)
+        {
+            newPrice += Random.Range(randomDoorPriceMinMultiplier, randomDoorPriceMaxMultiplier);
+        }
+        SetPrice(newPrice);
     }
 
     public void SetPrice(int newPrice)

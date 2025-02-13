@@ -7,6 +7,12 @@ public class FistTool : RegularMeleeTool
     // Start is called before the first frame update
     private bool canUse = true;
     [SerializeField] private float timeToReload;
+    [SerializeField] private PlayerCore playerCore;
+
+    private void Awake()
+    {
+        itemCore.owner = playerCore;
+    }
     public override void Use()
     {
         if (!canUse) return;

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a00cf9ca7577a42a3b1e6f7f277b3e, type: 3}
+  m_Name: SimplePlayerData
+  m_EditorClassIdentifier: 
+  <AvailablePlayerStates>k__BackingField: 63
+  <WalkSpeed>k__BackingField: 3
+  <Gravity>k__BackingField: 10
+  <AirControl>k__BackingField: 1
+  <RunSpeed>k__BackingField: 5
+  <JumpForce>k__BackingField: 4
+  <JumpSFX>k__BackingField: {fileID: 8300000, guid: 74ed616413f1d03489057fa23d879555,
+    type: 3}
+  <UnderRayDistance>k__BackingField: 0.5

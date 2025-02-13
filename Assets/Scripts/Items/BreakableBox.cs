@@ -16,13 +16,18 @@ public class BreakableBox : HittableBase
     [SerializeField] Transform fragmentsParent;
     [SerializeField] Transform lootSpawnPoint;
     [SerializeField] BoxSoundManager soundManager;
-
+    [SerializeField] CoinsParticles coinSpawner;
     protected override void Break(Vector3 hitPoint)
     {
         // Play effects
      
+        if (coinSpawner!=null)
+        {
+            coinSpawner.SpawnCoins(Random.Range(lootConfig.minCoins, lootConfig.maxCoins));
+            coinSpawner.ReparentHigher();
+        }
 
-        float luck = 0;
+        float luck = 0; 
         Item droppedItem = LootManager.GenerateBoxLoot(lootConfig, 1, luck, lootSpawnPoint.position);
 
 

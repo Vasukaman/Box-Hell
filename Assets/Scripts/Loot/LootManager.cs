@@ -27,10 +27,7 @@ public class LootManager : MonoBehaviour
     {
         if (config == null) return null; 
 
-        int coinAmmount = Random.Range(config.minCoins, config.maxCoins);
-
-        AddRandomCoins(position, coinAmmount);
-
+   
         // Roll for loot pack
         var selectedPack = SelectFromEntries(config.lootPacks, config.noDropScore, luck);
         if (selectedPack == null) return null;

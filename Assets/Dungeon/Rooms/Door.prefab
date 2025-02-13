@@ -52,6 +52,9 @@ MonoBehaviour:
     doorTransform: {fileID: 1495364617133225439}
     spawnAnchor: {fileID: 0}
   price: 0
+  stableDoorPriceMultiplier: 5
+  randomDoorPriceMinMultiplier: 1
+  randomDoorPriceMaxMultiplier: 5
   startOpened: 0
 --- !u!1 &5430135079799699889
 GameObject:
