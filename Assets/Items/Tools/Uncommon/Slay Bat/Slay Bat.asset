@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   itemName: Bat
+  description: 
+  price: 40
   type: 0
   itemCore: {fileID: 3898864334834387110, guid: 3277f4678868a134ea9d24cf8878b64c,
     type: 3}

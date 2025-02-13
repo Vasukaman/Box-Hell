@@ -15,6 +15,4 @@ MonoBehaviour:
   lootGroups:
   - value: {fileID: 11400000, guid: 09460c16d4f201e408fd3a158d6e57cb, type: 2}
     dropScore: 10
-  - value: {fileID: 11400000, guid: 7087dc157e6046947b06f46f2b559cc9, type: 2}
-    dropScore: 10
   noDropScore: 0

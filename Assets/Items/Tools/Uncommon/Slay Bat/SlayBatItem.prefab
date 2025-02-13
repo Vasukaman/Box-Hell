@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a81c475236669841b4ceff54e052716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDurability: 100
+  maxDurability: 40
   durabilityLossPerUse: 1
   throwDurabilityCost: 0
   item: {fileID: 11400000, guid: d5c968a225c4cad4295e3793c51b11b5, type: 2}
@@ -532,7 +532,7 @@ MonoBehaviour:
     infoRenderScale: 1
     useOuterGlow: 1
     useSingleOuterGlow: 0
-    outerGlowColorFront: {r: 1, g: 1, b: 1, a: 1}
+    outerGlowColorFront: {r: 0.2592452, g: 0.86415094, b: 0.26157925, a: 1}
     outerGlowColorBack: {r: 0.49411765, g: 0.32636538, b: 0.09411764, a: 1}
     outlineVisibleBeforeObject: 1
     blurType: 1
@@ -563,7 +563,7 @@ MonoBehaviour:
     useOverlay: 1
     useSingleOverlay: 0
     overlayFront:
-      color: {r: 0.85660374, g: 0.7418512, b: 0.74320126, a: 0}
+      color: {r: 0.6622641, g: 1, b: 0.6765244, a: 1}
       useTexture: 0
       texture: {fileID: 0}
       background: 0
@@ -582,14 +582,7 @@ MonoBehaviour:
     RenderingBoundsMinDistanceFix: 0
   findRenderers: 0
   renderers:
-  - renderer: {fileID: 0}
-    useCutout: 0
-    clippingThreshold: 0
-    clippingSource: 0
-    clipTexture: {fileID: 0}
-    submeshIndexes: 00000000
-    cullMode: 2
-  - renderer: {fileID: 0}
+  - renderer: {fileID: 2576641317738254016}
     useCutout: 0
     clippingThreshold: 0
     clippingSource: 0

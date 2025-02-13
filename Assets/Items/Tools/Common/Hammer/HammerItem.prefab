@@ -603,45 +603,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162c9e732014ce24a89f2e2af3ed5ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponTransform: {fileID: 4131995141474571643}
+  weaponTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   preparePoint: {fileID: 506575211768373141}
   restingPoint: {fileID: 6508492068418824101}
   finalHitTransform: {fileID: 8157641255001350668}
-  regularMeleeTool: {fileID: 3733363470532971904}
+  regularMeleeTool: {fileID: 0}
   swingCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2.0847895
+      outSlope: 2.0847895
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.08996539
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0.2421197
+      outSlope: 0.2421197
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.7474048
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  prepareDuration: 0
-  attackDuration: 0.3
-  returnDuration: 0.12
-  postHitPause: 0.02
-  attackDistance: 5
-  arcPower: 0.93
-  arcAngle: 312
+  prepareDuration: 0.25
+  attackDuration: 0.12
+  returnDuration: 0.2
+  postHitPause: 0.1
+  attackDistance: 3
+  arcPower: 2.75
+  arcAngle: 347
   debugMode: 0
-  debugPreview: 2
+  debugPreview: 0
   debugArcPreview: 1
   soundManager: {fileID: 4168717594174465687}
 --- !u!114 &7141301134250043845
@@ -715,14 +715,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a81c475236669841b4ceff54e052716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDurability: 100
+  maxDurability: 35
   durabilityLossPerUse: 1
   throwDurabilityCost: 0
   item: {fileID: 11400000, guid: 92317cef2f983bf4a9eb6a2e730a3b51, type: 2}
   itemCore: {fileID: 1519342857656415183}
   currentDurability: 0
   range: 2
-  damage: 35
+  damage: 25
   damageableLayers:
     serializedVersion: 2
     m_Bits: 2035

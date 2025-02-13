@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: LC_StrongBox
   m_EditorClassIdentifier: 
   lootPacks:
-  - value: {fileID: 11400000, guid: 1f09f46cb2c37fa44ad23fa92da15914, type: 2}
-    dropScore: 20
   - value: {fileID: 11400000, guid: 0134d6f17ec623646a15e7204f8cf18e, type: 2}
     dropScore: 10
-  noDropScore: 30
+  - value: {fileID: 11400000, guid: 1f09f46cb2c37fa44ad23fa92da15914, type: 2}
+    dropScore: 20
+  noDropScore: 80
   minCoins: 5
   maxCoins: 10
