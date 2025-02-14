@@ -17,6 +17,8 @@ public class FistTool : RegularMeleeTool
     {
         if (!canUse) return;
 
+        currentDurability = 100;
+
         canUse = false;
 
         StartCoroutine(PauseAndAllowHit());

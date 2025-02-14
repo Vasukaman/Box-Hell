@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97cbf55e48797b4f9c27ddcb2f643f7, type: 3}
+  m_Name: Dumbbell
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 721bf86ddc08cd34facc5ae0aa3f3c63, type: 3}
+  itemName: Dumbbell
+  description: 
+  price: 20
+  type: 3
+  itemCore: {fileID: 4039278270900168941, guid: 877a9fd1dd20bd94a9b32c66a0f9d2c4,
+    type: 3}
+  raritySO: {fileID: 11400000, guid: 5247672b757926d4480b44bcb250f8f1, type: 2}

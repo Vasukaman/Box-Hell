@@ -7,7 +7,7 @@ public abstract class Tool : MonoBehaviour
     public event Action OnDurabilityChanged;
     public event Action OnToolStopped;
     public event Action OnToolThrown;
-    public event Action OnToolBreak; // New event for when tool breaks
+    public event Action<ItemCore> OnToolBreak; // New event for when tool breaks
 
     [Header("Durability Settings")]
     [SerializeField] protected int maxDurability = 100;
@@ -30,10 +30,14 @@ public abstract class Tool : MonoBehaviour
 
     public virtual void Use()
     {
-        if (isBroken) return;
+        if (currentDurability <= 0)
+        {
+            BreakTool();
+            return;
+        }
 
         // Handle durability loss
-      
+
 
         OnToolUsed?.Invoke();
     }
@@ -58,10 +62,7 @@ public abstract class Tool : MonoBehaviour
 
         SetDurability(Mathf.Max(0, currentDurability - amount));
 
-        if (currentDurability <= 0)
-        {
-            BreakTool();
-        }
+    
     }
     protected virtual void ReduceDurabilityUse()
     {
@@ -72,11 +73,11 @@ public abstract class Tool : MonoBehaviour
     protected virtual void BreakTool()
     {
         isBroken = true;
-        OnToolBreak?.Invoke();
+        OnToolBreak?.Invoke(itemCore);
 
         // Automatically stop using when broken
         StopUsing();
-
+        Destroy(itemCore.gameObject);
         // Add any visual/audio effects here
         Debug.Log($"{gameObject.name} broke!");
     }

@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 835459004083991541}
   - component: {fileID: 5173093987212263938}
   - component: {fileID: 7972329316264351687}
+  - component: {fileID: 2460843707134971129}
   m_Layer: 0
   m_Name: AxeWorldItem
   m_TagString: Untagged
@@ -281,8 +282,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b737019a93271c41a72d5c313334a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentToToggle: {fileID: 4983539311720055643}
+  componentToToggle: {fileID: 5035162309755920480}
   uiIndicator: {fileID: 0}
+--- !u!135 &2460843707134971129
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2712251893611968764}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 3.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3061631945593150862
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +434,7 @@ GameObject:
   - component: {fileID: 7454356468567296731}
   - component: {fileID: 1029234318435516320}
   - component: {fileID: 5942682239961718902}
-  - component: {fileID: 4983539311720055643}
+  - component: {fileID: 5035162309755920480}
   m_Layer: 0
   m_Name: AxeAnim
   m_TagString: Untagged
@@ -549,7 +571,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4983539311720055643
+--- !u!114 &5035162309755920480
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -558,74 +580,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3301281649566704384}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0970a923eff145744a66a980e20b235c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlighterSettings:
-    depthMask: 2
-    infoRenderScale: 1
-    useOuterGlow: 1
-    useSingleOuterGlow: 0
-    outerGlowColorFront: {r: 0.2592452, g: 0.86415094, b: 0.26157925, a: 1}
-    outerGlowColorBack: {r: 0.49411765, g: 0.32636538, b: 0.09411764, a: 1}
-    outlineVisibleBeforeObject: 1
-    blurType: 1
-    blendType: 0
-    boxBlurSize: 0.0348
-    blurIterations: 20.1
-    blurRenderScale: 1
-    blurIntensity: 3.2
-    blurIntensityMultiplier: 1
-    blurAdaptiveThickness: 0
-    cameraDistanceMultiplier: 1.85
-    useMeshOutline: 1
-    useSingleMeshOutline: 0
-    meshOutlineFront:
-      color: {r: 14.11645, g: 14.11645, b: 14.11645, a: 1}
-    meshOutlineBack:
-      color: {r: 16.889532, g: 16.889532, b: 16.889532, a: 1}
-    meshOutlineThickness: 0.007
-    meshOutlineAdaptiveThickness: 0.518
-    useInnerGlow: 0
-    useSingleInnerGlow: 1
-    innerGlowFront:
-      color: {r: 1, g: 0.23277296, b: 0, a: 1}
-      power: 0.52
-    innerGlowBack:
-      color: {r: 0, g: 1, b: 1, a: 1}
-      power: 4
-    useOverlay: 1
-    useSingleOverlay: 0
-    overlayFront:
-      color: {r: 0.6622641, g: 1, b: 0.6765244, a: 1}
-      useTexture: 0
-      texture: {fileID: 0}
-      background: 0
-      tilling: 60
-      rotation: 0
-    overlayBack:
-      color: {r: 0.90943396, g: 0.7670132, b: 0.87012327, a: 1}
-      useTexture: 1
-      texture: {fileID: 2800000, guid: 97ffb780896ed55428938c1c11ca8449, type: 3}
-      background: 0.404
-      tilling: 60
-      rotation: 45
-    RenderingBoundsSizeIncrease: -0.04
-    RenderingBoundsDistanceFix: 0
-    RenderingBoundsMaxDistanceFix: 1
-    RenderingBoundsMinDistanceFix: 0
-  findRenderers: 0
-  renderers:
-  - renderer: {fileID: 2576641317738254016}
-    useCutout: 0
-    clippingThreshold: 0
-    clippingSource: 0
-    clipTexture: {fileID: 0}
-    submeshIndexes: 00000000
-    cullMode: 2
-  id: 2
-  showRenderBounds: 0
-  showScreenAdjustedRenderBounds: 0
+  outlineMode: 0
+  outlineColor: {r: 0.13333334, g: 0.6666667, b: 0.13725491, a: 1}
+  outlineWidth: 7.24
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &6649711725056576633
 GameObject:
   m_ObjectHideFlags: 0

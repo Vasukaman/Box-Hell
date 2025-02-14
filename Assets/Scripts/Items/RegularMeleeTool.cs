@@ -52,6 +52,7 @@ public class RegularMeleeTool : Tool
             damageable.TakeHit(hitData);
             Shaker.ShakeAll(hitShakePreset);
 
+            ReduceDurabilityUse();
 
             if (spawnParticlesOnHitPos)
                 SpawnHitVFX(pos, Quaternion.LookRotation(hit.normal));
@@ -59,7 +60,7 @@ public class RegularMeleeTool : Tool
                 SpawnHitVFX(vfxParticlePosition.position, vfxParticlePosition.rotation);
 
 
-            ReduceDurabilityUse();
+ 
 
             PlayHitSound();
         }

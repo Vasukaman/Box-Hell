@@ -34,7 +34,10 @@ public class InventorySystem : MonoBehaviour
 
     }
 
-
+    private void HandleItemBroken(ItemCore item)
+    {
+        RemoveItem(item);
+    }
 
     public bool AddItem(ItemCore item)
     {
@@ -47,6 +50,7 @@ public class InventorySystem : MonoBehaviour
                 item.transform.localPosition = Vector3.zero;
                 item.MakeItTool();
                 item.SetOwner(playerCore);
+                item.tool.OnToolBreak += HandleItemBroken;
                 OnInventoryUpdated?.Invoke();
                 SelectSlot(i);
                 return true;
@@ -58,10 +62,24 @@ public class InventorySystem : MonoBehaviour
     public void RemoveItem(int index)
     {
         if (index < 0 || index >= items.Length) return;
+        items[index].tool.OnToolBreak -= HandleItemBroken;
         items[index] = null;
         OnInventoryUpdated?.Invoke();
     }
 
+    public void RemoveItem(ItemCore item)
+    {
+        if (item == null) return;
+        for (int i = 0; i<slotCount; i++)
+        {
+            if (item == items[i])
+            {
+                RemoveItem(i);
+            }
+
+        }
+
+    }
     private void ClearCurrentTool()
     {
         if (GetSelectedItem() != null)

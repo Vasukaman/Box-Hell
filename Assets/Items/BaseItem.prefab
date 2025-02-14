@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b737019a93271c41a72d5c313334a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentToToggle: {fileID: 520571154543315671}
+  componentToToggle: {fileID: 5091222533652226637}
   uiIndicator: {fileID: 0}
 --- !u!1 &3061631945593150862
 GameObject:
@@ -324,7 +324,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2425771348369547132}
-  - component: {fileID: 520571154543315671}
+  - component: {fileID: 5091222533652226637}
   m_Layer: 0
   m_Name: VisualParent
   m_TagString: Untagged
@@ -348,7 +348,7 @@ Transform:
   - {fileID: 5515308345154939385}
   m_Father: {fileID: 2784699418191364185}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &520571154543315671
+--- !u!114 &5091222533652226637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,78 +357,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3301281649566704384}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0970a923eff145744a66a980e20b235c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlighterSettings:
-    depthMask: 2
-    infoRenderScale: 1
-    useOuterGlow: 1
-    useSingleOuterGlow: 0
-    outerGlowColorFront: {r: 1, g: 1, b: 1, a: 1}
-    outerGlowColorBack: {r: 0.49411765, g: 0.32636538, b: 0.09411764, a: 1}
-    outlineVisibleBeforeObject: 1
-    blurType: 1
-    blendType: 0
-    boxBlurSize: 0.0348
-    blurIterations: 20.1
-    blurRenderScale: 1
-    blurIntensity: 3.2
-    blurIntensityMultiplier: 1
-    blurAdaptiveThickness: 0
-    cameraDistanceMultiplier: 1.85
-    useMeshOutline: 1
-    useSingleMeshOutline: 0
-    meshOutlineFront:
-      color: {r: 14.11645, g: 14.11645, b: 14.11645, a: 1}
-    meshOutlineBack:
-      color: {r: 16.889532, g: 16.889532, b: 16.889532, a: 1}
-    meshOutlineThickness: 0.007
-    meshOutlineAdaptiveThickness: 0.518
-    useInnerGlow: 0
-    useSingleInnerGlow: 1
-    innerGlowFront:
-      color: {r: 1, g: 0.23277296, b: 0, a: 1}
-      power: 0.52
-    innerGlowBack:
-      color: {r: 0, g: 1, b: 1, a: 1}
-      power: 4
-    useOverlay: 1
-    useSingleOverlay: 0
-    overlayFront:
-      color: {r: 0.85660374, g: 0.7418512, b: 0.74320126, a: 0}
-      useTexture: 0
-      texture: {fileID: 0}
-      background: 0
-      tilling: 60
-      rotation: 0
-    overlayBack:
-      color: {r: 0.90943396, g: 0.7670132, b: 0.87012327, a: 1}
-      useTexture: 1
-      texture: {fileID: 2800000, guid: 97ffb780896ed55428938c1c11ca8449, type: 3}
-      background: 0.404
-      tilling: 60
-      rotation: 45
-    RenderingBoundsSizeIncrease: -0.04
-    RenderingBoundsDistanceFix: 0
-    RenderingBoundsMaxDistanceFix: 1
-    RenderingBoundsMinDistanceFix: 0
-  findRenderers: 0
-  renderers:
-  - renderer: {fileID: 0}
-    useCutout: 0
-    clippingThreshold: 0
-    clippingSource: 0
-    clipTexture: {fileID: 0}
-    submeshIndexes: 00000000
-    cullMode: 2
-  - renderer: {fileID: 0}
-    useCutout: 0
-    clippingThreshold: 0
-    clippingSource: 0
-    clipTexture: {fileID: 0}
-    submeshIndexes: 00000000
-    cullMode: 2
-  id: 2
-  showRenderBounds: 0
-  showScreenAdjustedRenderBounds: 0
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 7.04
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

@@ -1,0 +1,4 @@
+
+This project is made to give a realistic render view to the stick grenade model. To properly import it into a new Unity project, you must download the PostProcessing package from the Package Manager.
+
+Also, there is a folder called "GameReadyPrefab" that contains a prefab of a stick grenade, you can drag it into a new scene and you will be able to use it in your project.

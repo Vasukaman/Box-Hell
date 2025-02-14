@@ -13,7 +13,7 @@ public class ItemSellerMachine : MonoBehaviour
     [SerializeField] private Animation animationComponent;
     [SerializeField] private BoxCollider triggerCollider;   
 
-    private HashSet<Collider> currentColliders = new HashSet<Collider>();
+    private List<Collider> currentColliders = new List<Collider>();
     private List<ItemCore> itemsInTrigger = new List<ItemCore>();
     private ItemCore currentItem;
     private bool isProcessing;
@@ -43,8 +43,21 @@ public class ItemSellerMachine : MonoBehaviour
 
     private void Update()
     {
+
+    }
+
+    private void FixedUpdate()
+    {
+        //Clear the colliders at the start of each FixedUpdate
+       currentColliders.Clear();
+    }
+
+
+    private void LateUpdate()
+    {
         CleanupDestroyedItems();
         UpdateTriggerState();
+        
     }
 
     private void OnTriggerStay(Collider other)
@@ -55,13 +68,13 @@ public class ItemSellerMachine : MonoBehaviour
 
     private void CleanupDestroyedItems()
     {
-        // Remove colliders from destroyed GameObjects
-        currentColliders.RemoveWhere(c => c == null || c.gameObject == null);
-        //Add ItemCores
+        // Remove colliders from destroyed or disabled GameObjects
+       // currentColliders.RemoveWhere(c => c == null || !c.enabled || c.gameObject == null);
+
+        // Update itemsInTrigger list
         itemsInTrigger = currentColliders
             .Select(c => c.GetComponentInParent<ItemCore>())
             .Where(item => item != null)
-            .Distinct()
             .ToList();
     }
 
@@ -74,7 +87,7 @@ public class ItemSellerMachine : MonoBehaviour
 
        // if (!isValidState) StopProcessing 
         // Clear stored colliders each frame
-        currentColliders.Clear();
+      
     }
 
     private void StopProcessing()

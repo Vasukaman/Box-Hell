@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97cbf55e48797b4f9c27ddcb2f643f7, type: 3}
+  m_Name: Small Axe
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 923b3a738a263434f8d2b997fc773b3e, type: 3}
+  itemName: Wrench
+  description: 
+  price: 20
+  type: 0
+  itemCore: {fileID: 3409426579290358578, guid: 25d9e9d07e3150e4296517223385f24c,
+    type: 3}
+  raritySO: {fileID: 11400000, guid: 5247672b757926d4480b44bcb250f8f1, type: 2}
