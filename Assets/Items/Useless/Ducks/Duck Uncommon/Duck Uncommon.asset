@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97cbf55e48797b4f9c27ddcb2f643f7, type: 3}
   m_Name: Duck Uncommon
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 875dc348319ecf044ad6822c9a091dff, type: 3}
   itemName: Duck Uncommon
   description: 
   price: 10
   type: 1
-  itemCore: {fileID: 3019041458159033974, guid: 0536b832833788a41ba5cdbdce52e85c,
+  itemCore: {fileID: 7303384377584542655, guid: 390d36d0ad49c03458ad16792356ef15,
     type: 3}
   raritySO: {fileID: 11400000, guid: 9048ffd3fa54c1345952f22805d8cb83, type: 2}

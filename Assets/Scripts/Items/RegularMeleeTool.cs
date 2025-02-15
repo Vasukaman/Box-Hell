@@ -10,17 +10,17 @@ public class RegularMeleeTool : Tool
     [Header("Damage")]
     [SerializeField] protected float damage = 40f;
 
-    [SerializeField] private Camera mainCamera; //Probshould change how hit works
+    [SerializeField] protected Camera mainCamera; //Probshould change how hit works
 
-    [SerializeField] private MilkShake.ShakePreset hitShakePreset;
+    [SerializeField] protected MilkShake.ShakePreset hitShakePreset;
 
-    [SerializeField] private float hitForce;
-    [SerializeField] private List<DecalTextureData> decals;
-    [SerializeField] private bool spawnParticlesOnHitPos;
-    [SerializeField] private Transform vfxParticlePosition;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private ToolSoundManager soundManager;
-    [SerializeField] private List<ParticleSystem> hitVFX;
+    [SerializeField] protected float hitForce;
+    [SerializeField] protected List<DecalTextureData> decals;
+    [SerializeField] protected bool spawnParticlesOnHitPos;
+    [SerializeField] protected Transform vfxParticlePosition;
+    [SerializeField] protected AudioSource audioSource;
+    [SerializeField] protected ToolSoundManager soundManager;
+    [SerializeField] protected List<ParticleSystem> hitVFX;
 
 
     public override void OnEquip()
@@ -35,11 +35,11 @@ public class RegularMeleeTool : Tool
 
     }
 
-    DecalTextureData PickDecal()
+    protected DecalTextureData PickDecal()
     {
         return decals[Random.Range(0, decals.Count)];
     }
-    protected void TryHit(RaycastHit hit)    
+    protected virtual void TryHit(RaycastHit hit)    
     {
         
 
@@ -67,19 +67,19 @@ public class RegularMeleeTool : Tool
 
             PlayHitSound();
         }
-    }   
+    }
 
-    private void PlayHitSound()
+    protected private void PlayHitSound()
     {
         soundManager.PlayHitSound();
-    }  
+    }
 
-    private ParticleSystem PickHitVFX()
+    protected ParticleSystem PickHitVFX()
     {
         return hitVFX[Random.Range(0, hitVFX.Count)];
     }
 
-    private void SpawnHitVFX(Vector3 position, Quaternion rotation)
+    protected void SpawnHitVFX(Vector3 position, Quaternion rotation)
     {
         ParticleSystem partSys = PickHitVFX();
 

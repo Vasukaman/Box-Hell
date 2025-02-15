@@ -15,8 +15,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 875dc348319ecf044ad6822c9a091dff, type: 3}
   itemName: Duck Legendary
   description: 
-  price: 150
+  price: 100
   type: 1
-  itemCore: {fileID: 3019041458159033974, guid: 997ecfb875f543042a3f10078436bab0,
+  itemCore: {fileID: 4211541920786132604, guid: 98cad79044200c04f822d9787ceaefc9,
     type: 3}
-  raritySO: {fileID: 0}
+  raritySO: {fileID: 11400000, guid: 9048ffd3fa54c1345952f22805d8cb83, type: 2}

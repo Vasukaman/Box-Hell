@@ -79,10 +79,12 @@ public class RoomManager : MonoBehaviour
         {
             door.OnDoorInteracted += HandleDoorInteraction;
             door.GeneratePrice(roomNumber);
+            door.SetRoomNumber(roomNumber+1);
         }
        
        enterDoor.TryOpenningDoor();
         enterDoor.SetPrice(0);
+        enterDoor.SetRoomNumber(0);
     }
 
     void HandleDoorInteraction(DoorController door, RoomConnectionPoint connection)

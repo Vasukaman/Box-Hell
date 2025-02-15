@@ -964,6 +964,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2203334006571199287, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
+        type: 3}
+      propertyPath: itemCore
+      value: 
+      objectReference: {fileID: 1529877007}
+    - target: {fileID: 2532651854848987929, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
+        type: 3}
+      propertyPath: currentState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4744611245860568224, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
         type: 3}
       propertyPath: m_Name
@@ -982,7 +992,7 @@ PrefabInstance:
     - target: {fileID: 4744611245860568230, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -5.87
       objectReference: {fileID: 0}
     - target: {fileID: 4744611245860568230, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
         type: 3}
@@ -1042,7 +1052,7 @@ PrefabInstance:
     - target: {fileID: 8777426086735022277, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
         type: 3}
       propertyPath: dotRadius
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8777426086735022277, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
         type: 3}
@@ -1057,6 +1067,11 @@ PrefabInstance:
     - target: {fileID: 8777426086735022277, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
         type: 3}
       propertyPath: minCircleRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825698038353814659, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1366,8 +1381,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1402,7 +1417,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -182.97156, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6929,6 +6944,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosionPrefab: {fileID: 8613708377243883866, guid: 937a7a33d4de2da4c80b476b8c273c26,
     type: 3}
+--- !u!114 &1529877007 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2532651854848987929, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
+    type: 3}
+  m_PrefabInstance: {fileID: 742968568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dfefd370852fca4e8a0351df22f7110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1783177161
 PrefabInstance:
   m_ObjectHideFlags: 0

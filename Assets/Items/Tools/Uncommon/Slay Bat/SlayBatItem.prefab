@@ -44,20 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a81c475236669841b4ceff54e052716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDurability: 40
-  durabilityLossPerUse: 1
-  throwDurabilityCost: 0
-  item: {fileID: 11400000, guid: d5c968a225c4cad4295e3793c51b11b5, type: 2}
-  itemCore: {fileID: 3898864334834387110}
-  currentDurability: 0
   range: 5
-  damage: 60
   damageableLayers:
     serializedVersion: 2
     m_Bits: 1011
+  maxDurability: 40
+  durabilityLossPerUse: 1
+  item: {fileID: 11400000, guid: d5c968a225c4cad4295e3793c51b11b5, type: 2}
+  itemCore: {fileID: 3898864334834387110}
+  currentDurability: 0
+  damage: 60
   mainCamera: {fileID: 0}
   hitShakePreset: {fileID: 11400000, guid: 2541f5ff4b0c04f41b61397de0d833bf, type: 2}
-  hitForce: 90
+  hitForce: 165
   decals:
   - sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     scale: {x: 0.3, y: 0.3, z: 1}

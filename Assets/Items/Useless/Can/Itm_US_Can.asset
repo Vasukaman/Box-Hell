@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: fe3608a63b99ef241b7ad9beb70933e1, type: 3}
   itemName: Can
+  description: 
+  price: 0
   type: 1
-  itemCore: {fileID: 5966167781460266336, guid: 0e774e3298e0fad4986aa9ec9e0c5493,
+  itemCore: {fileID: 8525495134040747868, guid: 1f1add96ca0855049bbf05714ba41c44,
     type: 3}
   raritySO: {fileID: 11400000, guid: 5247672b757926d4480b44bcb250f8f1, type: 2}

@@ -73,7 +73,7 @@ public class InventorySlotUI : MonoBehaviour
 
     public void UpdateDurability()
     {
-        durabilityText.text = currentItem.tool.currentDurability.ToString();
+        durabilityText.text = currentItem.tool.currentDurability.ToString();    
     }
 
     public void Select()

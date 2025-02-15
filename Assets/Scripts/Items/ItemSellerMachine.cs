@@ -8,6 +8,7 @@ public class ItemSellerMachine : MonoBehaviour
 {
     [SerializeField] private TMP_Text priceText;
     [SerializeField] private TMP_Text moneyText;
+    [SerializeField] private TMP_Text itemNameText;
     [SerializeField] private GameObject greenLight;
     [SerializeField] private GameObject redLight;
     [SerializeField] private Animation animationComponent;
@@ -83,7 +84,8 @@ public class ItemSellerMachine : MonoBehaviour
         bool isValidState = itemsInTrigger.Count == 1;
         greenLight.SetActive(isValidState);
         redLight.SetActive(!isValidState);
-        priceText.text = isValidState ? itemsInTrigger[0].price.ToString() : "";
+        priceText.text = isValidState ? itemsInTrigger[0].price.ToString() + "$" : "";
+        itemNameText.text = isValidState ? itemsInTrigger[0].item.name : "";
 
        // if (!isValidState) StopProcessing 
         // Clear stored colliders each frame
@@ -106,12 +108,14 @@ public class ItemSellerMachine : MonoBehaviour
 
         greenLight.SetActive(isValidState);
         redLight.SetActive(!isValidState);
-        priceText.text = isValidState ? itemsInTrigger[0].price.ToString() : "";
+        priceText.text = isValidState ? itemsInTrigger[0].price.ToString() + "$" : "";
+        itemNameText.text = isValidState ? itemsInTrigger[0].item.name : "";
+
     }
 
     private void UpdateMoneyDisplay()
     {
-        moneyText.text = storedMoney.ToString();
+        moneyText.text = storedMoney.ToString()+"$";
     }
 
     public void TryActivating(PlayerCore player)

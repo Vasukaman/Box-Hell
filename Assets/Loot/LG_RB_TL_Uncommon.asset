@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - item: {fileID: 11400000, guid: d5c968a225c4cad4295e3793c51b11b5, type: 2}
-    dropScore: 50
+    dropScore: 1
   - item: {fileID: 11400000, guid: d72cd3b7289450f41ad8ddf51119f163, type: 2}
-    dropScore: 50
+    dropScore: 1
+  - item: {fileID: 11400000, guid: 1a582d2664b0a5d40a673b82ef34f6dd, type: 2}
+    dropScore: 3
   noDropScore: 0

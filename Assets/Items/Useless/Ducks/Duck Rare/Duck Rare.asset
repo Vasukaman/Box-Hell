@@ -15,8 +15,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 875dc348319ecf044ad6822c9a091dff, type: 3}
   itemName: Duck Rare
   description: 
-  price: 80
+  price: 50
   type: 1
-  itemCore: {fileID: 3019041458159033974, guid: bdfd60d328e55d147ba02a04b6b725f0,
-    type: 3}
-  raritySO: {fileID: 0}
+  itemCore: {fileID: 968781424494070297, guid: ab4edbfb07a98b0478562c6ba01c8c98, type: 3}
+  raritySO: {fileID: 11400000, guid: 9048ffd3fa54c1345952f22805d8cb83, type: 2}

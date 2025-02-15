@@ -44,9 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e35dca833b7e1498e0f0e2b80fe925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 5
+  damageableLayers:
+    serializedVersion: 2
+    m_Bits: 0
   maxDurability: 100
   durabilityLossPerUse: 1
-  throwDurabilityCost: 0
   item: {fileID: 0}
   itemCore: {fileID: 3898864334834387110}
   currentDurability: 0
@@ -145,6 +148,7 @@ GameObject:
   - component: {fileID: 835459004083991541}
   - component: {fileID: 79758525310991065}
   - component: {fileID: 2173619893569571836}
+  - component: {fileID: 1687757346069510425}
   m_Layer: 0
   m_Name: WorldItem
   m_TagString: Untagged
@@ -232,6 +236,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentToToggle: {fileID: 5091222533652226637}
   uiIndicator: {fileID: 0}
+--- !u!135 &1687757346069510425
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2712251893611968764}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3061631945593150862
 GameObject:
   m_ObjectHideFlags: 0

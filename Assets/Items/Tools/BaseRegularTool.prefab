@@ -89,7 +89,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -376,10 +376,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8175846542059852792}
-    - targetCorrespondingSourceObject: {fileID: 2712251893611968764, guid: c2ffcd4c99ee93041853978b84547c7a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5437719851068764232}
   m_SourcePrefab: {fileID: 100100000, guid: c2ffcd4c99ee93041853978b84547c7a, type: 3}
 --- !u!1 &5423129260600275919 stripped
 GameObject:
@@ -399,17 +395,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a81c475236669841b4ceff54e052716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDurability: 100
-  durabilityLossPerUse: 1
-  throwDurabilityCost: 0
-  item: {fileID: 0}
-  itemCore: {fileID: 7133748235113347648}
-  currentDurability: 0
   range: 5
-  damage: 40
   damageableLayers:
     serializedVersion: 2
     m_Bits: 1011
+  maxDurability: 100
+  durabilityLossPerUse: 1
+  item: {fileID: 0}
+  itemCore: {fileID: 7133748235113347648}
+  currentDurability: 0
+  damage: 40
   mainCamera: {fileID: 0}
   hitShakePreset: {fileID: 11400000, guid: fb4b31b75fc51fd499fca6aca2d07f84, type: 2}
   hitForce: 0
@@ -434,33 +429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dfefd370852fca4e8a0351df22f7110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8122379330444675610 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2712251893611968764, guid: c2ffcd4c99ee93041853978b84547c7a,
-    type: 3}
-  m_PrefabInstance: {fileID: 6132678170026865382}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &5437719851068764232
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8122379330444675610}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 3.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &8340274054262354623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2784699418191364185, guid: c2ffcd4c99ee93041853978b84547c7a,
@@ -494,7 +462,7 @@ MonoBehaviour:
   anim: {fileID: 652340255898385337}
   tool: {fileID: 8175846542059852792}
   procAnim: {fileID: 8722917478595707414}
-  useProcAnim: 0
+  useProcAnim: 1
   restartAnimOnClick: 0
 --- !u!111 &652340255898385337
 Animation:

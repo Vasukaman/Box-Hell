@@ -285,6 +285,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8175846542059852792, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
+      propertyPath: hitForce
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175846542059852792, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
       propertyPath: maxDurability
       value: 20
       objectReference: {fileID: 0}

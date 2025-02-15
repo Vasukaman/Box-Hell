@@ -38,7 +38,7 @@ public abstract class Tool : MonoBehaviour
 
     public virtual void OnEquip()
     {
-        OnToolEquipped.Invoke();
+        OnToolEquipped?.Invoke();
     }
 
     public virtual void Use()

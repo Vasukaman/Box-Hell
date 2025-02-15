@@ -4,6 +4,7 @@ public class DoorController : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI priceText;
+    [SerializeField] private TextMeshProUGUI roomNumberText;
     public DoorState currentState;
     public RoomConnectionPoint connectionPoint;
     public System.Action<DoorController, RoomConnectionPoint> OnDoorInteracted; //Actually on Door opened
@@ -29,6 +30,14 @@ public class DoorController : MonoBehaviour
             newPrice += Random.Range(randomDoorPriceMinMultiplier, randomDoorPriceMaxMultiplier);
         }
         SetPrice(newPrice);
+    }
+    public void SetRoomNumber(int roomNumber)
+    {
+
+        roomNumberText.text = roomNumber.ToString();
+
+        if (roomNumber < 1)
+            roomNumberText.text = "";
     }
 
     public void SetPrice(int newPrice)

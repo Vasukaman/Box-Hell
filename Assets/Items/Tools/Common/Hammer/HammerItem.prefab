@@ -380,7 +380,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -678,20 +678,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a81c475236669841b4ceff54e052716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDurability: 35
-  durabilityLossPerUse: 1
-  throwDurabilityCost: 0
-  item: {fileID: 11400000, guid: 92317cef2f983bf4a9eb6a2e730a3b51, type: 2}
-  itemCore: {fileID: 1519342857656415183}
-  currentDurability: 0
   range: 2.75
-  damage: 25
   damageableLayers:
     serializedVersion: 2
     m_Bits: 1011
+  maxDurability: 35
+  durabilityLossPerUse: 1
+  item: {fileID: 11400000, guid: 92317cef2f983bf4a9eb6a2e730a3b51, type: 2}
+  itemCore: {fileID: 1519342857656415183}
+  currentDurability: 0
+  damage: 25
   mainCamera: {fileID: 0}
   hitShakePreset: {fileID: 11400000, guid: fb4b31b75fc51fd499fca6aca2d07f84, type: 2}
-  hitForce: 17
+  hitForce: 32
   decals:
   - sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     scale: {x: 0.22, y: 0.18, z: 1}
