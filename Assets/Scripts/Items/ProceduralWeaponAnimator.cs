@@ -43,11 +43,16 @@ public class ProceduralWeaponAnimator : MonoBehaviour
     private void Start()
     {
         playerCamera = Camera.main;
-        currentState = SwingState.Resting;
-        stateProgress = 0f;
+      
+
+
+    }
+
+    public void OnEquip()
+    {
+        currentState = SwingState.Returning;
+        stateProgress = 0.9f;
         ResumeAnimation();
-
-
     }
     void Update()
     {

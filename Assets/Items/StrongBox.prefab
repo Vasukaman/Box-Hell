@@ -1100,6 +1100,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6525286903655892617, guid: e91f8cdaac2267245a958be7ab916fc2,
         type: 3}
+      propertyPath: lootConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: cc0836972afe4f341a3aa9f91cdfcdaa,
+        type: 2}
+    - target: {fileID: 6525286903655892617, guid: e91f8cdaac2267245a958be7ab916fc2,
+        type: 3}
       propertyPath: maxExplosionSpeed
       value: 20
       objectReference: {fileID: 0}

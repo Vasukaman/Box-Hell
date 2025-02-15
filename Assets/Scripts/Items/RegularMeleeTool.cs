@@ -5,12 +5,11 @@ using MilkShake;
 
 public class RegularMeleeTool : Tool
 {
-    [SerializeField] private float range = 5f;
 
 
     [Header("Damage")]
     [SerializeField] protected float damage = 40f;
-    [SerializeField] protected LayerMask damageableLayers;
+
     [SerializeField] private Camera mainCamera; //Probshould change how hit works
 
     [SerializeField] private MilkShake.ShakePreset hitShakePreset;
@@ -24,11 +23,15 @@ public class RegularMeleeTool : Tool
     [SerializeField] private List<ParticleSystem> hitVFX;
 
 
-
+    public override void OnEquip()
+    {
+        base.OnEquip();
+    }
     protected  void Start()
     {
         mainCamera = Camera.main;
         itemCore.OnItemThrowed += ToolThrown;
+        itemCore.OnItemEquipped+=OnEquip;
 
     }
 

@@ -28,6 +28,22 @@ public class InventorySlotUI : MonoBehaviour
 
     public void SetItem(ItemCore item)
     {
+
+        if (item==null)
+        {
+            currentItem = null;
+            iconImage.enabled = false;
+            durabilityText.enabled = false;
+
+            iconImage.sprite = null;
+            nameText.text = "";
+
+            durabilityText.enabled = false;
+            durabilityText.text = "";
+            return;
+
+        }
+
         if (currentItem!=null && currentItem.tool!=null)
         {
             currentItem.tool.OnDurabilityChanged -= UpdateDurability;

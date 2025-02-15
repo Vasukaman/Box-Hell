@@ -112,13 +112,21 @@ public class InventorySystem : MonoBehaviour
 
 
             GetSelectedItem().gameObject.SetActive(true);
+            GetSelectedItem().Equip();
         }
 
 
         OnSelectedSlotChanged?.Invoke(slotIndex);
     }
 
-
+    public void SelectNextSlot()
+    {
+        SelectSlot((selectedSlot + 1) % slotCount);
+    }
+    public void SelectPrevSlot()
+    {
+        SelectSlot((selectedSlot - 1 + slotCount) % slotCount);
+    }
 
     public ItemCore GetSelectedItem()
     {
@@ -128,6 +136,17 @@ public class InventorySystem : MonoBehaviour
             return items[selectedSlot];
         }
         return null;
+    }
+
+
+    //Same as get seected item, byt also returns fists. Fists can't be selected, obv.
+    public ItemCore GetCurrentItem()
+    {
+        ItemCore item = GetSelectedItem();
+        if (item == null)
+            return fistTool.GetItemCore();
+
+        return item;
     }
 
 

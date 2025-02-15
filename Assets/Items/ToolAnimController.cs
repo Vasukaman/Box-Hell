@@ -13,6 +13,13 @@ public class ToolAnimController : MonoBehaviour
     private void Awake()
     {
         tool.OnToolThrown += OnToolThrown;
+        tool.OnToolEquipped += OnEquip;
+    }
+
+    void OnEquip()
+    {
+        if (useProcAnim)
+            procAnim.OnEquip();
     }
 
     // Start is called before the first frame update

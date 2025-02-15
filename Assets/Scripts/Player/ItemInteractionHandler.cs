@@ -34,7 +34,7 @@ public class ItemInteractionHandler : MonoBehaviour
             ItemCore item = hit.collider.GetComponentInParent<ItemCore>();
             if (item != null)
             {
-                item.Equip();
+              
                 inventory.AddItem(item);
          
               

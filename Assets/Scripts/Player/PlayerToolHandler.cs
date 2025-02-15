@@ -22,8 +22,10 @@ public class PlayerToolHandler : MonoBehaviour
 
     private void HandleInput()
     {
+        HandleMouseScroll();
         HandleSlotSelection();
         HandleToolUsage();
+     
     }
 
     private void HandleSlotSelection()
@@ -53,7 +55,19 @@ public class PlayerToolHandler : MonoBehaviour
         }
     }
 
- 
+    private void HandleMouseScroll()
+    {
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+
+        if (scrollInput > 0) // Scrolling up
+        {
+            inventory.SelectPrevSlot();
+        }
+        else if (scrollInput < 0) // Scrolling down
+        {
+            inventory.SelectNextSlot();
+        }
+    }
     private void OnDestroy()
     {
         if (inventory != null)

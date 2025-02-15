@@ -409,7 +409,7 @@ MonoBehaviour:
   damage: 40
   damageableLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1011
   mainCamera: {fileID: 0}
   hitShakePreset: {fileID: 11400000, guid: fb4b31b75fc51fd499fca6aca2d07f84, type: 2}
   hitForce: 0

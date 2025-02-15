@@ -7,12 +7,15 @@ public abstract class Tool : MonoBehaviour
     public event Action OnDurabilityChanged;
     public event Action OnToolStopped;
     public event Action OnToolThrown;
+    public event Action OnToolEquipped;
     public event Action<ItemCore> OnToolBreak; // New event for when tool breaks
+
+    [SerializeField] public float range = 5f;
+    [SerializeField] public LayerMask damageableLayers;
 
     [Header("Durability Settings")]
     [SerializeField] protected int maxDurability = 100;
     [SerializeField] protected int durabilityLossPerUse = 1;
-    [SerializeField] protected int throwDurabilityCost = 0;
 
     [Header("References")]
     [SerializeField] protected Item item;
@@ -22,10 +25,20 @@ public abstract class Tool : MonoBehaviour
     private bool isBroken = false;
     public float DurabilityPercentage => currentDurability / maxDurability;
 
+    public ItemCore GetItemCore()
+    {
+        return itemCore;
+    }
     protected virtual void Awake()
     {
         itemCore.OnItemThrowed += ToolThrown;
+        itemCore.OnItemEquipped += OnEquip;
         SetDurability(maxDurability); // Initialize durability
+    }
+
+    public virtual void OnEquip()
+    {
+        OnToolEquipped.Invoke();
     }
 
     public virtual void Use()
@@ -49,10 +62,7 @@ public abstract class Tool : MonoBehaviour
 
     public virtual void ToolThrown()
     {
-        if (!isBroken)
-        {
-            ReduceDurability(throwDurabilityCost);
-        }
+   
         OnToolThrown?.Invoke();
     }
 

@@ -25,12 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2186907848513241385}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2784699418191364185}
+  m_Father: {fileID: 2425771348369547132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8358781761311567897
 MonoBehaviour:
@@ -54,7 +54,7 @@ MonoBehaviour:
   damage: 60
   damageableLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1011
   mainCamera: {fileID: 0}
   hitShakePreset: {fileID: 11400000, guid: 2541f5ff4b0c04f41b61397de0d833bf, type: 2}
   hitForce: 90
@@ -65,7 +65,9 @@ MonoBehaviour:
   vfxParticlePosition: {fileID: 0}
   audioSource: {fileID: 0}
   soundManager: {fileID: 0}
-  hitVFX: []
+  hitVFX:
+  - {fileID: 484368387861551534, guid: 9b21333b068a5084ba09535839bee3c8, type: 3}
+  - {fileID: 3891973445508218817, guid: e190bf97c041e58448af6b043116cba0, type: 3}
 --- !u!1 &2277225821159953768
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +103,6 @@ Transform:
   - {fileID: 67642493168924942}
   - {fileID: 6621532622947024109}
   - {fileID: 2425771348369547132}
-  - {fileID: 5213199128693310265}
   - {fileID: 5959513916794453410}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -422,6 +423,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5515308345154939385}
+  - {fileID: 5213199128693310265}
   m_Father: {fileID: 2784699418191364185}
   m_LocalEulerAnglesHint: {x: -68.30871, y: 92.85624, z: -229.50363}
 --- !u!114 &5515511175572986563

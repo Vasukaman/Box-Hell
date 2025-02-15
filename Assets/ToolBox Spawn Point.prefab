@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2721559171562022133}
   - component: {fileID: 3269368222126287839}
   m_Layer: 0
-  m_Name: Box Spawn Point (1)
+  m_Name: ToolBox Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ee73d922a8c894198935591199fee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: 6bccc4dd3a4365e4c89265a513622dfc, type: 2}
+  settings: {fileID: 11400000, guid: 70658d19b9f3d05419b3669a39da8ec0, type: 2}

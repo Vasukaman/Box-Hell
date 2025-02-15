@@ -15,7 +15,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 923b3a738a263434f8d2b997fc773b3e, type: 3}
   itemName: Wrench
   description: 
-  price: 30
+  price: 10
   type: 0
   itemCore: {fileID: 3409426579290358578, guid: 25d9e9d07e3150e4296517223385f24c,
     type: 3}
