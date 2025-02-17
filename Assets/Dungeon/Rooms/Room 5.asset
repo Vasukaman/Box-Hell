@@ -15,7 +15,7 @@ MonoBehaviour:
   weight: 1
   roomName: 
   roomType: 0
-  roomPrefab: {fileID: 9191427969880912493, guid: b9948683b6831f9489dee94657a5f098,
+  roomPrefab: {fileID: 4148112418971243676, guid: 9346448d8ff7d85489abb5f0bef73688,
     type: 3}
   minTier: 0
   maxTier: 99

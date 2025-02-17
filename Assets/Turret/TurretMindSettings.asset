@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adfc55cd3a5754c4382389a5b48136a8, type: 3}
+  m_Name: TurretMindSettings
+  m_EditorClassIdentifier: 
+  detectionRange: 507.1
+  fovAngle: 60
+  obstructionLayers:
+    serializedVersion: 2
+    m_Bits: 753
+  minHorizontalAngle: -100
+  maxHorizontalAngle: 100
+  minVerticalAngle: -20
+  maxVerticalAngle: 30
+  idlePointA: {x: -80, y: -20}
+  idlePointB: {x: 80, y: 10}
+  idleRotationSpeed: 30
+  aimSpeed: 95
+  aimThreshold: 87.3
+  shootCooldown: 1
+  initialShotDelay: 0.5

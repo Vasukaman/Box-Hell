@@ -21712,7 +21712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c86ea3e0ffdc684daefd5c1c9e1b8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 50
   destroyOnBreak: 0
   rigidBody: {fileID: 601204725709746812}
   timeBeforeExploionDamage: 0.1

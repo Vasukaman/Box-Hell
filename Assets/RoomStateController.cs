@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 public class RoomStateController : MonoBehaviour
 {
     [SerializeField] private RoomStateSettings settings;
@@ -15,7 +16,10 @@ public class RoomStateController : MonoBehaviour
     private List<PlayerCore> _playersInRoom = new List<PlayerCore>();
 
     [SerializeField] private Collider _roomTrigger;
-
+    [SerializeField] private UnityEvent OnStableEnd;
+    [SerializeField] private UnityEvent OnPreparationStart;
+    [SerializeField] private UnityEvent OnIncinerationStart;
+ 
     private void Awake()
     {
         alarmAnimation = preparationLights.GetComponent<Animation>();
@@ -52,6 +56,7 @@ public class RoomStateController : MonoBehaviour
             if (_currentTime >= settings.preparationTime)
             {
                 SetState(RoomState.Preparation);
+               
             }
         }
 
@@ -78,10 +83,23 @@ public class RoomStateController : MonoBehaviour
 
     IEnumerator UpdateLightsWithPause()
     {
+
+   
         regularLights.SetActive(_currentState == RoomState.Stable);
+        OnStableEnd.Invoke();
+
         yield return new WaitForSeconds(timeBetweenLights);
+
+  
         preparationLights.SetActive(_currentState != RoomState.Stable);
-        alarmAnimation?.Play();
+
+        if (_currentState == RoomState.Preparation) OnPreparationStart.Invoke();
+
+
+        if (_currentState == RoomState.Incineration)
+        {
+            OnIncinerationStart.Invoke();
+        }
     }
 
     private void HandleIncinerationDamage()

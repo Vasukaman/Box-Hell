@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class PlayerCore : MonoBehaviour, IDamageableByExplosion
+public class PlayerCore : MonoBehaviour, IDamageableByExplosion, IHittable
 {
     [Header("Stats")]
     [SerializeField] private int _currentHealth = 6;
@@ -83,6 +83,11 @@ public class PlayerCore : MonoBehaviour, IDamageableByExplosion
         ModifyHealth(-1);
     }
     public void TakeExplosionDamage(ExplosionData explosionData, Vector3 explosionOrigin)
+    {
+        TakeDamage();
+    }
+
+    public void TakeHit(HitData hitData)
     {
         TakeDamage();
     }

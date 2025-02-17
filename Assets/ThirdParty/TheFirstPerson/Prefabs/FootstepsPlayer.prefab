@@ -1786,11 +1786,11 @@ MonoBehaviour:
   centerPoint: {fileID: 6632767200190942982}
   circleSteps: 200
   dotSteps: 200
-  minCircleRadius: 0.1
-  maxCircleRadius: 1
-  dotRadius: 0.1
-  dotWidth: 0.05
-  circleWidth: 0.05
+  minCircleRadius: 1
+  maxCircleRadius: 10
+  dotRadius: 0.5
+  dotWidth: 1
+  circleWidth: 0.5
 --- !u!1 &8825698038353814659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,7 +1844,6 @@ MonoBehaviour:
     m_Bits: 979
   maxDurability: 100
   durabilityLossPerUse: 1
-  throwDurabilityCost: 0
   item: {fileID: 0}
   itemCore: {fileID: 2532651854848987929}
   currentDurability: 0

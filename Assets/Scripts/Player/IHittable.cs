@@ -2,6 +2,7 @@
 using UnityEngine;
 using System;
 
+[Serializable]
 public struct HitData
 {
     public float damage;

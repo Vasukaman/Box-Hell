@@ -20,7 +20,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private List<BoxSpawner> boxSpawners;
 
     [SerializeField] private Transform respawnTransform;
-    [SerializeField] private PlayerCore playerCore;
+    [SerializeField] public PlayerCore playerCore;
     public event System.Action<RoomConnectionPoint> OnExitSelected;
     public event System.Action OnEnterTrigger;
     private bool entered;
@@ -63,11 +63,10 @@ public class RoomManager : MonoBehaviour
     {
         foreach (BoxSpawner boxSpawner in boxSpawners)
         {
-            Debug.Log("Try To Spawn Box");
+
             boxSpawner.SpawnBox();
             yield return new WaitForEndOfFrame();
-            yield return new WaitForEndOfFrame();
-            yield return new WaitForEndOfFrame();
+     
         }
      
     }

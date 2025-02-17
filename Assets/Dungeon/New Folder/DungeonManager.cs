@@ -31,6 +31,7 @@ public class DungeonManager : MonoBehaviour
         currentRoom.tier = currentTier; // Set initial tier
         currentRoom.OnExitSelected += HandleExitSelected;
         playerCore.SetCurrentRoomManager(currentRoom);
+        currentRoom.playerCore = playerCore;
         currentRoom.ActivateRoom();
 
         //roomNumber++;
@@ -146,6 +147,7 @@ public class DungeonManager : MonoBehaviour
         currentRoom.OnExitSelected += HandleExitSelected;
         currentRoom.OnEnterTrigger += HandleEnterRoomTrigger;
         currentCorridor.OnExitTrigger += HandleExitTrigger;
+        currentRoom.playerCore = playerCore;
         currentRoom.ActivateRoom();
 
         roomNumber++;

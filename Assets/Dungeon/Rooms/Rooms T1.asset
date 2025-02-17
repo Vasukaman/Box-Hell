@@ -14,10 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tier: 0
   roomConfigurations:
-  - {fileID: 11400000, guid: 243e32ee66cc5dd428c42b50d44360fb, type: 2}
-  - {fileID: 11400000, guid: 3a50b1658d93b544590ac2ef28b1f0bc, type: 2}
-  - {fileID: 11400000, guid: faf092731db9f8b46997546efcee6524, type: 2}
-  - {fileID: 11400000, guid: b45f7efad8a4f224cace98e73cc9e55c, type: 2}
+  - {fileID: 11400000, guid: 44934523222052548a3fd2457f15d1e9, type: 2}
   corridorConfigurations:
   - {fileID: 11400000, guid: 58efd7964c4463a419d6bf7c643561d4, type: 2}
   - {fileID: 11400000, guid: d6462cdff3382a5418773465321eeb31, type: 2}
