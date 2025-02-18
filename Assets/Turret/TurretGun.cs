@@ -63,17 +63,20 @@ public class TurretGun : MonoBehaviour
         if(Physics.Raycast(_muzzle.position, _muzzle.forward, out RaycastHit hit, 
             _laserMaxRange, _shootLayers))
         {
-            // Spawn hit particles
-            if(_hitParticlePrefab != null)
-            {
-                Instantiate(_hitParticlePrefab, hit.point, 
-                    Quaternion.LookRotation(hit.normal));
-            }
+       
 
             // Apply damage
             IHittable hittable = hit.collider.GetComponent<IHittable>();
             if (hittable==null) hittable = hit.collider.GetComponentInParent<IHittable>();
             hittable?.TakeHit(hitData);
+
+
+            // Spawn hit particles
+            if (_hitParticlePrefab != null)
+            {
+                Instantiate(_hitParticlePrefab, hit.point,
+                    Quaternion.LookRotation(hit.normal));
+            }
         }
     }
 }

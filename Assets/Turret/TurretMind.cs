@@ -10,8 +10,14 @@ public class TurretMind : MonoBehaviour
     [SerializeField] private TurretMindSO _settings;
     [SerializeField] private Transform _head;
     [SerializeField] private Transform _gunPivot;
-
+    public TurretState CurrentState => _currentState;
+    public TurretMindSO Settings => _settings;
     public UnityEvent OnShoot;
+    public UnityEvent OnPlayerFound;
+    public UnityEvent OnPlayerLost;
+    public UnityEvent OnAimAtPlayer;
+    public UnityEvent OnPrepareShooting;
+
 
 
     private float _currentRotationSpeed;
@@ -34,11 +40,13 @@ public class TurretMind : MonoBehaviour
     public float initialShotDelay = 1f; // Add this to TurretMindSO
 
     private float _initialShotTimer;
+
     private bool _hasFiredFirstShot;
 
     [SerializeField] private PlayerDetector _playerDetector;
+    
 
-
+    
 
     private void Awake()
     {
@@ -96,7 +104,7 @@ public class TurretMind : MonoBehaviour
 
             case TurretState.Aiming:
                 AimAtPlayer();
-                if (!CanSeePlayer()) _currentState = TurretState.Idle;
+                
                 break;
 
             case TurretState.Shooting:
@@ -112,6 +120,7 @@ public class TurretMind : MonoBehaviour
 
         if (Quaternion.Angle(_head.rotation, _targetRotation) < _settings.aimThreshold)
         {
+            OnAimAtPlayer?.Invoke();
             _currentState = TurretState.Aiming;
             _initialShotTimer = _settings.initialShotDelay; // Reset timer when entering aiming
             _hasFiredFirstShot = false;
@@ -120,6 +129,11 @@ public class TurretMind : MonoBehaviour
 
     private void AimAtPlayer()
     {
+        if (!CanSeePlayer())
+        {
+            OnPlayerLost?.Invoke();
+            _currentState = TurretState.Idle;
+        }
         RotateToPlayer();
 
         if (Quaternion.Angle(_head.rotation, _targetRotation) < 1f)
@@ -132,7 +146,7 @@ public class TurretMind : MonoBehaviour
                 if (_initialShotTimer <= 0)
                 {
                     _hasFiredFirstShot = true;
-                    _currentState = TurretState.Shooting;
+                    _currentState = TurretState.Aiming;
                     _shootCooldown = _settings.shootCooldown;
                 }
             }
@@ -140,6 +154,7 @@ public class TurretMind : MonoBehaviour
             {
                 _currentState = TurretState.Shooting;
                 _shootCooldown = _settings.shootCooldown;
+                OnPrepareShooting?.Invoke();
             }
         }
     }
@@ -160,6 +175,7 @@ public class TurretMind : MonoBehaviour
     {
         if (CanSeePlayer())
         {
+            OnPlayerFound?.Invoke();
             _currentState = TurretState.Alert;
         }
     }
@@ -200,14 +216,17 @@ public class TurretMind : MonoBehaviour
         if (_shootCooldown <= 0)
         {
             OnShoot?.Invoke();
-            _shootCooldown = _settings.shootCooldown;
+            _currentState = TurretState.Alert;
         }
 
         if (!CanSeePlayer())
         {
+            OnPlayerLost?.Invoke();
             _currentState = TurretState.Idle;
         }
         else 
-        { RotateToPlayer(); }
+        { RotateToPlayer();
+        
+        }
     }
 }

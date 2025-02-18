@@ -13,18 +13,19 @@ MonoBehaviour:
   m_Name: TurretMindSettings
   m_EditorClassIdentifier: 
   detectionRange: 507.1
-  fovAngle: 60
+  fovAngle: 40
   obstructionLayers:
     serializedVersion: 2
     m_Bits: 753
   minHorizontalAngle: -100
   maxHorizontalAngle: 100
-  minVerticalAngle: -20
-  maxVerticalAngle: 30
+  minVerticalAngle: -30
+  maxVerticalAngle: 75
   idlePointA: {x: -80, y: -20}
   idlePointB: {x: 80, y: 10}
   idleRotationSpeed: 30
   aimSpeed: 95
   aimThreshold: 87.3
-  shootCooldown: 1
+  shootCooldown: 1.5
+  timeBeforeToPrepareToShoot: 0.7
   initialShotDelay: 0.5

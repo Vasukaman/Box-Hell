@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public class RoomStateController : MonoBehaviour
 {
-    [SerializeField] private RoomStateSettings settings;
+    [SerializeField] public RoomStateSettings settings;
     [SerializeField] private GameObject regularLights;
     [SerializeField] private GameObject preparationLights;
     [SerializeField] private Animation alarmAnimation;
@@ -12,6 +12,7 @@ public class RoomStateController : MonoBehaviour
 
     private RoomState _currentState;
     private float _currentTime;
+    public float CurrentTime => _currentTime;
     private float _damageCooldown;
     private List<PlayerCore> _playersInRoom = new List<PlayerCore>();
 

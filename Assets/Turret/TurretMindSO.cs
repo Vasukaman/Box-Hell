@@ -26,8 +26,8 @@ public class TurretMindSO : ScriptableObject
     public float aimSpeed = 45f;
     public float aimThreshold = 5f;
     public float shootCooldown = 0.5f;
+    public float timeBeforeToPrepareToShoot=0.4f;
 
-       
     [Header("First Shot")]
     public float initialShotDelay = 0.5f; 
 }

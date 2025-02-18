@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 
 public class PlayerCore : MonoBehaviour, IDamageableByExplosion, IHittable
@@ -7,19 +8,22 @@ public class PlayerCore : MonoBehaviour, IDamageableByExplosion, IHittable
     [SerializeField] private int _currentHealth = 6;
     [SerializeField] private int _currentCoins = 0;
 
+
     [Header("Extra")]
     [SerializeField] private GameData gameData;
-
+    [SerializeField] private float _durationOfHitFreezeFrame = 0.1f;
     // Events with amount parameters
     public event Action<int> onHealthChanged;
     public event Action<int> onCoinsChanged;
     public event Action onDeath;
+    public UnityEvent OnTakeDamage;
 
     public int Health => _currentHealth;
     public int Coins => _currentCoins;
 
     private void Awake()
     {
+        TimeManager.Instance.UnfreezeGame();
         gameData.playerCore = this;
     }
 
@@ -80,11 +84,16 @@ public class PlayerCore : MonoBehaviour, IDamageableByExplosion, IHittable
 
     public void TakeDamage()
     {
+        OnTakeDamage?.Invoke();
+
+        ScreenEffectManager.Instance.HitEffect(_durationOfHitFreezeFrame * 2);
+        TimeManager.Instance.FreezeFrame(_durationOfHitFreezeFrame);
+
         ModifyHealth(-1);
     }
     public void TakeExplosionDamage(ExplosionData explosionData, Vector3 explosionOrigin)
     {
-        TakeDamage();
+        TakeDamage();   
     }
 
     public void TakeHit(HitData hitData)

@@ -9,6 +9,7 @@ public class BreakableBox : HittableBase
     [SerializeField] private Transform breakEffectPoint;
 
     [SerializeField] private float breakFragmentsForce;
+    [SerializeField] private float timeBeforeBreak=0.1f;
     
 
     [SerializeField] private LootConfiguration lootConfig;
@@ -19,15 +20,27 @@ public class BreakableBox : HittableBase
     [SerializeField] CoinsParticles coinSpawner;
     protected override void Break(Vector3 hitPoint)
     {
+        StartCoroutine(WaitAndBreak());
+       // base.Break();
+    }
+
+    IEnumerator WaitAndBreak()
+    {
+        yield return new WaitForSeconds(timeBeforeBreak);
+        OnBreak();
+    }
+    protected void  OnBreak()
+    {
+
         // Play effects
-     
-        if (coinSpawner!=null)
+
+        if (coinSpawner != null)
         {
             coinSpawner.SpawnCoins(Random.Range(lootConfig.minCoins, lootConfig.maxCoins));
             coinSpawner.ReparentHigher();
         }
 
-        float luck = 0; 
+        float luck = 0;
         Item droppedItem = LootManager.GenerateBoxLoot(lootConfig, 1, luck, lootSpawnPoint.position);
 
 
@@ -41,19 +54,19 @@ public class BreakableBox : HittableBase
             }
             if (droppedItem.raritySO.spawnSound.sound != null)
             {
-  
-            soundManager.PlaySound(droppedItem.raritySO.spawnSound);
+
+                soundManager.PlaySound(droppedItem.raritySO.spawnSound);
             }
         }
 
 
 
         fragmentsParent.gameObject.SetActive(true);
-        Vector3 globalPos =  fragmentsParent.position;
-        fragmentsParent.SetParent(null);    
+        Vector3 globalPos = fragmentsParent.position;
+        fragmentsParent.SetParent(null);
         fragmentsParent.position = globalPos;
 
-        foreach(Rigidbody fragment in fragmentsParent.GetComponentsInChildren<Rigidbody>())
+        foreach (Rigidbody fragment in fragmentsParent.GetComponentsInChildren<Rigidbody>())
         {
             fragment.AddExplosionForce(breakFragmentsForce, transform.position, 10);
         }
@@ -61,9 +74,8 @@ public class BreakableBox : HittableBase
         soundManager.PlayBreakSound();
 
         Destroy(this.gameObject);
-      
 
-       // base.Break();
+
     }
 
     public override void TakeHit(HitData hitData)

@@ -687,7 +687,7 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 92317cef2f983bf4a9eb6a2e730a3b51, type: 2}
   itemCore: {fileID: 1519342857656415183}
   currentDurability: 0
-  damage: 25
+  damage: 20
   mainCamera: {fileID: 0}
   hitShakePreset: {fileID: 11400000, guid: fb4b31b75fc51fd499fca6aca2d07f84, type: 2}
   hitForce: 32
