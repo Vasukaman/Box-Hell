@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 7824995488802025085}
   - component: {fileID: 2099469133783252299}
   - component: {fileID: 3262113414232027683}
+  - component: {fileID: 8849550475963371614}
   m_Layer: 10
   m_Name: Turret
   m_TagString: Untagged
@@ -598,6 +599,12 @@ MonoBehaviour:
     prepareToShootSound:
       sound: {fileID: 8300000, guid: 92d9cec516b13774595c57a5c3191daa, type: 3}
       volume: 0.4
+    onHit:
+      sound: {fileID: 8300000, guid: 2497713c16f7f2644a495c92f7900952, type: 3}
+      volume: 0.4
+    onDestroyed:
+      sound: {fileID: 0}
+      volume: 0
   audioSource: {fileID: 8033770738266766024}
 --- !u!114 &2099469133783252299
 MonoBehaviour:
@@ -636,6 +643,43 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 32.84
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8849550475963371614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3485568258307216817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c737e24bacb10064981debbd779b2b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
+  _breakEffectPrefab: {fileID: 0}
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7824995488802025085}
+        m_TargetAssemblyTypeName: TurretSoundManager, Assembly-CSharp
+        m_MethodName: PlayTurretSound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnHit
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnBreak:
+    m_PersistentCalls:
+      m_Calls: []
+  _takeDamageByHit: 0
+  _takeDamageByExplosion: 1
 --- !u!1 &6893973103922309782
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,6 +943,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6891044538025460866}
   - component: {fileID: 8358737956638616496}
+  - component: {fileID: 2061713215509088421}
+  - component: {fileID: 2957061876080870664}
   m_Layer: 0
   m_Name: Turret 1a
   m_TagString: Untagged
@@ -952,6 +998,48 @@ MonoBehaviour:
   _spotlight: {fileID: 2708537810184758754}
   _maxSpotlightFOV: 100
   _minSpotlightFOV: 1
+--- !u!65 &2061713215509088421
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6893973104840351656}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.6, y: 6.58318, z: 2.24}
+  m_Center: {x: 0, y: 4.8884106, z: 0}
+--- !u!65 &2957061876080870664
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6893973104840351656}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.7860534, y: 1, z: 3.132183}
+  m_Center: {x: 0.025600314, y: 7.18, z: -0.38370895}
 --- !u!1 &6893973106134980188
 GameObject:
   m_ObjectHideFlags: 0

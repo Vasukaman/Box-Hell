@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System;
-
+using System.Collections;
 public class PlayerCore : MonoBehaviour, IDamageableByExplosion, IHittable
 {
     [Header("Stats")]
@@ -52,9 +52,14 @@ public class PlayerCore : MonoBehaviour, IDamageableByExplosion, IHittable
         onHealthChanged?.Invoke(_currentHealth);
 
         if (_currentHealth <= 0)
-            HandleDeath();
+            StartCoroutine(WaitAndHandleDeath());
     }
-
+   
+    IEnumerator WaitAndHandleDeath()
+    {
+        yield return new WaitForSeconds(0.3f);
+        HandleDeath();
+    }
     public void ModifyCoins(int amount)
     {
         _currentCoins = Mathf.Max(0, _currentCoins + amount);
@@ -78,7 +83,7 @@ public class PlayerCore : MonoBehaviour, IDamageableByExplosion, IHittable
     void HandleDeath()
     {
         onDeath?.Invoke();
-        Application.LoadLevel(Application.loadedLevel);
+        GameStateManager.Instance.HandleDeath();
         // Add custom death logic later
     }
 

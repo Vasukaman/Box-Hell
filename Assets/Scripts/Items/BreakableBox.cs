@@ -10,6 +10,7 @@ public class BreakableBox : HittableBase
 
     [SerializeField] private float breakFragmentsForce;
     [SerializeField] private float timeBeforeBreak=0.1f;
+
     
 
     [SerializeField] private LootConfiguration lootConfig;

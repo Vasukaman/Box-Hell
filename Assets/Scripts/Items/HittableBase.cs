@@ -8,7 +8,7 @@ public abstract class HittableBase : MonoBehaviour, IHittable, IDamageableByExpl
     [SerializeField] protected bool destroyOnBreak = true;
     [SerializeField] protected Rigidbody rigidBody;
     [SerializeField] protected float timeBeforeExploionDamage;
-
+    [SerializeField] private bool damageOnHit = true;
 
     public event Action<ItemCore> OnBreak;
 
@@ -23,7 +23,9 @@ public abstract class HittableBase : MonoBehaviour, IHittable, IDamageableByExpl
 
     public virtual void TakeHit(HitData hitData)
     {
+        if (damageOnHit)
         TakeDamage(hitData.damage, hitData.sourseItem, hitData.position);
+
         TakePush(hitData.position, hitData.hitForce);
     }
 

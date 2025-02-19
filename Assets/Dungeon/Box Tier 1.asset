@@ -15,13 +15,16 @@ MonoBehaviour:
   boxes:
   - prefab: {fileID: 8046081083608595440, guid: e91f8cdaac2267245a958be7ab916fc2,
       type: 3}
-    weight: 30
+    weight: 100
   - prefab: {fileID: 5438275506630723112, guid: e5ca7d8878969d84dab2256d9a7bad18,
       type: 3}
-    weight: 4
+    weight: 15
   - prefab: {fileID: 5438275506630723112, guid: 74763fef39cf0ff4ba11f2ba98e22965,
       type: 3}
-    weight: 7
+    weight: 28
   - prefab: {fileID: 2342720411485328923, guid: 8edd69bd2487842428c4fa292166da16,
       type: 3}
-    weight: 1
+    weight: 4
+  - prefab: {fileID: 1806093557795800807, guid: 63af0cf4140842541bcd8467c7fd2b77,
+      type: 3}
+    weight: 2

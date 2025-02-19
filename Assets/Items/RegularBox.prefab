@@ -21715,7 +21715,7 @@ MonoBehaviour:
   maxHealth: 50
   destroyOnBreak: 0
   rigidBody: {fileID: 601204725709746812}
-  timeBeforeExploionDamage: 0.1
+  timeBeforeExploionDamage: 0.02
   breakEffect: {fileID: 6186083135284723102, guid: 695e37dc2ade1de49909619b6e1ee5ec,
     type: 3}
   breakEffectPoint: {fileID: 7802374339391750015}

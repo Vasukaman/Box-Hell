@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tier: 0
   roomConfigurations:
-  - {fileID: 11400000, guid: 44934523222052548a3fd2457f15d1e9, type: 2}
-  - {fileID: 11400000, guid: 243e32ee66cc5dd428c42b50d44360fb, type: 2}
-  - {fileID: 11400000, guid: 3a50b1658d93b544590ac2ef28b1f0bc, type: 2}
-  - {fileID: 11400000, guid: b45f7efad8a4f224cace98e73cc9e55c, type: 2}
-  - {fileID: 11400000, guid: faf092731db9f8b46997546efcee6524, type: 2}
+  - roomPack: {fileID: 11400000, guid: 27639eefb5f9c824099f3aa48d70f510, type: 2}
+    minNumberToSPawn: 0
+    maxNumberToSPawn: 2
+  - roomPack: {fileID: 11400000, guid: b7984139fb576fc47acd25fae1b5f22b, type: 2}
+    minNumberToSPawn: 2
+    maxNumberToSPawn: 4
   corridorConfigurations:
   - {fileID: 11400000, guid: 58efd7964c4463a419d6bf7c643561d4, type: 2}
   - {fileID: 11400000, guid: d6462cdff3382a5418773465321eeb31, type: 2}

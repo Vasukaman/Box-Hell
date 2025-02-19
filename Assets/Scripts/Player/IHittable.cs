@@ -5,13 +5,13 @@ using System;
 [Serializable]
 public struct HitData
 {
-    public float damage;
+    public int damage;
     public ItemCore sourseItem;
     public Vector3 position;
     public Vector3 hitForce;
     public DecalTextureData decalData;
 
-    public HitData(float _damage, ItemCore _sourseItem, Vector3 _position, Vector3 _hitforce, DecalTextureData _decalData)
+    public HitData(int _damage, ItemCore _sourseItem, Vector3 _position, Vector3 _hitforce, DecalTextureData _decalData)
     {
         damage = _damage;
         sourseItem = _sourseItem;

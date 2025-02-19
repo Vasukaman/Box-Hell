@@ -13,11 +13,19 @@ public class DungeonManager : MonoBehaviour
     int currentTier; // Track current progression tier
     [SerializeField] PlayerCore playerCore;
     [SerializeField] RoomConfiguration initialRoom;
+    // Add these new variables
+    private HashSet<RoomConfiguration> spawnedRooms = new HashSet<RoomConfiguration>();
+    private List<RoomConfiguration> allPossibleRooms = new List<RoomConfiguration>();
     private int roomNumber=0;
     void Start()
     {
         currentTier = 0;
-        GenerateInitialRoom();
+        GenerateInitialRoom();      
+    }
+
+    public void RestartScene()
+    {
+        Application.LoadLevel(Application.loadedLevel);
     }
 
     void GenerateInitialRoom()
@@ -186,10 +194,48 @@ public class DungeonManager : MonoBehaviour
         {
             if (tierData.tier == targetTier)
             {
-                return GetWeightedRandom(tierData.roomConfigurations);
+                // Build eligible rooms list
+                var eligibleRooms = GetEligibleRooms(tierData);
+                if (eligibleRooms.Count == 0)
+                {
+                    // Reset tracking if no available rooms
+                    spawnedRooms.Clear();
+                    eligibleRooms = GetEligibleRooms(tierData);
+                }
+
+                var selectedRoom = GetWeightedRandom(eligibleRooms);
+                spawnedRooms.Add(selectedRoom);
+                return selectedRoom;
             }
         }
         return null;
+    }
+
+    List<RoomConfiguration> GetEligibleRooms(RoomTier tierData)
+    {
+        List<RoomConfiguration> eligibleRooms = new List<RoomConfiguration>();
+        allPossibleRooms.Clear();
+
+        // Collect rooms from all eligible packs
+        foreach (var packConfig in tierData.roomConfigurations)
+        {
+            if (roomNumber >= packConfig.minNumberToSPawn &&
+                roomNumber <= packConfig.maxNumberToSPawn)
+            {
+                allPossibleRooms.AddRange(packConfig.roomPack.roomConfigurations);
+            }
+        }
+
+        // Filter out already spawned rooms
+        foreach (var config in allPossibleRooms)
+        {
+            if (!spawnedRooms.Contains(config))
+            {
+                eligibleRooms.Add(config);
+            }
+        }
+
+        return eligibleRooms;
     }
 
     CorridorConfiguration GetRandomCorridorConfig(int targetTier)

@@ -11,6 +11,8 @@ struct TurretSoundPack
     public SoundData lostPlayerSound;
     public SoundData aimAtPlayerSound;
     public SoundData prepareToShootSound;
+    public SoundData onHit;
+    public SoundData onDestroyed;
 
 }   
 
@@ -31,6 +33,8 @@ public class TurretSoundManager : MonoBehaviour
            case "LostPlayer": PlaySound(soundPack.lostPlayerSound); break;
            case "AimAtPlayer": PlaySound(soundPack.aimAtPlayerSound); break;
            case "PrepareToShoot": PlaySound(soundPack.prepareToShootSound); break;
+           case "OnHit": PlaySound(soundPack.onHit); break;
+           case "OnDestroy": PlaySound(soundPack.onDestroyed); break;
         }
 
     }

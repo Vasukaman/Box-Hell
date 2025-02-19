@@ -49,7 +49,7 @@ public class RegularMeleeTool : Tool
             Vector3 force = hit.point - mainCamera.transform.position;
             force = force.normalized * hitForce;
             DecalTextureData decal = new DecalTextureData();
-            HitData hitData = new HitData(damage, itemCore, hit.point, force, decal);
+            HitData hitData = new HitData((int)damage, itemCore, hit.point, force, decal); //I don't want to fuckup weapon settings, so I will just make damage int here.
             Vector3 pos = hit.point + hit.normal * 0.1f;
             DecalFactory.Instance.SpawnDecal(PickDecal(), pos, hit.normal,hit.collider.transform);
             damageable.TakeHit(hitData);
