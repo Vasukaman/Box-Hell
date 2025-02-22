@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa733b4fc82550b44a11f3da9dd8db23, type: 3}
+  m_Name: Rooms Test
+  m_EditorClassIdentifier: 
+  tier: 0
+  roomConfigurations:
+  - roomPack: {fileID: 11400000, guid: fdf5e6e318eff3342ad4f420f88dfa8b, type: 2}
+    minNumberToSPawn: 0
+    maxNumberToSPawn: 100
+  corridorConfigurations:
+  - {fileID: 11400000, guid: 58efd7964c4463a419d6bf7c643561d4, type: 2}
+  - {fileID: 11400000, guid: d6462cdff3382a5418773465321eeb31, type: 2}

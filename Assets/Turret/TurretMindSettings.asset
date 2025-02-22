@@ -16,15 +16,15 @@ MonoBehaviour:
   fovAngle: 40
   obstructionLayers:
     serializedVersion: 2
-    m_Bits: 753
+    m_Bits: 241
   minHorizontalAngle: -100
   maxHorizontalAngle: 100
-  minVerticalAngle: -30
+  minVerticalAngle: -80.4
   maxVerticalAngle: 75
   idlePointA: {x: -80, y: -20}
   idlePointB: {x: 80, y: 10}
   idleRotationSpeed: 30
-  aimSpeed: 95
+  aimSpeed: 122.1
   aimThreshold: 87.3
   shootCooldown: 1.5
   timeBeforeToPrepareToShoot: 0.7

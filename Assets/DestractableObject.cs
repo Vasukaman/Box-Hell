@@ -35,7 +35,7 @@ public class DestractableObject : MonoBehaviour, IHittable, IDamageableByExplosi
     }
 
     public void TakeExplosionDamage(ExplosionData explosionData, Vector3 explosionOrigin)
-    {
+    {   
         if (_takeDamageByExplosion)
         TakeDamage((int)explosionData.baseDamage);
     }

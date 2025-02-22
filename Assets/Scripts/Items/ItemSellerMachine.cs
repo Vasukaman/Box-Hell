@@ -81,7 +81,7 @@ public class ItemSellerMachine : MonoBehaviour
 
     private void UpdateTriggerState()
     {
-        bool isValidState = itemsInTrigger.Count == 1;
+        bool isValidState = itemsInTrigger.Count > 0;
         greenLight.SetActive(isValidState);
         redLight.SetActive(!isValidState);
         priceText.text = isValidState ? itemsInTrigger[0].price.ToString() + "$" : "";
@@ -121,7 +121,7 @@ public class ItemSellerMachine : MonoBehaviour
     public void TryActivating(PlayerCore player)
     {
       //  CleanNullItems();
-        if (itemsInTrigger.Count != 1 || isProcessing) return;
+        if (itemsInTrigger.Count == 0 || isProcessing) return;
 
         currentItem = itemsInTrigger[0];
         isProcessing = true;
@@ -132,10 +132,10 @@ public class ItemSellerMachine : MonoBehaviour
     public void TrySelling()
     {
         //CleanNullItems();
-        if (currentItem != null)
+        foreach (ItemCore item in itemsInTrigger)
         {
-            storedMoney += currentItem.price;
-            Destroy(currentItem.gameObject);
+            storedMoney += item.price;
+            Destroy(item.gameObject);
             //CleanNullItems();
 
             UpdateMoneyDisplay();

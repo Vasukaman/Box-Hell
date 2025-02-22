@@ -94,7 +94,7 @@ public class ScannerVisual : MonoBehaviour
             RaycastHit hit;
             Vector3 endPoint = _rayOrigin.position + direction * _rayMaxDistance;
 
-            if (Physics.Raycast(_rayOrigin.position, direction, out hit, _rayMaxDistance, _obstructionLayers))
+            if (Physics.Raycast(_rayOrigin.position, direction, out hit, _rayMaxDistance, _obstructionLayers, QueryTriggerInteraction.Ignore))
             {
                 endPoint = hit.point;
             }

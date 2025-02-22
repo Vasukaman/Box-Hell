@@ -190,7 +190,7 @@ public class TurretMind : MonoBehaviour
         float angle = Vector3.Angle(_head.forward, directionToPlayer);
         if (angle > _settings.fovAngle / 2) return false;
 
-        if (Physics.Raycast(_head.position, directionToPlayer, distance, _settings.obstructionLayers))
+        if (Physics.Raycast(_head.position, directionToPlayer, distance, _settings.obstructionLayers, QueryTriggerInteraction.Ignore))
             return false;
 
         return true;

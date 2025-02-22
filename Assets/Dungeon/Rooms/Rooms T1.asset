@@ -14,12 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tier: 0
   roomConfigurations:
-  - roomPack: {fileID: 11400000, guid: 27639eefb5f9c824099f3aa48d70f510, type: 2}
+  - roomPack: {fileID: 11400000, guid: b591f9bcfd448a543bc112ce0eaba3df, type: 2}
     minNumberToSPawn: 0
+    maxNumberToSPawn: 0
+  - roomPack: {fileID: 11400000, guid: 27639eefb5f9c824099f3aa48d70f510, type: 2}
+    minNumberToSPawn: 1
     maxNumberToSPawn: 2
   - roomPack: {fileID: 11400000, guid: b7984139fb576fc47acd25fae1b5f22b, type: 2}
-    minNumberToSPawn: 2
-    maxNumberToSPawn: 4
+    minNumberToSPawn: 3
+    maxNumberToSPawn: 3
+  - roomPack: {fileID: 11400000, guid: 27639eefb5f9c824099f3aa48d70f510, type: 2}
+    minNumberToSPawn: 4
+    maxNumberToSPawn: 5
+  - roomPack: {fileID: 11400000, guid: b7984139fb576fc47acd25fae1b5f22b, type: 2}
+    minNumberToSPawn: 6
+    maxNumberToSPawn: 6
+  - roomPack: {fileID: 11400000, guid: 27639eefb5f9c824099f3aa48d70f510, type: 2}
+    minNumberToSPawn: 7
+    maxNumberToSPawn: 7
+  - roomPack: {fileID: 11400000, guid: b7984139fb576fc47acd25fae1b5f22b, type: 2}
+    minNumberToSPawn: 8
+    maxNumberToSPawn: 8
+  - roomPack: {fileID: 11400000, guid: 27639eefb5f9c824099f3aa48d70f510, type: 2}
+    minNumberToSPawn: 9
+    maxNumberToSPawn: 100
+  - roomPack: {fileID: 11400000, guid: b7984139fb576fc47acd25fae1b5f22b, type: 2}
+    minNumberToSPawn: 9
+    maxNumberToSPawn: 100
   corridorConfigurations:
   - {fileID: 11400000, guid: 58efd7964c4463a419d6bf7c643561d4, type: 2}
   - {fileID: 11400000, guid: d6462cdff3382a5418773465321eeb31, type: 2}

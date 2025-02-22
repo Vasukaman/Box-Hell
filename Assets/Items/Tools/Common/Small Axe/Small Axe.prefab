@@ -262,6 +262,16 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4789499110035622911, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789499110035622911, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.85
+      objectReference: {fileID: 0}
     - target: {fileID: 4805989272801074955, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
       propertyPath: useProcAnim

@@ -27,12 +27,13 @@ public class Explosion : MonoBehaviour
     {
        
         // Find all colliders in explosion radius
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _explosionData.radius, _explosionData.affectedLayers);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _explosionData.radius, _explosionData.affectedLayers,QueryTriggerInteraction.Ignore);
 
         HashSet<GameObject> processedObjects = new HashSet<GameObject>();
 
         foreach (Collider hitCollider in hitColliders)
         {
+            
             GameObject target = hitCollider.attachedRigidbody != null ?
                 hitCollider.attachedRigidbody.gameObject :
                 hitCollider.gameObject;
@@ -50,9 +51,11 @@ public class Explosion : MonoBehaviour
             // Apply explosion effects  
             if (target.TryGetComponent(out IDamageableByExplosion damageasble))
             {
-                damageasble.TakeExplosionDamage(_explosionData, transform.position);
+                damageasble = target.GetComponentInParent<IDamageableByExplosion>();
             }
 
+            if (damageasble!=null)
+            damageasble.TakeExplosionDamage(_explosionData, transform.position);
             // Apply physics force
             if (_explosionData.applyForce && target.TryGetComponent(out Rigidbody rb))
             {

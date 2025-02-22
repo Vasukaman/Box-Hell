@@ -4518,7 +4518,7 @@ MonoBehaviour:
   greenLight: {fileID: 3216475210896073977}
   redLight: {fileID: 8813446873333133448}
   animationComponent: {fileID: 3832191789623951290}
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1692320717820976460}
   activateButton: {fileID: 2776660184516737847}
   collectCoinsButton: {fileID: 6213618708188297152}
 --- !u!111 &3832191789623951290

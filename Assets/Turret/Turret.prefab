@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6222398590249038113}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8744647881567307546}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Scanner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 6494936306279413125}
   - component: {fileID: 2708537810184758754}
   - component: {fileID: 8870409787399563791}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 40.57
+  m_Intensity: 176.73
   m_Range: 45.68
   m_SpotAngle: 107.19744
   m_InnerSpotAngle: 104.60757
@@ -197,7 +197,9 @@ GameObject:
   - component: {fileID: 2099469133783252299}
   - component: {fileID: 3262113414232027683}
   - component: {fileID: 8849550475963371614}
-  m_Layer: 10
+  - component: {fileID: 6309085205211780490}
+  - component: {fileID: 8677455799196763363}
+  m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +643,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 32.84
+  m_Radius: 123.95
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8849550475963371614
 MonoBehaviour:
@@ -680,6 +682,48 @@ MonoBehaviour:
       m_Calls: []
   _takeDamageByHit: 0
   _takeDamageByExplosion: 1
+--- !u!65 &6309085205211780490
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3485568258307216817}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.69651324, y: 0.25, z: 0.78304577}
+  m_Center: {x: 0.0064000776, y: 1.795, z: -0.09592725}
+--- !u!65 &8677455799196763363
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3485568258307216817}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.69651324, y: 0.25, z: 0.78304577}
+  m_Center: {x: 0.0064256755, y: 1.795, z: -0.09592725}
 --- !u!1 &6893973103922309782
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +1030,7 @@ MonoBehaviour:
   _rayOrigin: {fileID: 6494936306279413125}
   _lineRendererPrefab: {fileID: 8712676330730239981, guid: f0fc5b5a349377f4ea56a664bbc64ffb,
     type: 3}
-  _minFOV: 5
+  _minFOV: 2.6
   _numRays: 10
   _updateInterval: 0.01
   _rayDuration: 0.01
@@ -1015,7 +1059,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 2.6, y: 6.58318, z: 2.24}
   m_Center: {x: 0, y: 4.8884106, z: 0}
@@ -1036,7 +1080,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 2.7860534, y: 1, z: 3.132183}
   m_Center: {x: 0.025600314, y: 7.18, z: -0.38370895}
@@ -1231,7 +1275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466606324274789060}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
