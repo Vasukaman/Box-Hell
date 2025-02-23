@@ -79,7 +79,7 @@ MonoBehaviour:
   damageableLayers:
     serializedVersion: 2
     m_Bits: 1011
-  maxDurability: 45
+  maxDurability: 100
   durabilityLossPerUse: 1
   item: {fileID: 11400000, guid: d72cd3b7289450f41ad8ddf51119f163, type: 2}
   itemCore: {fileID: 3898864334834387110}

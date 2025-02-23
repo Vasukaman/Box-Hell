@@ -15,4 +15,10 @@ MonoBehaviour:
   items:
   - item: {fileID: 11400000, guid: 5bc362b2684549449b84634e6e8d2e0f, type: 2}
     dropScore: 50
+  - item: {fileID: 11400000, guid: fee907c05ac7d7d4988d1af41aa44132, type: 2}
+    dropScore: 50
+  - item: {fileID: 11400000, guid: ae4c1e0b069f7284491803ef2a035329, type: 2}
+    dropScore: 50
+  - item: {fileID: 11400000, guid: f220f1bcb29c41349ba0ce9137f662e2, type: 2}
+    dropScore: 50
   noDropScore: 0

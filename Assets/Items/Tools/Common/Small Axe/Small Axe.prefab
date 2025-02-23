@@ -301,7 +301,7 @@ PrefabInstance:
     - target: {fileID: 8175846542059852792, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
       propertyPath: maxDurability
-      value: 20
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8237476037356790953, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
@@ -396,7 +396,7 @@ PrefabInstance:
     - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
       propertyPath: prepareDuration
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}

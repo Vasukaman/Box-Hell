@@ -15,7 +15,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: fe3608a63b99ef241b7ad9beb70933e1, type: 3}
   itemName: Can
   description: 
-  price: 0
+  price: 5
   type: 1
   itemCore: {fileID: 8525495134040747868, guid: 1f1add96ca0855049bbf05714ba41c44,
     type: 3}

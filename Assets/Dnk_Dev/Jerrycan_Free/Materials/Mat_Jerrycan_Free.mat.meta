@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a4ae2e645bad9214a90b38f258cc4d5e
+timeCreated: 1485504434
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80011
+  packageName: PBR Jerrycan Free
+  packageVersion: 1.0
+  assetPath: Assets/Dnk_Dev/Jerrycan_Free/Materials/Mat_Jerrycan_Free.mat
+  uploadId: 158771
