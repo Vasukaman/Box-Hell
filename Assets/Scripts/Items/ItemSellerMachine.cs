@@ -84,12 +84,11 @@ public class ItemSellerMachine : MonoBehaviour
         bool isValidState = itemsInTrigger.Count > 0;
         greenLight.SetActive(isValidState);
         redLight.SetActive(!isValidState);
-        priceText.text = isValidState ? itemsInTrigger[0].price.ToString() + "$" : "";
-        itemNameText.text = isValidState ? itemsInTrigger[0].item.name : "";
 
+        UpdateDisplay();
        // if (!isValidState) StopProcessing 
-        // Clear stored colliders each frame
-      
+       // Clear stored colliders each frame
+
     }
 
     private void StopProcessing()
@@ -102,13 +101,18 @@ public class ItemSellerMachine : MonoBehaviour
 
     private void UpdateDisplay()
     {
-        bool isValidState = itemsInTrigger.Count == 1;
+        bool isValidState = itemsInTrigger.Count > 0;
         Debug.Log("Valid State? " + isValidState);
         Debug.Log("itemsInTrigger? " + itemsInTrigger);
-
+        int priceSum = 0;
+        foreach (ItemCore item in itemsInTrigger)
+        {
+            priceSum += item.price;
+        }
+       
         greenLight.SetActive(isValidState);
         redLight.SetActive(!isValidState);
-        priceText.text = isValidState ? itemsInTrigger[0].price.ToString() + "$" : "";
+        priceText.text = isValidState ? priceSum.ToString() + "$" : "";
         itemNameText.text = isValidState ? itemsInTrigger[0].item.name : "";
 
     }
