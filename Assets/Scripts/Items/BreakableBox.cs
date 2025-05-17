@@ -1,7 +1,5 @@
-// BreakableBox.cs (Example implementation)
 using UnityEngine;
 using System.Collections;
-
 
 public class BreakableBox : HittableBase
 {
@@ -9,9 +7,7 @@ public class BreakableBox : HittableBase
     [SerializeField] private Transform breakEffectPoint;
 
     [SerializeField] private float breakFragmentsForce;
-    [SerializeField] private float timeBeforeBreak=0.1f;
-
-    
+    [SerializeField] private float timeBeforeBreak = 0.1f;
 
     [SerializeField] private LootConfiguration lootConfig;
 
@@ -19,10 +15,14 @@ public class BreakableBox : HittableBase
     [SerializeField] Transform lootSpawnPoint;
     [SerializeField] BoxSoundManager soundManager;
     [SerializeField] CoinsParticles coinSpawner;
+
+    // New serialized fields for ground check
+    [SerializeField] private float groundCheckRange = 1f;
+    [SerializeField] private LayerMask groundCheckMask;
+
     protected override void Break(Vector3 hitPoint)
     {
         StartCoroutine(WaitAndBreak());
-       // base.Break();
     }
 
     IEnumerator WaitAndBreak()
@@ -30,11 +30,9 @@ public class BreakableBox : HittableBase
         yield return new WaitForSeconds(timeBeforeBreak);
         OnBreak();
     }
-    protected void  OnBreak()
+
+    protected void OnBreak()
     {
-
-        // Play effects
-
         if (coinSpawner != null)
         {
             coinSpawner.SpawnCoins(Random.Range(lootConfig.minCoins, lootConfig.maxCoins));
@@ -42,25 +40,28 @@ public class BreakableBox : HittableBase
         }
 
         float luck = 0;
-        Item droppedItem = LootManager.GenerateBoxLoot(lootConfig, 1, luck, lootSpawnPoint.position);
+        Vector3 lootSpawnPosition = lootSpawnPoint.position;
 
+        // Perform raycast to adjust loot spawn position
+        RaycastHit hit;
+        if (Physics.Raycast(lootSpawnPoint.position, Vector3.down, out hit, groundCheckRange, groundCheckMask))
+        {
+            lootSpawnPosition = hit.point;
+        }
+
+        Item droppedItem = LootManager.GenerateBoxLoot(lootConfig, 1, luck, lootSpawnPosition);
 
         if (droppedItem != null)
-
         {
             if (droppedItem.raritySO.dropEffect != null)
             {
                 Instantiate(droppedItem.raritySO.dropEffect, breakEffectPoint.position, Quaternion.identity);
-
             }
             if (droppedItem.raritySO.spawnSound.sound != null)
             {
-
                 soundManager.PlaySound(droppedItem.raritySO.spawnSound);
             }
         }
-
-
 
         fragmentsParent.gameObject.SetActive(true);
         Vector3 globalPos = fragmentsParent.position;
@@ -75,19 +76,11 @@ public class BreakableBox : HittableBase
         soundManager.PlayBreakSound();
 
         Destroy(this.gameObject);
-
-
     }
 
     public override void TakeHit(HitData hitData)
     {
         base.TakeHit(hitData);
-
         soundManager.PlayHitSound();
     }
-
-
-
-
-
 }

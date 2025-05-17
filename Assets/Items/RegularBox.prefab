@@ -21716,6 +21716,7 @@ MonoBehaviour:
   destroyOnBreak: 0
   rigidBody: {fileID: 601204725709746812}
   timeBeforeExploionDamage: 0.02
+  damageOnHit: 1
   breakEffect: {fileID: 6186083135284723102, guid: 695e37dc2ade1de49909619b6e1ee5ec,
     type: 3}
   breakEffectPoint: {fileID: 7802374339391750015}
@@ -34301,12 +34302,12 @@ PrefabInstance:
     - target: {fileID: 7992543212221228961, guid: 339173f7c2dd13344a3705949eed571b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.072
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 7992543212221228961, guid: 339173f7c2dd13344a3705949eed571b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7992543212221228961, guid: 339173f7c2dd13344a3705949eed571b,
         type: 3}
