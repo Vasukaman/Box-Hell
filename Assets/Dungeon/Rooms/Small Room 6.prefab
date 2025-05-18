@@ -78774,6 +78774,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3761973772474170134}
     m_Modifications:
+    - target: {fileID: 869452663521190252, guid: 8950a2423cc82af4aa41a5644814ec26,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 641
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564165465040069014, guid: 8950a2423cc82af4aa41a5644814ec26,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 708
+      objectReference: {fileID: 0}
     - target: {fileID: 4525894687938016257, guid: 8950a2423cc82af4aa41a5644814ec26,
         type: 3}
       propertyPath: m_Name
@@ -78829,40 +78839,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8101569347453387541, guid: 8950a2423cc82af4aa41a5644814ec26,
+    - target: {fileID: 9155963209359330432, guid: 8950a2423cc82af4aa41a5644814ec26,
         type: 3}
-      propertyPath: redLight
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8101569347453387541, guid: 8950a2423cc82af4aa41a5644814ec26,
-        type: 3}
-      propertyPath: moneyText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8101569347453387541, guid: 8950a2423cc82af4aa41a5644814ec26,
-        type: 3}
-      propertyPath: priceText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8101569347453387541, guid: 8950a2423cc82af4aa41a5644814ec26,
-        type: 3}
-      propertyPath: greenLight
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8101569347453387541, guid: 8950a2423cc82af4aa41a5644814ec26,
-        type: 3}
-      propertyPath: itemNameText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8101569347453387541, guid: 8950a2423cc82af4aa41a5644814ec26,
-        type: 3}
-      propertyPath: activateButton
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8101569347453387541, guid: 8950a2423cc82af4aa41a5644814ec26,
-        type: 3}
-      propertyPath: collectCoinsButton
-      value: 
+      propertyPath: m_VersionIndex
+      value: 488
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

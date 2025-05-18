@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6508492068418824101}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Rest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3028733045229593934}
   - component: {fileID: 1519342857656415183}
   - component: {fileID: 1262566229462680032}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HammerItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 3741943502194189976}
   - component: {fileID: 2113676603267527669}
   - component: {fileID: 3627605280523489382}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HammerWorldItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 6523045628077634199}
   - component: {fileID: 6979819772686871157}
   - component: {fileID: 4168717594174465687}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2967906822795402339}
   - component: {fileID: 3733363470532971904}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: HammerTool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +711,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8157641255001350668}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,7 +742,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 506575211768373141}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Prepare
   m_TagString: Untagged
   m_Icon: {fileID: 0}

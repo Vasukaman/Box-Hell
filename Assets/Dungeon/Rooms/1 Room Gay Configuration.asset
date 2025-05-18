@@ -19,4 +19,4 @@ MonoBehaviour:
     type: 3}
   minTier: 0
   maxTier: 99
-  hasSellMachine: 1
+  hasSellMachine: 0
