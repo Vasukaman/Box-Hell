@@ -61867,6 +61867,21 @@ PrefabInstance:
       propertyPath: boxSpawners.Array.data[16]
       value: 
       objectReference: {fileID: 7162252320013158731}
+    - target: {fileID: 2443815506765524789, guid: 784c6ed3cf161e6429e238c27a913c5e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443815506765524789, guid: 784c6ed3cf161e6429e238c27a913c5e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443815506765524789, guid: 784c6ed3cf161e6429e238c27a913c5e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.87
+      objectReference: {fileID: 0}
     - target: {fileID: 2465645661362229143, guid: 784c6ed3cf161e6429e238c27a913c5e,
         type: 3}
       propertyPath: m_LocalPosition.x
