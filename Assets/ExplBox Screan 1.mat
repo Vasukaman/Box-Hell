@@ -38,7 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Animation_Sheet:
-        m_Texture: {fileID: 2800000, guid: edd294599931cc9429f5fc48a92bc65d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 21aa75dbd86aade46adc52e434421d8a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -107,7 +107,7 @@ Material:
     - _BG_Dot_Size: 50
     - _Background: 0
     - _Blend: 0
-    - _Blending: 1
+    - _Blending: 0
     - _BumpScale: 1
     - _Change_Texture_Background: 0
     - _ClearCoatMask: 0
@@ -119,7 +119,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DistanceToMaxBlend: 2.06
     - _DistanceToStartBlending: 0.58
-    - _Dot_Size: 16.6
+    - _Dot_Size: 13.7
     - _DstBlend: 0
     - _Emiision_Multiplier: 1
     - _Emiision_Multiplier_Max: 2
@@ -127,7 +127,7 @@ Material:
     - _EnvironmentReflections: 1
     - _Flickering: 0
     - _Flickering_Multiplier: 0
-    - _Flickering_Speed: 2
+    - _Flickering_Speed: 1.8
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -138,7 +138,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Remove_BG_Fuzziness: 1.9
+    - _Remove_BG_Fuzziness: 0
     - _Remove_BG_Range: 0
     - _Screen_Animation: 0.78
     - _Screen_ON: 1
