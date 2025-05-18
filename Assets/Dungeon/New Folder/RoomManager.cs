@@ -21,14 +21,20 @@ public class RoomManager : MonoBehaviour
 
     [SerializeField] private Transform respawnTransform;
     [SerializeField] public PlayerCore playerCore;
-    public event System.Action<RoomConnectionPoint> OnExitSelected;
+    public event System.Action<Door> OnExitSelected;
     public event System.Action OnEnterTrigger;
     private bool entered;
     public int roomNumber;
 
+
+
+    //I hope this is not bad idea. Use it as little as possible, pls
+    //private DungeonManager 
+
+
     void Start()
     {
-        InitializeDoors();
+       
    
         PrepareRoom();
 
@@ -72,13 +78,14 @@ public class RoomManager : MonoBehaviour
     }
 
 
-    void InitializeDoors()
+    public void InitializeDoors(DungeonManager _dungeonManager) //This is bad! Stupid evil doors, needing to have roomConfig
     {
         foreach (var door in doors)
         {
             door.OnDoorInteracted += HandleDoorInteraction;
             door.GeneratePrice(roomNumber);
             door.SetRoomNumber(roomNumber+1);
+            door.SetRoomConfig(_dungeonManager.GetRandomRoomConfig(0));
         }
        
        enterDoor.TryOpenningDoor();
@@ -86,12 +93,12 @@ public class RoomManager : MonoBehaviour
         enterDoor.SetRoomNumber(0);
     }
 
-    void HandleDoorInteraction(DoorController door, RoomConnectionPoint connection)
+    void HandleDoorInteraction(DoorController door, Door doorData)
     {
         if (isActive)
         {
             Debug.Log("Exit seleted");
-            OnExitSelected?.Invoke(connection);
+            OnExitSelected?.Invoke(doorData);
         }
     }
         

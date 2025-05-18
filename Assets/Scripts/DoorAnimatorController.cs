@@ -17,7 +17,7 @@ public class DoorAnimatorController : MonoBehaviour
         anim.AddClip(openAnimClip, "OpenDoor");
         anim.AddClip(closeAnimClip, "CloseDoor");
     }
-    public void HandleDoorOpen(DoorController door, RoomConnectionPoint point)
+    public void HandleDoorOpen(DoorController door, Door doorData)
     {
         OpenDoor();
     }

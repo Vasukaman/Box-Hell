@@ -14,3 +14,11 @@ public struct CorridorConnection
     public Transform startAnchor;
     public Transform endAnchor;
 }
+
+
+[System.Serializable]
+public struct Door
+{
+    public RoomConnectionPoint connectionPoint;
+    public RoomConfiguration roomConfiguration;
+}

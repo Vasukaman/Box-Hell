@@ -5,9 +5,10 @@ public class DoorController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private TextMeshProUGUI roomNumberText;
+    [SerializeField] private GameObject hasSellerIcon;
     public DoorState currentState;
     public RoomConnectionPoint connectionPoint;
-    public System.Action<DoorController, RoomConnectionPoint> OnDoorInteracted; //Actually on Door opened
+    public System.Action<DoorController, Door> OnDoorInteracted; //Actually on Door opened
     public System.Action OnDoorClosed; //Actually on Door opened
     public int price;
     [SerializeField] private int stableDoorPriceMultiplier = 5;
@@ -16,6 +17,7 @@ public class DoorController : MonoBehaviour
         
     public bool startOpened = false;
 
+    private Door _door;//I'll make it private for now. Mb I can refactor t later to not double connectionPoint
     private void Start()
     {
         if (startOpened) OpenDoor();
@@ -38,6 +40,14 @@ public class DoorController : MonoBehaviour
 
         if (roomNumber < 1)
             roomNumberText.text = "";
+    }
+
+    public void SetRoomConfig(RoomConfiguration _roomConfig)
+    {
+
+        _door.roomConfiguration = _roomConfig;
+
+        hasSellerIcon.SetActive(_roomConfig.hasSellMachine);
     }
 
     public void SetPrice(int newPrice)
@@ -80,7 +90,9 @@ public class DoorController : MonoBehaviour
     private void OpenDoor()
     {
         Debug.Log("Door Opened");
-        OnDoorInteracted?.Invoke(this, connectionPoint);
+        _door.connectionPoint = connectionPoint;
+  
+        OnDoorInteracted?.Invoke(this, _door);
 
         if (currentState!=DoorState.Opened) SetState(DoorState.Opened);
      

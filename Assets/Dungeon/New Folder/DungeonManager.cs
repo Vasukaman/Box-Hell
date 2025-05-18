@@ -36,20 +36,22 @@ public class DungeonManager : MonoBehaviour
  
 
         currentRoom = Instantiate(initialRoom.roomPrefab, worldAnchor).GetComponent<RoomManager>();
+      
         currentRoom.tier = currentTier; // Set initial tier
         currentRoom.OnExitSelected += HandleExitSelected;
         playerCore.SetCurrentRoomManager(currentRoom);
         currentRoom.playerCore = playerCore;
         currentRoom.ActivateRoom();
-
+ 
         //roomNumber++;
         currentRoom.roomNumber = roomNumber;
+        currentRoom.InitializeDoors(this);
     }
 
-    void HandleExitSelected(RoomConnectionPoint exitPoint)
+    void HandleExitSelected(Door door)
     {
         Debug.Log("Start spawn sequence");
-        StartCoroutine(RoomTransitionSequence(exitPoint));
+        StartCoroutine(RoomTransitionSequence(door));
 
     }
 
@@ -85,7 +87,7 @@ public class DungeonManager : MonoBehaviour
         Destroy(previousCorridor.gameObject);
     }
 
-    System.Collections.IEnumerator RoomTransitionSequence(RoomConnectionPoint exitPoint)
+    System.Collections.IEnumerator RoomTransitionSequence(Door _door)
     {
       
 
@@ -93,10 +95,19 @@ public class DungeonManager : MonoBehaviour
         int nextTier = currentTier + 1;
         if (nextTier >= dungeonTiers.Count) nextTier = dungeonTiers.Count - 1;
 
-        var nextRoomConfig = GetRandomRoomConfig(nextTier);
+
+        RoomConfiguration nextRoomConfig;
+
+        //Pick room config
+        if (_door.roomConfiguration != null)
+            nextRoomConfig = _door.roomConfiguration;
+        else
+            nextRoomConfig = GetRandomRoomConfig(nextTier);
+
+
         var corridorConfig = GetRandomCorridorConfig(currentTier);
 
-        SpawnNewSection(exitPoint, nextRoomConfig, corridorConfig, nextTier);
+        SpawnNewSection(_door.connectionPoint, nextRoomConfig, corridorConfig, nextTier);
         yield return new WaitForSeconds(0.1f);
         //Destroy(currentCorridor?.gameObject);
         // Destroy(currentRoom.gameObject);
@@ -116,8 +127,12 @@ public class DungeonManager : MonoBehaviour
         // Instantiate new room at corridor end
         var newRoom = Instantiate(nextRoomConfig.roomPrefab, corridorEndPosition, corridorEndRotation);
         var roomManager = newRoom.GetComponent<RoomManager>();
+
         playerCore.SetCurrentRoomManager(roomManager);
         roomManager.tier = newTier;
+
+        spawnedRooms.Add(nextRoomConfig);
+
 
         // Fine-tune room position using entry point
         RoomConnectionPoint roomEntry = roomManager.GetEntryPoint(exitPoint.direction);
@@ -159,7 +174,8 @@ public class DungeonManager : MonoBehaviour
         currentRoom.ActivateRoom();
 
         roomNumber++;
-        currentRoom.roomNumber = roomNumber;    
+        currentRoom.roomNumber = roomNumber;
+        roomManager.InitializeDoors(this);
         //// Cleanup old room after delay
         //StartCoroutine(CleanupOldRoom());
     }
@@ -188,7 +204,7 @@ public class DungeonManager : MonoBehaviour
         room.transform.rotation = rotationOffset * room.transform.rotation;
     }
 
-    RoomConfiguration GetRandomRoomConfig(int targetTier)
+   public RoomConfiguration GetRandomRoomConfig(int targetTier)
     {
         foreach (var tierData in dungeonTiers)
         {
@@ -204,7 +220,7 @@ public class DungeonManager : MonoBehaviour
                 }
 
                 var selectedRoom = GetWeightedRandom(eligibleRooms);
-                spawnedRooms.Add(selectedRoom);
+          
                 return selectedRoom;
             }
         }

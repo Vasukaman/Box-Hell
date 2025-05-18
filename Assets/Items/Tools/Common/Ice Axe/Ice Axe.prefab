@@ -204,6 +204,11 @@ PrefabInstance:
       propertyPath: maxDurability
       value: 55
       objectReference: {fileID: 0}
+    - target: {fileID: 8175846542059852792, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: damageableLayers.m_Bits
+      value: 979
+      objectReference: {fileID: 0}
     - target: {fileID: 8225609637080445691, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
       propertyPath: m_LocalRotation.w

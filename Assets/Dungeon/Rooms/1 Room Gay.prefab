@@ -25906,7 +25906,7 @@ GameObject:
   - component: {fileID: 6834277456779583403}
   - component: {fileID: 3350897255571029344}
   - component: {fileID: 320029773115200882}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: 1 Room Gay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
