@@ -14,6 +14,9 @@ public class DoorController : MonoBehaviour
     [SerializeField] private int stableDoorPriceMultiplier = 5;
     [SerializeField] private int randomDoorPriceMinMultiplier = 1;
     [SerializeField] private int randomDoorPriceMaxMultiplier = 5;
+    [SerializeField] public ProgressIndicator profitIndicator;
+    [SerializeField] public ProgressIndicator dangerIndicator;
+
         
     public bool startOpened = false;
 
@@ -31,6 +34,9 @@ public class DoorController : MonoBehaviour
         {
             newPrice += Random.Range(randomDoorPriceMinMultiplier, randomDoorPriceMaxMultiplier);
         }
+        if (_door.roomConfiguration != null)
+            newPrice *=(int)_door.roomConfiguration.priceMultiplier;
+
         SetPrice(newPrice);
     }
     public void SetRoomNumber(int roomNumber)
@@ -46,14 +52,16 @@ public class DoorController : MonoBehaviour
     {
 
         _door.roomConfiguration = _roomConfig;
-
+        profitIndicator.UpdateProgress(_roomConfig.profitLevel, 5);
+        dangerIndicator.UpdateProgress(_roomConfig.dangerLevel, 5);
         hasSellerIcon.SetActive(_roomConfig.hasSellMachine);
     }
 
     public void SetPrice(int newPrice)
     {
         price = newPrice;
-        priceText.text = price.ToString();
+   
+        priceText.text = price.ToString()+"$";
 
         if (price < 1)
             priceText.text = "";

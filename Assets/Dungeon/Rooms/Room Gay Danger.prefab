@@ -27608,6 +27608,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5556024491038078949, guid: 602352b04882c0c408604bfcbe7918d4,
         type: 3}
+      propertyPath: startOpened
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556024491038078949, guid: 602352b04882c0c408604bfcbe7918d4,
+        type: 3}
       propertyPath: connectionPoint.spawnAnchor
       value: 
       objectReference: {fileID: 647100226296643980}

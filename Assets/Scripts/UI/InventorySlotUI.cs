@@ -10,6 +10,7 @@ public class InventorySlotUI : MonoBehaviour
 {
     [SerializeField] private Image iconImage;
     [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private RectTransform selectionTransform;
     [SerializeField] private CanvasGroup textCanvasGroup;
     [SerializeField] private TextMeshProUGUI durabilityText;
@@ -40,6 +41,10 @@ public class InventorySlotUI : MonoBehaviour
 
             durabilityText.enabled = false;
             durabilityText.text = "";
+
+
+            priceText.enabled = false;
+            priceText.text = "";
             return;
 
         }
@@ -52,13 +57,16 @@ public class InventorySlotUI : MonoBehaviour
         currentItem = item;
         iconImage.enabled = item != null;
         durabilityText.enabled = false;
-
+        priceText.enabled = false;
 
 
         if (item != null)
         {
             iconImage.sprite = item.item.icon;
             nameText.text = item.item.itemName;
+            priceText.text = item.item.price.ToString() + "$";
+            priceText.enabled = true;
+
 
             if (currentItem.tool != null)
             {

@@ -19,4 +19,8 @@ MonoBehaviour:
     type: 3}
   minTier: 0
   maxTier: 99
+  priceMultiplier: 1.2
+  profitLevel: 2
+  dangerLevel: 1
+  quality: 0
   hasSellMachine: 1

@@ -92,6 +92,17 @@ public class PlayerCore : MonoBehaviour, IDamageableByExplosion, IHittable
         // Add custom death logic later
     }
 
+
+    public void Heal(int ammount)
+    {
+        if (_isInvincible) return; // Exit if invincible
+
+        
+
+
+        ModifyHealth(ammount);
+      
+    }
     public void TakeDamage()
     {
         if (_isInvincible) return; // Exit if invincible

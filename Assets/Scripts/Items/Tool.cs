@@ -22,7 +22,7 @@ public abstract class Tool : MonoBehaviour
     [SerializeField] protected ItemCore itemCore;
 
     [SerializeField] public int currentDurability;
-    private bool isBroken = false;
+    protected bool isBroken = false;
     public float DurabilityPercentage => currentDurability / maxDurability;
 
     public ItemCore GetItemCore()
