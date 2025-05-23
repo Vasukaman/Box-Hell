@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Heal Can
   description: 
   price: 50
+  priceRange: {x: 40, y: 60}
   type: 1
   itemCore: {fileID: 8525495134040747868, guid: 1f1add96ca0855049bbf05714ba41c44,
     type: 3}

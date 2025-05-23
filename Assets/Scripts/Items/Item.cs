@@ -10,6 +10,7 @@ public class Item : ScriptableObject
     public string itemName;
     public string description;
     public int price;
+    public Vector2Int priceRange;
 
 
 

@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Handheld
   description: 
   price: 20
+  priceRange: {x: 10, y: 35}
   type: 1
   itemCore: {fileID: 6098996277637711562, guid: 13fcb358840e1dc4991c8e98e8f7ef89,
     type: 3}

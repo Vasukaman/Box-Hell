@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Axe
   description: 
   price: 40
+  priceRange: {x: 25, y: 55}
   type: 3
   itemCore: {fileID: 3898864334834387110, guid: 85981e80c34e6014fa78e5290eb4c105,
     type: 3}

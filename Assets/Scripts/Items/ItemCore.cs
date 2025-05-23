@@ -24,7 +24,7 @@ public class ItemCore : MonoBehaviour
 
     private void UpdatePrice()
     {
-        price = item.price;
+        price = UnityEngine.Random.Range(item.priceRange.x, item.priceRange.y + 1);
     }
 
     public void SetOwner(PlayerCore newOwner)

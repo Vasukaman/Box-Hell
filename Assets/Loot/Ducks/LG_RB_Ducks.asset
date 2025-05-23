@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: LG_RB_Ducks
   m_EditorClassIdentifier: 
   items:
-  - item: {fileID: 11400000, guid: 17fef150dbd332a40ac6f66d379bde47, type: 2}
-    dropScore: 50
   - item: {fileID: 11400000, guid: 5ca945992871b84448f3d0d523b57292, type: 2}
     dropScore: 20
   - item: {fileID: 11400000, guid: 6a50c9087d9b85e4b867591eb8e2cb9a, type: 2}

@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Dumbbell
   description: 
   price: 20
+  priceRange: {x: 10, y: 25}
   type: 3
   itemCore: {fileID: 4039278270900168941, guid: 877a9fd1dd20bd94a9b32c66a0f9d2c4,
     type: 3}

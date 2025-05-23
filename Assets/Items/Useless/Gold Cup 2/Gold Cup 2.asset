@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Gold Cup
   description: 
   price: 20
+  priceRange: {x: 10, y: 30}
   type: 1
   itemCore: {fileID: 6098996277637711562, guid: 15059ba8b3839744ab811cb5a9875af7,
     type: 3}

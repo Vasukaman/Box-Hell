@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Bat
   description: 
   price: 40
+  priceRange: {x: 25, y: 55}
   type: 0
   itemCore: {fileID: 4690144275527375751, guid: dbaaf778a066d234eb9230a7d17ccecf,
     type: 3}

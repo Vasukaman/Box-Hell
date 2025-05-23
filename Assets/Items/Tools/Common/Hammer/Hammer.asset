@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Hammer
   description: 
   price: 10
+  priceRange: {x: 5, y: 15}
   type: 3
   itemCore: {fileID: 1519342857656415183, guid: f642364d7ccf07244a4b2502998716d9,
     type: 3}

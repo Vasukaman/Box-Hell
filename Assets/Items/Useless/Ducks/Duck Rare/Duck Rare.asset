@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Duck Rare
   description: 
   price: 50
+  priceRange: {x: 40, y: 60}
   type: 1
   itemCore: {fileID: 968781424494070297, guid: ab4edbfb07a98b0478562c6ba01c8c98, type: 3}
   raritySO: {fileID: 11400000, guid: 9048ffd3fa54c1345952f22805d8cb83, type: 2}

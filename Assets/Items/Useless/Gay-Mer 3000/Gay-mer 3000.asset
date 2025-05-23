@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Gay-mer 3000
   description: 
   price: 30
+  priceRange: {x: 20, y: 45}
   type: 1
   itemCore: {fileID: 6098996277637711562, guid: 43ed47cb8546c754f9de9be4a6f04b21,
     type: 3}

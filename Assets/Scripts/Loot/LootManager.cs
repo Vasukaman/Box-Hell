@@ -22,28 +22,58 @@ public class LootManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-  
-    public static Item GenerateBoxLoot(LootConfiguration config, int tier, float luck, Vector3 position)
-    {
-        if (config == null) return null; 
 
-   
-        // Roll for loot pack
+
+    // Modified main loot generation method with holder option
+    public static Item GenerateBoxLoot(LootConfiguration config, int tier, float luck, Vector3 position, bool spawnWithHolder = true)
+    {
+        if (config == null) return null;
+
+        Item selectedItem = SelectLootItem(config, luck);
+        if (selectedItem != null)
+        {
+            SpawnItem(selectedItem, position, spawnWithHolder);
+        }
+        return selectedItem;
+    }
+
+    // New method that just selects item without spawning
+    public static Item SelectLootItem(LootConfiguration config, float luck)
+    {
+        if (config == null) return null;
+
         var selectedPack = SelectFromEntries(config.lootPacks, config.noDropScore, luck);
         if (selectedPack == null) return null;
 
-        // Roll for loot group
         var selectedGroup = SelectFromEntries(selectedPack.lootGroups, selectedPack.noDropScore, luck);
         if (selectedGroup == null) return null;
 
-        // Roll for final item
-        var selectedItem = SelectFromItems(selectedGroup.items, selectedGroup.noDropScore, luck);
-        if (selectedItem == null) return null;
+        return SelectFromItems(selectedGroup.items, selectedGroup.noDropScore, luck);
+    }
 
-        SpawnItem(selectedItem, position);
+    // Modified spawn method with holder toggle
+    static void SpawnItem(Item item, Vector3 position, bool useHolder = true)
+    {
+        if (item?.itemCore == null) return;
 
+        ItemCore itemCore = Instantiate(item.itemCore, position, Quaternion.identity);
 
-        return selectedItem;
+        if (useHolder && itemholderPrefab != null)
+        {
+            WorldItemHolder holder = Instantiate(itemholderPrefab, position, Quaternion.identity);
+            holder.Initialize(itemCore);
+        }
+
+        Debug.Log(item + " spawned");
+    }
+
+    // New direct spawn method without holder
+    public static void SpawnItemWithoutHolder(Item item, Vector3 position)
+    {
+        if (item?.itemCore == null) return;
+
+        Instantiate(item.itemCore, position, Quaternion.identity);
+        Debug.Log(item + " spawned without holder");
     }
 
     static T SelectFromEntries<T>(DropScoreEntry<T>[] entries, int noDropScore, float luck) where T : UnityEngine.Object

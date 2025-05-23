@@ -7052,7 +7052,7 @@ Transform:
   m_GameObject: {fileID: 1243382673350527881}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.451, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21727,6 +21727,10 @@ MonoBehaviour:
   lootSpawnPoint: {fileID: 583686285563299821}
   soundManager: {fileID: 2319440673663483258}
   coinSpawner: {fileID: 4128930813263187296}
+  groundCheckRange: 5
+  groundCheckMask:
+    serializedVersion: 2
+    m_Bits: 2433
 --- !u!54 &601204725709746812
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -34271,6 +34275,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5756773438752820372, guid: 339173f7c2dd13344a3705949eed571b,
         type: 3}
+      propertyPath: ShapeModule.alignToDirection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756773438752820372, guid: 339173f7c2dd13344a3705949eed571b,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756773438752820372, guid: 339173f7c2dd13344a3705949eed571b,
+        type: 3}
       propertyPath: ExternalForcesModule.multiplierCurve.maxCurve.m_Curve.Array.data[1].time
       value: 0.0058489237
       objectReference: {fileID: 0}
@@ -34302,7 +34316,7 @@ PrefabInstance:
     - target: {fileID: 7992543212221228961, guid: 339173f7c2dd13344a3705949eed571b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.13
+      value: 0.448
       objectReference: {fileID: 0}
     - target: {fileID: 7992543212221228961, guid: 339173f7c2dd13344a3705949eed571b,
         type: 3}

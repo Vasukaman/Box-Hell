@@ -6,10 +6,11 @@ using UnityEngine.Events;
 
 public class InteractionHandler : MonoBehaviour
 {
-    public event Action<ItemCore> OnItemSelected;
+    public event Action<ItemCore, ItemCore> OnItemSelected; //New item, currentItem
     public event Action OnItemLost;
     [SerializeField] private float _interactionRange = 5f;
     [SerializeField] private LayerMask _interactableLayer;
+    [SerializeField] private InventorySystem _inventory;
 
 
     private Camera _mainCamera;
@@ -50,7 +51,10 @@ public class InteractionHandler : MonoBehaviour
         ItemCore item = hit.collider.GetComponentInParent<ItemCore>();
         if (item!=null)
         {
-            OnItemSelected.Invoke(item);
+            if (_inventory)
+            OnItemSelected.Invoke(item, _inventory.GetCurrentItem());
+            else
+            OnItemSelected.Invoke(item, null);
         }
         else
         {
@@ -84,5 +88,7 @@ public class InteractionHandler : MonoBehaviour
 
         _currentInteractable.OnDeselected();
         _currentInteractable = null;
+
+        OnItemLost.Invoke();
     }
 }

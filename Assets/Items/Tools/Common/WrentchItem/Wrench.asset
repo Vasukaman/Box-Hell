@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Wrench
   description: 
   price: 10
+  priceRange: {x: 5, y: 15}
   type: 0
   itemCore: {fileID: 3409426579290358578, guid: 25d9e9d07e3150e4296517223385f24c,
     type: 3}

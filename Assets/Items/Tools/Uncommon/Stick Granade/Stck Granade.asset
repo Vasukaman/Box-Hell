@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Stick Granade
   description: 
   price: 40
+  priceRange: {x: 25, y: 55}
   type: 3
   itemCore: {fileID: 3967768228650165828, guid: b736997432c7a3f46ad211b9d91f24be,
     type: 3}

@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Ice Axe
   description: 
   price: 10
+  priceRange: {x: 5, y: 15}
   type: 3
   itemCore: {fileID: 8612112878014665876, guid: 276730571e65013428c7a78ae846e0ce,
     type: 3}

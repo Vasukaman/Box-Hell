@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Duck Legendary
   description: 
   price: 100
+  priceRange: {x: 80, y: 120}
   type: 1
   itemCore: {fileID: 4211541920786132604, guid: 98cad79044200c04f822d9787ceaefc9,
     type: 3}

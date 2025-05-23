@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Duck Uncommon
   description: 
   price: 10
+  priceRange: {x: 5, y: 15}
   type: 1
   itemCore: {fileID: 7303384377584542655, guid: 390d36d0ad49c03458ad16792356ef15,
     type: 3}

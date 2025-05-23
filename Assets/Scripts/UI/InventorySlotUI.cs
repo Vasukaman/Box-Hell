@@ -64,7 +64,7 @@ public class InventorySlotUI : MonoBehaviour
         {
             iconImage.sprite = item.item.icon;
             nameText.text = item.item.itemName;
-            priceText.text = item.item.price.ToString() + "$";
+            priceText.text = item.price.ToString() + "$";
             priceText.enabled = true;
 
 

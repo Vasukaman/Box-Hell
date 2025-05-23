@@ -16,6 +16,7 @@ MonoBehaviour:
   itemName: Big Hammer
   description: 
   price: 40
+  priceRange: {x: 25, y: 55}
   type: 0
   itemCore: {fileID: 3873684281662896373, guid: 2b67578248337ee4b8d5b2b5598e7fba,
     type: 3}
