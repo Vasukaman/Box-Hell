@@ -21,4 +21,6 @@ MonoBehaviour:
     dropScore: 50
   - item: {fileID: 11400000, guid: 4f4973ec49cc1014cafa4e2aed332ac1, type: 2}
     dropScore: 200
+  - item: {fileID: 11400000, guid: 5bc362b2684549449b84634e6e8d2e0f, type: 2}
+    dropScore: 50
   noDropScore: 0

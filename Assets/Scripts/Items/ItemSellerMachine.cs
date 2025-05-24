@@ -22,6 +22,18 @@ public class ItemSellerMachine : MonoBehaviour
 
     [SerializeField] private DamageToActivate activateButton;
     [SerializeField] private DamageToActivate collectCoinsButton;
+
+
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip itemInsertedSound;
+    [SerializeField] private AudioClip itemRemovedSound;
+    [SerializeField] private AudioClip processingStartSound;
+    [SerializeField] private AudioClip itemsSoldSound;
+    [SerializeField] private AudioClip moneyCollectedSound;
+
+    private bool previousValidState;
+    private List<ItemCore> previousItems = new List<ItemCore>();
+
     private void Awake()
     {
         UpdateMoneyDisplay();
@@ -82,15 +94,76 @@ public class ItemSellerMachine : MonoBehaviour
     private void UpdateTriggerState()
     {
         bool isValidState = itemsInTrigger.Count > 0;
+
+        // Play sound when item is inserted
+        if (isValidState && !previousValidState && itemInsertedSound != null)
+        {
+            AudioSource.PlayClipAtPoint(itemInsertedSound, transform.position);
+        }
+
+        // Play sound when item is removed
+        if (!isValidState && previousValidState && itemRemovedSound != null)
+        {
+            AudioSource.PlayClipAtPoint(itemRemovedSound, transform.position);
+        }
+
         greenLight.SetActive(isValidState);
         redLight.SetActive(!isValidState);
-
         UpdateDisplay();
-       // if (!isValidState) StopProcessing 
-       // Clear stored colliders each frame
 
+        previousValidState = isValidState;
     }
 
+    public void TryActivating(PlayerCore player)
+    {
+        if (itemsInTrigger.Count == 0 || isProcessing) return;
+
+        currentItem = itemsInTrigger[0];
+        isProcessing = true;
+        animationComponent.Play();
+
+        // Play processing start sound
+        if (processingStartSound != null)
+        {
+            AudioSource.PlayClipAtPoint(processingStartSound, transform.position);
+        }
+    }
+
+    public void TrySelling()
+    {
+        foreach (ItemCore item in itemsInTrigger)
+        {
+            storedMoney += item.price;
+            Destroy(item.gameObject);
+        }
+
+        // Play items sold sound
+        if (itemsSoldSound != null)
+        {
+            AudioSource.PlayClipAtPoint(itemsSoldSound, transform.position);
+        }
+
+        currentItem = null;
+        isProcessing = false;
+        UpdateMoneyDisplay();
+        UpdateDisplay();
+    }
+
+    public void CollectMoney(PlayerCore player)
+    {
+        if (storedMoney > 0)
+        {
+            player.GiveCoins(storedMoney);
+            storedMoney = 0;
+            UpdateMoneyDisplay();
+
+            // Play money collected sound
+            if (moneyCollectedSound != null)
+            {
+                AudioSource.PlayClipAtPoint(moneyCollectedSound, transform.position);
+            }
+        }
+    }
     private void StopProcessing()
     {
         animationComponent.Stop();
@@ -122,41 +195,5 @@ public class ItemSellerMachine : MonoBehaviour
         moneyText.text = storedMoney.ToString()+"$";
     }
 
-    public void TryActivating(PlayerCore player)
-    {
-      //  CleanNullItems();
-        if (itemsInTrigger.Count == 0 || isProcessing) return;
 
-        currentItem = itemsInTrigger[0];
-        isProcessing = true;
-        animationComponent.Play();
-
-    }
-
-    public void TrySelling()
-    {
-        //CleanNullItems();
-        foreach (ItemCore item in itemsInTrigger)
-        {
-            storedMoney += item.price;
-            Destroy(item.gameObject);
-            //CleanNullItems();
-
-            UpdateMoneyDisplay();
-            UpdateDisplay();
-        }
-
-        currentItem = null;
-        isProcessing = false;
-    }
-
-    public void CollectMoney(PlayerCore player)
-    {
-        if (storedMoney > 0)
-        {
-            player.GiveCoins(storedMoney);
-            storedMoney = 0;
-            UpdateMoneyDisplay();
-        }
-    }
 }

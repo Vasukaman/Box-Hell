@@ -4521,6 +4521,12 @@ MonoBehaviour:
   triggerCollider: {fileID: 1692320717820976460}
   activateButton: {fileID: 2776660184516737847}
   collectCoinsButton: {fileID: 6213618708188297152}
+  itemInsertedSound: {fileID: 8300000, guid: 70e8602c5de1f4449bea7aa97ad677e4, type: 3}
+  itemRemovedSound: {fileID: 8300000, guid: afc6872f86dc57543a5fad127d3232db, type: 3}
+  processingStartSound: {fileID: 8300000, guid: 6dbc189611aa86545ba707a3ff485c32,
+    type: 3}
+  itemsSoldSound: {fileID: 8300000, guid: 1b6e941f21bb77245a615b8a06afef8b, type: 3}
+  moneyCollectedSound: {fileID: 8300000, guid: aa1b611e04af3f64bb20735b5a29c14a, type: 3}
 --- !u!111 &3832191789623951290
 Animation:
   m_ObjectHideFlags: 0

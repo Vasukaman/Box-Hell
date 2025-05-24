@@ -62,15 +62,19 @@ public class WorldItemHolder : MonoBehaviour
         heldItem.transform.SetParent(null);
 
         heldItem.MakeItWorldItem();
-
+        heldItem.OnItemEquipped -= ReleaseItemEquip;
         Destroy(gameObject);
     }
 
     private void ReleaseItemEquip()
     {
-        //heldItem.transform.SetParent(null);
-        heldItem.MakeItTool();
-
+        if (heldItem.transform.parent== this)
+        heldItem.transform.SetParent(null,true);
+        //    heldItem.MakeItTool();
+        //  if (heldItem.currentState == ItemState.InSpawnHolder)
+        //    heldItem.MakeItTool();
+        heldItem.OnItemEquipped -= ReleaseItemEquip;
+        heldItem = null;
         if (gameObject)
         Destroy(gameObject);
     }

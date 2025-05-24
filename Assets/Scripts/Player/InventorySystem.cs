@@ -56,6 +56,9 @@ public class InventorySystem : MonoBehaviour
                 return true;
             }
         }
+        
+        item.MakeItWorldItem();
+      
         return false;
     }
 

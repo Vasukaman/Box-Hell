@@ -1699,6 +1699,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 678491234}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &693411116 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6895669580548235853, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
+    type: 3}
+  m_PrefabInstance: {fileID: 742968568}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &720743772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5279775207726158869, guid: 9a5c3d7de11e41245833580c8db50c71,
@@ -1826,6 +1832,16 @@ PrefabInstance:
         type: 3}
       propertyPath: pickupRange
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8142762144890054482, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
+        type: 3}
+      propertyPath: holderTransform
+      value: 
+      objectReference: {fileID: 693411116}
+    - target: {fileID: 8142762144890054482, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
+        type: 3}
+      propertyPath: movementDuration
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 8142762144890054482, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
         type: 3}

@@ -3,46 +3,83 @@ using DG.Tweening;
 
 public class TwoPointMover : MonoBehaviour
 {
+    public enum MovementMode
+    {
+        PingPong,    // Original behavior: A->B->A
+        Toggle       // New behavior: A->B, then B->A on next activation
+    }
+
     [Header("References")]
     public Transform pointA;
     public Transform pointB;
 
-    [Header("Timing")]
+    [Header("Settings")]
+    public MovementMode mode = MovementMode.PingPong;
     public float moveDuration = 1f;
     public float returnDelay = 2f;
 
-    private enum State { Inactive, MovingToTarget, Waiting, MovingBack }
+    [Header("Toggle Mode Settings")]
+    [Tooltip("Starting position for toggle mode")]
+    public bool startAtPointA = true;
+
     private State currentState = State.Inactive;
     private Tween currentTween;
+    private Transform currentTarget;
+    private Transform nextTarget;
+
+    private enum State { Inactive, Moving, Waiting }
+
+    private void Start()
+    {
+        InitializeTargets();
+    }
+
+    private void InitializeTargets()
+    {
+        currentTarget = startAtPointA ? pointB : pointA;
+        nextTarget = startAtPointA ? pointA : pointB;
+    }
 
     public void Activate()
     {
-        // Prevent multiple activations when already at target position
-        if (currentState == State.MovingToTarget ||
-            currentState == State.Waiting) return;
+        if (currentState != State.Inactive) return;
 
-        // Cancel any ongoing movement
-        currentTween?.Kill();
+        currentState = State.Moving;
 
-        currentState = State.MovingToTarget;
-
-        currentTween = transform.DOMove(pointB.position, moveDuration)
-            .SetEase(Ease.InOutQuad)
-            .OnComplete(() => {
+        if (mode == MovementMode.Toggle)
+        {
+            MoveToTarget(currentTarget.position, () =>
+            {
+                (currentTarget, nextTarget) = (nextTarget, currentTarget);
+                currentState = State.Inactive;
+            });
+        }
+        else
+        {
+            MoveToTarget(pointB.position, () =>
+            {
                 currentState = State.Waiting;
                 StartCoroutine(ReturnAfterDelay());
             });
+        }
+    }
+
+    private void MoveToTarget(Vector3 target, TweenCallback onComplete)
+    {
+        currentTween?.Kill();
+        currentTween = transform.DOMove(target, moveDuration)
+            .SetEase(Ease.InOutQuad)
+            .OnComplete(onComplete);
     }
 
     private System.Collections.IEnumerator ReturnAfterDelay()
     {
         yield return new WaitForSeconds(returnDelay);
 
-        currentState = State.MovingBack;
-
-        currentTween = transform.DOMove(pointA.position, moveDuration)
-            .SetEase(Ease.InOutQuad)
-            .OnComplete(() => currentState = State.Inactive);
+        MoveToTarget(pointA.position, () =>
+        {
+            currentState = State.Inactive;
+        });
     }
 
     // Add safety checks
@@ -52,12 +89,11 @@ public class TwoPointMover : MonoBehaviour
             Debug.LogWarning($"Assign both points in {gameObject.name}!", this);
     }
 
-    // Reset position on disable
     private void OnDisable()
     {
         currentTween?.Kill();
-        transform.position = pointA.position;
+        transform.position = startAtPointA ? pointA.position : pointB.position;
         currentState = State.Inactive;
+        InitializeTargets();
     }
 }
-

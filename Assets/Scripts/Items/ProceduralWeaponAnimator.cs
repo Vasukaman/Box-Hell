@@ -38,12 +38,15 @@ public class ProceduralWeaponAnimator : MonoBehaviour
 
     private Vector3 finalHitPosition;
     private Quaternion finalHitRotation;
+
+    private Vector3 lastPointPosition;
+    private Quaternion lastPointRotation;
     [SerializeField] private ToolSoundManager soundManager;
     public enum DebugPose { Resting, Prepare, Hit, FinalHitTransform }
     private void Start()
     {
         playerCamera = Camera.main;
-      
+        lastPointPosition = restingPoint.position;
 
 
     }
@@ -95,6 +98,11 @@ public class ProceduralWeaponAnimator : MonoBehaviour
 
    public void StartSwing()
     {
+        if (currentState != SwingState.Resting && currentState != SwingState.Returning) return;
+
+        lastPointPosition = weaponTransform.position;
+        lastPointRotation = weaponTransform.rotation;
+
         currentState = SwingState.Preparing;
         stateProgress = 0f;
         ResumeAnimation();
@@ -105,9 +113,9 @@ public class ProceduralWeaponAnimator : MonoBehaviour
     void UpdatePreparation()
     {
         stateProgress += Time.deltaTime / prepareDuration;
-        weaponTransform.position = Vector3.Lerp(restingPoint.position, preparePoint.position,
+        weaponTransform.position = Vector3.Slerp(weaponTransform.position, preparePoint.position,
             swingCurve.Evaluate(stateProgress));
-        weaponTransform.rotation = Quaternion.Slerp(restingPoint.rotation, preparePoint.rotation,
+        weaponTransform.rotation = Quaternion.Slerp(weaponTransform.rotation, preparePoint.rotation,
             swingCurve.Evaluate(stateProgress));
 
         if (stateProgress >= 1f)

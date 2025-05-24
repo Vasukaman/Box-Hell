@@ -44,6 +44,7 @@ public class ToolAnimController : MonoBehaviour
     {
         if (useProcAnim)
         procAnim.StartSwing();
+
         else
         {
             if (restartAnimOnClick)

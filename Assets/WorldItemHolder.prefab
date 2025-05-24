@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleSpawnPoint: {fileID: 3265677724291510183}
   itemHoldPoint: {fileID: 531326343882245086}
-  holdDuration: 3
+  holdDuration: 5
   floatAmplitude: 0.2
   floatFrequency: 1
 --- !u!1 &1091434677262015123
