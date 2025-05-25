@@ -23,6 +23,11 @@ public class ToolSoundManager : MonoBehaviour
     {
         audioSource.PlayOneShot(soundPack.PickReturnSound());
     }
+
+    public void PlayPerfectHitSound()
+    {
+        audioSource.PlayOneShot(soundPack.PickPerfectHitSound());
+    }
 }
 
 

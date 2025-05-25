@@ -262,6 +262,41 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.033
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.47823218
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.8782335
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -122.86
+      objectReference: {fileID: 0}
     - target: {fileID: 4789499110035622911, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
       propertyPath: m_Radius
@@ -366,7 +401,7 @@ PrefabInstance:
     - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
       propertyPath: postHitPause
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
@@ -413,6 +448,16 @@ PrefabInstance:
       propertyPath: finalHitTransform
       value: 
       objectReference: {fileID: 3976102816287390411}
+    - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: prepareDurationPerfect
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: preperePerfectOnPerfectHit
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
       propertyPath: swingCurve.m_Curve.Array.data[1].inSlope

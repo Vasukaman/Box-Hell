@@ -31,6 +31,7 @@ public class ItemSellerMachine : MonoBehaviour
     [SerializeField] private AudioClip itemsSoldSound;
     [SerializeField] private AudioClip moneyCollectedSound;
 
+    int oldItemsCount = 0;
     private bool previousValidState;
     private List<ItemCore> previousItems = new List<ItemCore>();
 
@@ -95,17 +96,15 @@ public class ItemSellerMachine : MonoBehaviour
     {
         bool isValidState = itemsInTrigger.Count > 0;
 
-        // Play sound when item is inserted
-        if (isValidState && !previousValidState && itemInsertedSound != null)
-        {
+        if (itemsInTrigger.Count > oldItemsCount)
             AudioSource.PlayClipAtPoint(itemInsertedSound, transform.position);
-        }
 
-        // Play sound when item is removed
-        if (!isValidState && previousValidState && itemRemovedSound != null)
-        {
+        if (itemsInTrigger.Count < oldItemsCount)
             AudioSource.PlayClipAtPoint(itemRemovedSound, transform.position);
-        }
+
+        oldItemsCount = itemsInTrigger.Count;
+
+        // Play sound when item is inserted
 
         greenLight.SetActive(isValidState);
         redLight.SetActive(!isValidState);

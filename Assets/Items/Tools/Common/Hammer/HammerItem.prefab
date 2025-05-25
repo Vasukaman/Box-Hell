@@ -89,6 +89,8 @@ MonoBehaviour:
   currentState: 0
   price: 0
   owner: {fileID: 0}
+  movementSpeed: 5
+  parentingThreshold: 0.1
 --- !u!54 &1262566229462680032
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -597,9 +599,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   prepareDuration: 0.25
+  prepareDurationPerfect: 0.13
   attackDuration: 0.12
   returnDuration: 0.2
-  postHitPause: 0.1
+  postHitPause: 0.15
   attackDistance: 3
   arcPower: 2.75
   arcAngle: 347
@@ -607,6 +610,7 @@ MonoBehaviour:
   debugPreview: 0
   debugArcPreview: 1
   soundManager: {fileID: 4168717594174465687}
+  beforeHitRegisterWindow: 0.1
 --- !u!114 &7141301134250043845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,7 +691,7 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 92317cef2f983bf4a9eb6a2e730a3b51, type: 2}
   itemCore: {fileID: 1519342857656415183}
   currentDurability: 0
-  damage: 30
+  damage: 20
   mainCamera: {fileID: 0}
   hitShakePreset: {fileID: 11400000, guid: fb4b31b75fc51fd499fca6aca2d07f84, type: 2}
   hitForce: 32

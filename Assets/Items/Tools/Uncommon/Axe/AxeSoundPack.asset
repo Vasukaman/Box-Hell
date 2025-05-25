@@ -20,3 +20,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cb5ffd338b1bc9e479e5b2e069ee8004, type: 3}
   returnSounds:
   - {fileID: 0}
+  perfectHitSound:
+  - {fileID: 8300000, guid: 7c7f828f6658aac40ae9bb1a0c2b9691, type: 3}

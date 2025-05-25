@@ -289,6 +289,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.3987491
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.91706014
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -133
+      objectReference: {fileID: 0}
     - target: {fileID: 4789499110035622911, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
       propertyPath: m_Radius
@@ -496,6 +521,7 @@ MonoBehaviour:
   weaponTransform: {fileID: 4098602405086483688}
   playerCamera: {fileID: 0}
   preparePoint: {fileID: 5650764883083096141}
+  preparePerfectPoint: {fileID: 8023188622733166024}
   restingPoint: {fileID: 4501243597061163913}
   finalHitTransform: {fileID: 6143223053876164208}
   regularMeleeTool: {fileID: 4406469100901362314}
@@ -524,9 +550,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   prepareDuration: 0.55
+  prepareDurationPerfect: 0.3
   attackDuration: 0.12
   returnDuration: 0.2
-  postHitPause: 0.1
+  postHitPause: 0.17
   attackDistance: 3
   arcPower: 2.75
   arcAngle: 347
@@ -534,6 +561,10 @@ MonoBehaviour:
   debugPreview: 0
   debugArcPreview: 1
   soundManager: {fileID: 6286041195583868024}
+  beforeHitRegisterWindow: 0.1
+  usePerfectHit: 1
+  speedUpOnPerfectHit: 1
+  preperePerfectOnPerfectHit: 1
 --- !u!4 &4098602405086483688 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8408700431527407002, guid: ec899e950f280d643af5b065e6d3d599,
@@ -582,3 +613,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea20fbec70519c744b43efbf19add12a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &8023188622733166024 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+    type: 3}
+  m_PrefabInstance: {fileID: 5499068119682955634}
+  m_PrefabAsset: {fileID: 0}

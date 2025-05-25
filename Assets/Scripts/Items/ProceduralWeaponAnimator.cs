@@ -10,6 +10,8 @@ public class ProceduralWeaponAnimator : MonoBehaviour
     public Transform weaponTransform;
     public Camera playerCamera;
     public Transform preparePoint;
+    public Transform preparePerfectPoint;
+    private Transform preparePointCurrent;
     public Transform restingPoint;
     public Transform finalHitTransform;
     [SerializeField] private RegularMeleeTool regularMeleeTool;
@@ -18,6 +20,8 @@ public class ProceduralWeaponAnimator : MonoBehaviour
     [Header("Animation Settings")]
     public AnimationCurve swingCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
     public float prepareDuration = 0.2f;
+    public float prepareDurationPerfect = 0.1f;
+    private float prepareDurationCurrent;
     public float attackDuration = 0.3f;
     public float returnDuration = 0.2f;
     public float postHitPause = 0.1f;
@@ -43,6 +47,15 @@ public class ProceduralWeaponAnimator : MonoBehaviour
     private Quaternion lastPointRotation;
     [SerializeField] private ToolSoundManager soundManager;
     public enum DebugPose { Resting, Prepare, Hit, FinalHitTransform }
+
+    public float beforeHitRegisterWindow = 1f; //It's based on path progress, but I hope it will be fine
+
+    private bool attackQueued;
+    private bool isPerfectChain;
+    public bool usePerfectHit = true;
+    public bool speedUpOnPerfectHit = true;
+    public bool preperePerfectOnPerfectHit=false;
+
     private void Start()
     {
         playerCamera = Camera.main;
@@ -98,24 +111,62 @@ public class ProceduralWeaponAnimator : MonoBehaviour
 
    public void StartSwing()
     {
-        if (currentState != SwingState.Resting && currentState != SwingState.Returning) return;
+        if (attackQueued) return;
 
+        if (currentState == SwingState.Attacking)
+        {
+     
+                attackQueued = true;
+                isPerfectChain = false;
+      
+        }
+
+        if (currentState != SwingState.Resting && currentState != SwingState.Returning && currentState != SwingState.Pausing) return;
+
+        if (currentState == SwingState.Pausing && usePerfectHit)
+            isPerfectChain = true;
+
+        BeginAttack();
+    }
+
+
+    private void BeginAttack()
+    {
         lastPointPosition = weaponTransform.position;
         lastPointRotation = weaponTransform.rotation;
+
+        if (isPerfectChain)
+            soundManager.PlayPerfectHitSound();
+
+        if (isPerfectChain && speedUpOnPerfectHit)
+        {
+            prepareDurationCurrent = prepareDurationPerfect;
+
+            if (preperePerfectOnPerfectHit)
+            preparePointCurrent = preparePerfectPoint;
+        }
+        else
+        {
+            prepareDurationCurrent = prepareDuration;
+            preparePointCurrent = preparePoint;
+        }
 
         currentState = SwingState.Preparing;
         stateProgress = 0f;
         ResumeAnimation();
 
         soundManager.PlayPrepareSound();
+        isPerfectChain = false;
+        attackQueued = false;
     }
-
     void UpdatePreparation()
     {
-        stateProgress += Time.deltaTime / prepareDuration;
-        weaponTransform.position = Vector3.Slerp(weaponTransform.position, preparePoint.position,
+
+
+        stateProgress += Time.deltaTime / prepareDurationCurrent;
+        weaponTransform.position = Vector3.Slerp(weaponTransform.position, preparePointCurrent.position,
             swingCurve.Evaluate(stateProgress));
-        weaponTransform.rotation = Quaternion.Slerp(weaponTransform.rotation, preparePoint.rotation,
+        weaponTransform.rotation = Quaternion.Slerp(weaponTransform.rotation, preparePointCurrent.rotation,
             swingCurve.Evaluate(stateProgress));
 
         if (stateProgress >= 1f)
@@ -192,24 +243,36 @@ public class ProceduralWeaponAnimator : MonoBehaviour
     void UpdatePause()
     {
         stateProgress += Time.deltaTime;
+
+
         if (stateProgress >= postHitPause)
         {
             soundManager.PlayReturnSound();
-            currentState = SwingState.Returning;
-            stateProgress = 0f;
+
+
+            if (attackQueued)
+            {
+                BeginAttack();
+                return;
+            }
+
+                currentState = SwingState.Returning;
+                stateProgress = 0f;
         }
     }
 
     void UpdateReturn()
     {
+
         stateProgress += Time.deltaTime / returnDuration;
+
         weaponTransform.position = Vector3.Lerp(
             attackArcPoints[2],
             restingPoint.position,
             swingCurve.Evaluate(stateProgress)
         );
         weaponTransform.rotation = Quaternion.Slerp(
-            finalHitTransform.rotation,
+            finalHitRotation,
             restingPoint.rotation,
             swingCurve.Evaluate(stateProgress)
         );

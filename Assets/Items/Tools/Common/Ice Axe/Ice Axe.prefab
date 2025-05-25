@@ -163,6 +163,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.39706787
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.91778934
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524420263850278074, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -133.21
+      objectReference: {fileID: 0}
     - target: {fileID: 4789499110035622911, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
       propertyPath: m_Radius
@@ -306,6 +331,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
+      propertyPath: postHitPause
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
       propertyPath: preparePoint
       value: 
       objectReference: {fileID: 1639139671292930027}
@@ -344,6 +374,16 @@ PrefabInstance:
       propertyPath: finalHitTransform
       value: 
       objectReference: {fileID: 978957538685247958}
+    - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: prepareDurationPerfect
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
+      propertyPath: preperePerfectOnPerfectHit
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
       propertyPath: swingCurve.m_Curve.Array.data[0].inSlope

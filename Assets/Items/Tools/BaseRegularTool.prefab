@@ -267,6 +267,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8340274054262354623}
   m_LocalEulerAnglesHint: {x: -102.397, y: 0, z: 0}
+--- !u!1 &8202121347783174376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2524420263850278074}
+  m_Layer: 0
+  m_Name: PreparePerfect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2524420263850278074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8202121347783174376}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.77932405, y: 0.0000000069066233, z: 0.00000002899098, w: 0.6266212}
+  m_LocalPosition: {x: 0, y: 0.03000021, z: -0.19300002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8340274054262354623}
+  m_LocalEulerAnglesHint: {x: -102.397, y: 0, z: 0}
 --- !u!1001 &6132678170026865382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -351,6 +382,10 @@ PrefabInstance:
         type: 3}
       insertIndex: 2
       addedObject: {fileID: 160741904396044607}
+    - targetCorrespondingSourceObject: {fileID: 2784699418191364185, guid: c2ffcd4c99ee93041853978b84547c7a,
+        type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 2524420263850278074}
     - targetCorrespondingSourceObject: {fileID: 2425771348369547132, guid: c2ffcd4c99ee93041853978b84547c7a,
         type: 3}
       insertIndex: -1
@@ -494,6 +529,7 @@ MonoBehaviour:
   weaponTransform: {fileID: 8408700431527407002}
   playerCamera: {fileID: 0}
   preparePoint: {fileID: 160741904396044607}
+  preparePerfectPoint: {fileID: 2524420263850278074}
   restingPoint: {fileID: 8225609637080445691}
   finalHitTransform: {fileID: 1806367314240065282}
   regularMeleeTool: {fileID: 8175846542059852792}
@@ -522,6 +558,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   prepareDuration: 0.2
+  prepareDurationPerfect: 0.1
   attackDuration: 0.3
   returnDuration: 0.2
   postHitPause: 0.1
@@ -532,3 +569,4 @@ MonoBehaviour:
   debugPreview: 0
   debugArcPreview: 1
   soundManager: {fileID: 1975985639696315658}
+  beforeHitRegisterWindow: 1

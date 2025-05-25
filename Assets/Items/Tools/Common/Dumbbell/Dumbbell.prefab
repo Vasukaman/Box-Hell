@@ -441,6 +441,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
         type: 3}
+      propertyPath: prepareDurationPerfect
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722917478595707414, guid: ec899e950f280d643af5b065e6d3d599,
+        type: 3}
       propertyPath: swingCurve.m_Curve.Array.size
       value: 3
       objectReference: {fileID: 0}

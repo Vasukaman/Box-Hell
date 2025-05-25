@@ -11,6 +11,8 @@ public class ToolSoundPackSO : ScriptableObject
     public List<AudioClip> swingSounds;
     public List<AudioClip> hitSounds;
     public List<AudioClip> returnSounds;
+    public List<AudioClip> perfectHitSound;
+    //public List<AudioClip> ;
 
     public AudioClip PickPrepareSound()
     {
@@ -32,6 +34,12 @@ public class ToolSoundPackSO : ScriptableObject
     {
         if (returnSounds.Count == 0) return null;
         return returnSounds[Random.Range(0, returnSounds.Count)];
+    }
+
+    public AudioClip PickPerfectHitSound()
+    {
+        if (perfectHitSound.Count == 0) return null;
+        return perfectHitSound[Random.Range(0, perfectHitSound.Count)];
     }
 
 }
