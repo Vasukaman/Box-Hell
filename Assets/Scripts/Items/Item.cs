@@ -15,7 +15,7 @@ public class Item : ScriptableObject
 
 
     // Rest of your existing fields
-    [SerializeField] private ItemType type;
+    [SerializeField] public ItemType type;
     [SerializeField] public ItemCore itemCore;
     [SerializeField] public ItemRarityConfiguration raritySO;
 }

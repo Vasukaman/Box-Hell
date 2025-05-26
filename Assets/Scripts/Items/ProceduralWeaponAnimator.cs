@@ -4,7 +4,7 @@ using UnityEngine;
 public class ProceduralWeaponAnimator : MonoBehaviour
 {
     private bool pause = false;
-    public enum SwingState { Resting, Preparing, Attacking, Pausing, Returning }
+    public enum SwingState { Resting, ReturningForced, Preparing, Attacking, Pausing, Returning }
 
     [Header("References")]
     public Transform weaponTransform;
@@ -66,9 +66,10 @@ public class ProceduralWeaponAnimator : MonoBehaviour
 
     public void OnEquip()
     {
-        currentState = SwingState.Returning;
-        stateProgress = 0.9f;
+        currentState = SwingState.ReturningForced;
+        stateProgress = 1f;
         ResumeAnimation();
+        UpdateReturnForced();
     }
     void Update()
     {
@@ -88,6 +89,9 @@ public class ProceduralWeaponAnimator : MonoBehaviour
                 break;
             case SwingState.Returning:
                 UpdateReturn();
+                break;
+            case SwingState.ReturningForced:
+                UpdateReturnForced();
                 break;
         }
 
@@ -282,7 +286,30 @@ public class ProceduralWeaponAnimator : MonoBehaviour
             currentState = SwingState.Resting;
         }
     }
-        
+
+    void UpdateReturnForced()
+    {
+
+        stateProgress += Time.deltaTime*2 / returnDuration;
+
+        weaponTransform.position = Vector3.Lerp(
+            weaponTransform.position,
+            restingPoint.position,
+            swingCurve.Evaluate(stateProgress)
+        );
+        weaponTransform.rotation = Quaternion.Slerp(
+            weaponTransform.rotation,
+            restingPoint.rotation,
+            swingCurve.Evaluate(stateProgress)
+        );
+
+        if (stateProgress >= 1f)
+        {
+            currentState = SwingState.Resting;
+        }
+    }
+
+
 
     void UpdateDebugPreview()
     {

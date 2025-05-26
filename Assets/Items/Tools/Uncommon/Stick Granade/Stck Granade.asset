@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97cbf55e48797b4f9c27ddcb2f643f7, type: 3}
   m_Name: Stck Granade
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 6b0a0dcfaacfcf846a348f566e718851, type: 3}
   itemName: Stick Granade
   description: 
   price: 40

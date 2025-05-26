@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prepareSounds: []
   swingSounds:
-  - {fileID: 8300000, guid: ee0a1f47266a8014290693ea6d7365c2, type: 3}
+  - {fileID: 8300000, guid: bb7e2f32a80fe724b85d461ab7af6501, type: 3}
   hitSounds:
   - {fileID: 8300000, guid: cb5ffd338b1bc9e479e5b2e069ee8004, type: 3}
   - {fileID: 8300000, guid: cb5ffd338b1bc9e479e5b2e069ee8004, type: 3}

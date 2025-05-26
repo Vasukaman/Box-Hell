@@ -8,7 +8,7 @@ public class RegularMeleeTool : Tool
 
 
     [Header("Damage")]
-    [SerializeField] protected float damage = 40f;
+   // [SerializeField] protected float damage = 40f;
 
     [SerializeField] protected Camera mainCamera; //Probshould change how hit works
 

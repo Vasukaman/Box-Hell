@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97cbf55e48797b4f9c27ddcb2f643f7, type: 3}
   m_Name: Big Hammer
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 38869380ceaa102479be7728347829e9, type: 3}
   itemName: Big Hammer
   description: 
   price: 40
   priceRange: {x: 25, y: 55}
-  type: 0
+  type: 3
   itemCore: {fileID: 3873684281662896373, guid: 2b67578248337ee4b8d5b2b5598e7fba,
     type: 3}
   raritySO: {fileID: 11400000, guid: 9048ffd3fa54c1345952f22805d8cb83, type: 2}

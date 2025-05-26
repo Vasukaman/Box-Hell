@@ -8,9 +8,10 @@ public abstract class Tool : MonoBehaviour
     public event Action OnToolStopped;
     public event Action OnToolThrown;
     public event Action OnToolEquipped;
-    public event Action<ItemCore> OnToolBreak; // New event for when tool breaks
-
+    public event Action<ItemCore> OnToolBreak;
     [SerializeField] public float range = 5f;
+    [SerializeField] public float speed = 3f;
+    [SerializeField] public float damage = 5f;
     [SerializeField] public LayerMask damageableLayers;
 
     [Header("Durability Settings")]

@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 
   price: 40
   priceRange: {x: 25, y: 55}
-  type: 0
+  type: 3
   itemCore: {fileID: 4690144275527375751, guid: dbaaf778a066d234eb9230a7d17ccecf,
     type: 3}
   raritySO: {fileID: 11400000, guid: 9048ffd3fa54c1345952f22805d8cb83, type: 2}

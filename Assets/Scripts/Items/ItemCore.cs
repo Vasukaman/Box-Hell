@@ -11,6 +11,8 @@ public class ItemCore : MonoBehaviour
     [SerializeField] private GameObject visual;
     [SerializeField] public ItemState currentState;
     [SerializeField] public int price;
+
+    [SerializeField] public Transform holdTransform;
     public PlayerCore owner;
 
 

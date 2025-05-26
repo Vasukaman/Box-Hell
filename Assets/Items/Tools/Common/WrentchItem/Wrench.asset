@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97cbf55e48797b4f9c27ddcb2f643f7, type: 3}
   m_Name: Wrench
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 923b3a738a263434f8d2b997fc773b3e, type: 3}
+  icon: {fileID: 21300000, guid: 9ae0ff07b8883004ab31c5e2a1281963, type: 3}
   itemName: Wrench
   description: 
   price: 10
   priceRange: {x: 5, y: 15}
-  type: 0
+  type: 3
   itemCore: {fileID: 3409426579290358578, guid: 25d9e9d07e3150e4296517223385f24c,
     type: 3}
   raritySO: {fileID: 11400000, guid: 5247672b757926d4480b44bcb250f8f1, type: 2}

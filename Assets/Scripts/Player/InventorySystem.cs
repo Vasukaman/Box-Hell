@@ -46,8 +46,14 @@ public class InventorySystem : MonoBehaviour
             if (items[i] == null)
             {
                 items[i] = item;
-                item.transform.SetParent(itemHolder);
-                item.transform.localPosition = Vector3.zero;
+                item.transform.SetParent(itemHolder,true);
+                if (item.holdTransform)
+                {
+                    item.transform.localPosition = item.holdTransform.localPosition;
+                    item.transform.localRotation = item.holdTransform.localRotation;
+                }
+                else
+                    item.transform.localPosition = Vector3.zero;
                 item.MakeItTool();
                 item.SetOwner(playerCore);
                 item.tool.OnToolBreak += HandleItemBroken;

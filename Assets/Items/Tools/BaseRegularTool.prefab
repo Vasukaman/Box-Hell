@@ -366,6 +366,11 @@ PrefabInstance:
       propertyPath: tool
       value: 
       objectReference: {fileID: 8175846542059852792}
+    - target: {fileID: 3898864334834387110, guid: c2ffcd4c99ee93041853978b84547c7a,
+        type: 3}
+      propertyPath: holdTransform
+      value: 
+      objectReference: {fileID: 8225609637080445691}
     m_RemovedComponents:
     - {fileID: 6322833528584593161, guid: c2ffcd4c99ee93041853978b84547c7a, type: 3}
     m_RemovedGameObjects: []
@@ -431,6 +436,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 5
+  speed: 3
+  damage: 40
   damageableLayers:
     serializedVersion: 2
     m_Bits: 1011
@@ -439,7 +446,6 @@ MonoBehaviour:
   item: {fileID: 0}
   itemCore: {fileID: 7133748235113347648}
   currentDurability: 0
-  damage: 40
   mainCamera: {fileID: 0}
   hitShakePreset: {fileID: 11400000, guid: fb4b31b75fc51fd499fca6aca2d07f84, type: 2}
   hitForce: 0
@@ -570,3 +576,6 @@ MonoBehaviour:
   debugArcPreview: 1
   soundManager: {fileID: 1975985639696315658}
   beforeHitRegisterWindow: 1
+  usePerfectHit: 1
+  speedUpOnPerfectHit: 1
+  preperePerfectOnPerfectHit: 0

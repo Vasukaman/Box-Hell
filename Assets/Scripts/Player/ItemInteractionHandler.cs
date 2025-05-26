@@ -82,16 +82,24 @@ public class ItemInteractionHandler : MonoBehaviour
                 yield break;
             }
 
+            Vector3 targetPosition = holderTransform.position;
+            Quaternion tragetRotation = holderTransform.rotation;
+            if (item.holdTransform)
+            {
+                targetPosition +=item.holdTransform.localPosition;
+                tragetRotation *= item.holdTransform.localRotation;
+            }
+
             // Smooth movement to holder position
             item.transform.position = Vector3.Slerp(
                 startPos,
-                holderTransform.position,
+                targetPosition,
                 elapsed / movementDuration
             );
 
             item.transform.rotation = Quaternion.Slerp(
                 startRot,
-                holderTransform.rotation,
+                tragetRotation,
                 elapsed / movementDuration
             );
 

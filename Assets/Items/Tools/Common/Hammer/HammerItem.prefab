@@ -88,6 +88,7 @@ MonoBehaviour:
   visual: {fileID: 5736403251202353892}
   currentState: 0
   price: 0
+  holdTransform: {fileID: 6508492068418824101}
   owner: {fileID: 0}
   movementSpeed: 5
   parentingThreshold: 0.1
@@ -571,6 +572,7 @@ MonoBehaviour:
   weaponTransform: {fileID: 5011829810836170822}
   playerCamera: {fileID: 0}
   preparePoint: {fileID: 506575211768373141}
+  preparePerfectPoint: {fileID: 0}
   restingPoint: {fileID: 6508492068418824101}
   finalHitTransform: {fileID: 8157641255001350668}
   regularMeleeTool: {fileID: 3733363470532971904}
@@ -611,6 +613,9 @@ MonoBehaviour:
   debugArcPreview: 1
   soundManager: {fileID: 4168717594174465687}
   beforeHitRegisterWindow: 0.1
+  usePerfectHit: 1
+  speedUpOnPerfectHit: 1
+  preperePerfectOnPerfectHit: 0
 --- !u!114 &7141301134250043845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,6 +688,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2.75
+  speed: 5
+  damage: 20
   damageableLayers:
     serializedVersion: 2
     m_Bits: 1011
@@ -691,7 +698,6 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 92317cef2f983bf4a9eb6a2e730a3b51, type: 2}
   itemCore: {fileID: 1519342857656415183}
   currentDurability: 0
-  damage: 20
   mainCamera: {fileID: 0}
   hitShakePreset: {fileID: 11400000, guid: fb4b31b75fc51fd499fca6aca2d07f84, type: 2}
   hitForce: 32
