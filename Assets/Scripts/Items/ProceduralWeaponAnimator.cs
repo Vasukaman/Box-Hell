@@ -59,7 +59,7 @@ public class ProceduralWeaponAnimator : MonoBehaviour
     private void Start()
     {
         playerCamera = Camera.main;
-        lastPointPosition = restingPoint.position;
+        lastPointPosition = restingPoint.localPosition;
 
 
     }
@@ -81,7 +81,6 @@ public class ProceduralWeaponAnimator : MonoBehaviour
                 UpdatePreparation();
                 break;
             case SwingState.Attacking:
-              
                 UpdateAttack();
                 break;
             case SwingState.Pausing:
@@ -136,8 +135,8 @@ public class ProceduralWeaponAnimator : MonoBehaviour
 
     private void BeginAttack()
     {
-        lastPointPosition = weaponTransform.position;
-        lastPointRotation = weaponTransform.rotation;
+        lastPointPosition = weaponTransform.localPosition;
+        lastPointRotation = weaponTransform.localRotation;
 
         if (isPerfectChain)
             soundManager.PlayPerfectHitSound();
@@ -168,9 +167,9 @@ public class ProceduralWeaponAnimator : MonoBehaviour
 
 
         stateProgress += Time.deltaTime / prepareDurationCurrent;
-        weaponTransform.position = Vector3.Slerp(weaponTransform.position, preparePointCurrent.position,
+        weaponTransform.localPosition = Vector3.Lerp(lastPointPosition, preparePointCurrent.localPosition,
             swingCurve.Evaluate(stateProgress));
-        weaponTransform.rotation = Quaternion.Slerp(weaponTransform.rotation, preparePointCurrent.rotation,
+        weaponTransform.localRotation = Quaternion.Lerp(lastPointRotation, preparePointCurrent.localRotation,
             swingCurve.Evaluate(stateProgress));
 
         if (stateProgress >= 1f)
