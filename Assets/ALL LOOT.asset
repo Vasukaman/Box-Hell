@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6205d527ffe855f45baf735dcd8ff84f, type: 3}
+  m_Name: ALL LOOT
+  m_EditorClassIdentifier: 
+  items:
+  - item: {fileID: 11400000, guid: 981cc25cfd6c35a49ab6b0502b1e83a8, type: 2}
+    dropScore: 10
+  - item: {fileID: 11400000, guid: 9991616f899726b459b55b45f8940200, type: 2}
+    dropScore: 10
+  - item: {fileID: 11400000, guid: 9c2dedc283082f94b8b34ee7f8ed1f93, type: 2}
+    dropScore: 10
+  - item: {fileID: 11400000, guid: 92317cef2f983bf4a9eb6a2e730a3b51, type: 2}
+    dropScore: 10
+  - item: {fileID: 11400000, guid: ae4c1e0b069f7284491803ef2a035329, type: 2}
+    dropScore: 10
+  - item: {fileID: 11400000, guid: 5bc362b2684549449b84634e6e8d2e0f, type: 2}
+    dropScore: 10
+  - item: {fileID: 11400000, guid: f220f1bcb29c41349ba0ce9137f662e2, type: 2}
+    dropScore: 10
+  noDropScore: 0

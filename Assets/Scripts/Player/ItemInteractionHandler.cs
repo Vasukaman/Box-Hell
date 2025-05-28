@@ -39,6 +39,30 @@ public class ItemInteractionHandler : MonoBehaviour
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         if (Physics.Raycast(ray, out RaycastHit hit, pickupRange, interactableLayers))
         {
+                        // 1) Did we hit an ItemHolder?
+                   var holder = hit.collider.GetComponentInParent<ItemHolder>();
+                      if (holder != null)
+                           {
+                              // a) If it's empty, pull from our inventory into it
+                                if (holder.IsEmpty())
+                                   {
+                                        if (inventory.TryRemoveSelectedItem(out ItemCore removed))
+                                            {
+                                             holder.AddItem(removed);
+                                            }
+                                    }
+                               // b) If it's full, remove into our hands (animate pickup)
+                              else
+                                    {
+                                       ItemCore popped = holder.RemoveItem();
+                                        if (popped != null)
+                                        StartItemMovement(popped);
+                                   }
+                                return;
+                            }
+
+
+
             ItemCore item = hit.collider.GetComponentInParent<ItemCore>();
             if (item != null && item.currentState != ItemState.Tool)
             {

@@ -19,6 +19,9 @@ public class GameStateManager : MonoBehaviour
     [Header("Scene Names")]
     [SerializeField] private string _mainMenuSceneName = "MainMenu";
 
+
+    [SerializeField] private DungeonManager _dungeonManager;
+
     private GameState _currentState;
 
     private void Awake()
@@ -144,6 +147,8 @@ public class GameStateManager : MonoBehaviour
 
     public void ReloadGame()
     {
+        if (_dungeonManager.initialRoomSaveSystem)
+        { _dungeonManager.initialRoomSaveSystem.SaveRoomState(); }
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         SetState(GameState.Playing);
     }

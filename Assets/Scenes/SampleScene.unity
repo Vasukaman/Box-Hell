@@ -15,27 +15,27 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogColor: {r: 0.3056603, g: 0.3056603, b: 0.3056603, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.07
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.007783018, g: 0.007783018, b: 0.007783018, a: 1}
+  m_FogDensity: 0.04
+  m_LinearFogStart: 10.3
+  m_LinearFogEnd: 122.16
+  m_AmbientSkyColor: {r: 0.08679241, g: 0.08679241, b: 0.08679241, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 0
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.5622641, g: 0.5622641, b: 0.5622641, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  m_HaloStrength: 0.5
-  m_FlareStrength: 1
+  m_HaloStrength: 0.755
+  m_FlareStrength: 0.828
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 2048
-  m_ReflectionBounces: 3
-  m_ReflectionIntensity: 0.972
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_UseRadianceAmbientProbe: 0
@@ -871,6 +871,7 @@ MonoBehaviour:
   _gameplayUIObject: {fileID: 411087738}
   fpsCOntroller: {fileID: 2049346941}
   _mainMenuSceneName: MainMenu
+  _dungeonManager: {fileID: 0}
 --- !u!114 &305632153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1851,6 +1852,11 @@ PrefabInstance:
     - target: {fileID: 676931944703493426, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
         type: 3}
       propertyPath: currentRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 993031806155444024, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
+        type: 3}
+      propertyPath: m_Dithering
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4744611245860568224, guid: 5ae5ccd8d1c0b59459a598c6f18817a4,
@@ -3439,6 +3445,7 @@ MonoBehaviour:
   worldAnchor: {fileID: 1429902500}
   playerCore: {fileID: 2049346927}
   initialRoom: {fileID: 11400000, guid: c4ce1a2a6d71086408c97f85d74bb53a, type: 2}
+  initialRoomSaveSystem: {fileID: 0}
 --- !u!4 &1429902500
 Transform:
   m_ObjectHideFlags: 0

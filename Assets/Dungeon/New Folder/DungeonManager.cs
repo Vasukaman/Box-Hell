@@ -13,10 +13,12 @@ public class DungeonManager : MonoBehaviour
     int currentTier; // Track current progression tier
     [SerializeField] PlayerCore playerCore;
     [SerializeField] RoomConfiguration initialRoom;
+    [SerializeField] public MainRoomSaveSystem initialRoomSaveSystem;
     // Add these new variables
     private HashSet<RoomConfiguration> spawnedRooms = new HashSet<RoomConfiguration>();
     private List<RoomConfiguration> allPossibleRooms = new List<RoomConfiguration>();
     private int roomNumber=0;
+    bool initialRoomExists = true;
     void Start()
     {
         currentTier = 0;
@@ -25,6 +27,8 @@ public class DungeonManager : MonoBehaviour
 
     public void RestartScene()
     {
+        if (initialRoomSaveSystem)
+            initialRoomSaveSystem.SaveRoomState();
         Application.LoadLevel(Application.loadedLevel);
     }
 
@@ -36,7 +40,7 @@ public class DungeonManager : MonoBehaviour
  
 
         currentRoom = Instantiate(initialRoom.roomPrefab, worldAnchor).GetComponent<RoomManager>();
-      
+        initialRoomSaveSystem = currentRoom.GetComponent<MainRoomSaveSystem>();
         currentRoom.tier = currentTier; // Set initial tier
         currentRoom.OnExitSelected += HandleExitSelected;
         playerCore.SetCurrentRoomManager(currentRoom);
@@ -79,6 +83,12 @@ public class DungeonManager : MonoBehaviour
 
         private void CleanUpPreviousRoom()
     {
+        if (initialRoomExists)
+        {
+            if (initialRoomSaveSystem)
+                initialRoomSaveSystem.SaveRoomState();
+            initialRoomExists = false;
+        }
         Destroy(previousRoom.gameObject);
     }
 
