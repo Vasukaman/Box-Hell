@@ -27,4 +27,12 @@ MonoBehaviour:
     dropScore: 10
   - item: {fileID: 11400000, guid: f220f1bcb29c41349ba0ce9137f662e2, type: 2}
     dropScore: 10
+  - item: {fileID: 11400000, guid: 1a582d2664b0a5d40a673b82ef34f6dd, type: 2}
+    dropScore: 10
+  - item: {fileID: 11400000, guid: 330f010988488fc4e873ed2bacee510a, type: 2}
+    dropScore: 10
+  - item: {fileID: 11400000, guid: 6a50c9087d9b85e4b867591eb8e2cb9a, type: 2}
+    dropScore: 10
+  - item: {fileID: 11400000, guid: d5c968a225c4cad4295e3793c51b11b5, type: 2}
+    dropScore: 10
   noDropScore: 0

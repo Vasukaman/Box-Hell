@@ -1,7 +1,8 @@
-using UnityEngine;          // For MonoBehaviour, GameObject, Collider, etc.
-using UnityEngine.Events;   // For UnityEvent
-using TMPro;               // For TextMeshPro (TMP_Text)
-using System.Collections.Generic; // For HashSet<T>, List<T>, etc
+// AutosellerLock.cs
+using UnityEngine;
+using UnityEngine.Events;
+using TMPro;
+using System.Collections.Generic;
 
 public class AutosellerLock : MonoBehaviour
 {
@@ -18,23 +19,31 @@ public class AutosellerLock : MonoBehaviour
     private bool _isCompleted;
     private HashSet<ItemCore> _processedItems = new HashSet<ItemCore>();
 
+    // NEW: events for external save system
+    public event System.Action<int> OnProgressChanged;
+    public event System.Action<int> OnCompleted;
+
     private void Awake()
     {
+        // Start with defaults; external loader may override via SetState(...)
         _currentProgress = targetPrice;
         UpdateDisplay();
         UpdateVisualState();
     }
 
-    private void LateUpdate()
+    private void Update()
     {
-        _processedItems.Clear();
+        
+        CheckCompletion();
     }
+
+    private void LateUpdate() => _processedItems.Clear();
 
     private void OnTriggerEnter(Collider other)
     {
         if (_isCompleted) return;
 
-        ItemCore item = other.GetComponentInParent<ItemCore>();
+        var item = other.GetComponentInParent<ItemCore>();
         if (item != null && !_processedItems.Contains(item))
         {
             _processedItems.Add(item);
@@ -44,25 +53,21 @@ public class AutosellerLock : MonoBehaviour
 
     private void ProcessItem(ItemCore item)
     {
-        // Calculate actual contribution (prevent negative values)
         int contribution = Mathf.Min(item.price, _currentProgress);
-        _currentProgress -= contribution;
+        if (contribution <= 0) return;
 
-        // Handle oversell
-        if (contribution > 0)
-        {
-            Destroy(item.gameObject);
-            UpdateDisplay();
-            CheckCompletion();
-        }
+        _currentProgress -= contribution;
+        Destroy(item.gameObject);
+
+        UpdateDisplay();
+        OnProgressChanged?.Invoke(_currentProgress);
+
+        CheckCompletion();
     }
 
     private void UpdateDisplay()
     {
-        if (priceDisplay != null)
-        {
-            priceDisplay.text = $"{_currentProgress}$";
-        }
+        if (priceDisplay) priceDisplay.text = $"{_currentProgress}$";
     }
 
     private void UpdateVisualState()
@@ -78,20 +83,47 @@ public class AutosellerLock : MonoBehaviour
             _isCompleted = true;
             onPriceReached.Invoke();
             UpdateVisualState();
+            OnCompleted?.Invoke(0);
 
-            // Optional: Disable collider after completion
-            GetComponent<Collider>().enabled = false;
+            // Optional: disable collider so no more processing
+            var col = GetComponent<Collider>();
+            if (col) col.enabled = false;
         }
     }
 
-    // For debug/reset purposes
+    /// <summary>
+    /// Allows external code to override both progress & completed flags,
+    /// and immediately update visuals (and fire completion if already done).
+    /// </summary>
+    public void SetState(int loadedProgress, bool loadedCompleted)
+    {
+        _currentProgress = loadedProgress;
+
+        CheckCompletion();
+        //_isCompleted = loadedCompleted;
+
+        UpdateDisplay();
+        UpdateVisualState();
+
+        if (_isCompleted)
+            onPriceReached.Invoke();
+
+       
+    }
+
+    /// <summary>
+    /// For debug: reset to a fresh lock.
+    /// </summary>
     public void ResetLock(int newTargetPrice)
     {
         _currentProgress = newTargetPrice;
         targetPrice = newTargetPrice;
         _isCompleted = false;
-        GetComponent<Collider>().enabled = true;
+        var col = GetComponent<Collider>();
+        if (col) col.enabled = true;
+
         UpdateDisplay();
         UpdateVisualState();
+        OnProgressChanged?.Invoke(_currentProgress);
     }
 }

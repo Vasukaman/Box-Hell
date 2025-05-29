@@ -2,15 +2,18 @@
 using UnityEngine;
 using CI.QuickSave;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 
-[RequireComponent(typeof(Collider), typeof(Animator))]
+[RequireComponent(typeof(Collider))]
 public class SenderMachine : MonoBehaviour
 {
+    [SerializeField] UnityEvent OnActivate;
+
     [Tooltip("Trigger parameter name on your Animator")]
     public string sendTriggerName = "Send";
 
@@ -19,9 +22,16 @@ public class SenderMachine : MonoBehaviour
     private const string ROOT = "MainRoom";
     private const string KEY = "SentItems";
     [SerializeField] private LootGroup lootGroup;
+    [SerializeField] private Animation sendAnim;
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+
+        //sendAnim.Play();
+    }
+
+    public  void Activate()
+    {
+        sendAnim.Play();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,8 +42,6 @@ public class SenderMachine : MonoBehaviour
         
         AddMissingToLootGroup(item);
 
-        // play send animation
-        anim.SetTrigger(sendTriggerName);
 
         // build our SentItemData
         var data = new SentItemData

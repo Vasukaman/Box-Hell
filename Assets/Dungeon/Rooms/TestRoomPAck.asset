@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TestRoomPAck
   m_EditorClassIdentifier: 
   roomConfigurations:
-  - {fileID: 11400000, guid: 1eaf94190678b2d4faffb9416dfca4b1, type: 2}
+  - {fileID: 11400000, guid: b45f7efad8a4f224cace98e73cc9e55c, type: 2}
