@@ -2,6 +2,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using System.Collections.Generic;
+
+using System;
+
 
 [RequireComponent(typeof(Collider))]
 public class ItemHolder : MonoBehaviour
@@ -21,11 +25,15 @@ public class ItemHolder : MonoBehaviour
 
     private ItemCore heldItem;
 
+    public event Action<ItemCore> OnItemAdded;
+
+
     /// <summary>
     /// Fired right after the item is removed (pulled out) of the holder.
     /// You can hook into this to play sounds, UI, etc.
     /// </summary>
-    public UnityEvent<ItemCore> OnItemRemoved = new UnityEvent<ItemCore>();
+    public event Action<ItemCore> OnItemRemoved;
+
 
     /// <summary>
     /// Returns true if no item is currently in the holder.
@@ -50,13 +58,11 @@ public class ItemHolder : MonoBehaviour
         var rb = heldItem.GetComponent<Rigidbody>();
         if (rb) rb.isKinematic = true;
 
-        // custom hook on your ItemCore to switch state
+        // custom hook on your ItemCore to switch sta
+        // te
         heldItem.MakeItHoldedByHolder();
-
-        // optional sparkle
-    //    var effect = heldItem.item.raritySO.holdEffect;
-     //   if (effect != null)
-      //      activeParticles = Instantiate(effect, itemHoldPoint.position, itemHoldPoint.rotation, transform);
+        OnItemAdded?.Invoke(item);
+     
     }
 
     /// <summary>

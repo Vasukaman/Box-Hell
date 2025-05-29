@@ -49,7 +49,7 @@ public class MainRoomSaveSystem : MonoBehaviour
         foreach (var itemCore in allItems)
         {
             // Skip items in Tool state
-            if (itemCore.currentState == ItemState.Tool) continue;
+            if (itemCore.currentState == ItemState.Tool || itemCore.currentState == ItemState.InSpawnHolder) continue;
 
             itemsToSave.Add(new ItemSaveData
             {
