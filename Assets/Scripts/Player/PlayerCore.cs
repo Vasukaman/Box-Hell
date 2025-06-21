@@ -16,6 +16,7 @@ public class PlayerCore : MonoBehaviour, IDamageableByExplosion, IHittable
     [Header("Extra")]
     [SerializeField] private GameData gameData;
     [SerializeField] private float _durationOfHitFreezeFrame = 0.1f;
+    [SerializeField] private TheFirstPerson.FPSController fpsController;
 
     // Events with amount parameters
     public event Action<int> onHealthChanged;
@@ -23,8 +24,11 @@ public class PlayerCore : MonoBehaviour, IDamageableByExplosion, IHittable
     public event Action onDeath;
     public UnityEvent OnTakeDamage;
 
+    public SoundData coinCollectSound;
+    public AudioSource audiosSource;
     public int Health => _currentHealth;
     public int Coins => _currentCoins;
+
 
     private void Awake()
     {
@@ -75,6 +79,7 @@ public class PlayerCore : MonoBehaviour, IDamageableByExplosion, IHittable
     public void GiveCoins(int amount)
     {
         ModifyCoins(amount);
+        audiosSource.PlayOneShot(coinCollectSound.sound,coinCollectSound.volume);
     }
 
     public bool TryBuying(int price)
@@ -126,8 +131,17 @@ public class PlayerCore : MonoBehaviour, IDamageableByExplosion, IHittable
 
     public void TakeExplosionDamage(ExplosionData explosionData, Vector3 explosionOrigin)
     {
-        TakeDamage();
-    }
+        if (explosionData.baseDamage > 0)
+        {
+            TakeDamage();
+        }
+        else
+        {
+            fpsController.ApplyExplosion(explosionOrigin, explosionData.force/20, explosionData.radius, 1f);  
+        }
+
+
+        }
 
     public void TakeHit(HitData hitData)
     {

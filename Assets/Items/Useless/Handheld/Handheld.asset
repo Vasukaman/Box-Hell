@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97cbf55e48797b4f9c27ddcb2f643f7, type: 3}
   m_Name: Handheld
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 875dc348319ecf044ad6822c9a091dff, type: 3}
+  icon: {fileID: 21300000, guid: 23ef57059eda13c428f8b0e41dc0f646, type: 3}
   itemName: Handheld
   description: 
   price: 20

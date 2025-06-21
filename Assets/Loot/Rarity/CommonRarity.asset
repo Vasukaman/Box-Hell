@@ -21,3 +21,38 @@ MonoBehaviour:
   spawnSound:
     sound: {fileID: 8300000, guid: 51c5e033a9f1b6d4389c90dccda27a6b, type: 3}
     volume: 1
+    pitch: 0
+  slotTintColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightScale: 1.2
+  shuffleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  slotShuffleSound:
+    sound: {fileID: 8300000, guid: b10cb3eccd536f8499abc95dd0d48cde, type: 3}
+    volume: 0.7
+    pitch: 1
+  slotPickSound:
+    sound: {fileID: 8300000, guid: 8c27079b7494e1343a794321abf9d4a8, type: 3}
+    volume: 1
+    pitch: 0

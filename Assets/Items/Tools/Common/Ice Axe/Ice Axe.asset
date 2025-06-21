@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97cbf55e48797b4f9c27ddcb2f643f7, type: 3}
   m_Name: Ice Axe
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 866baa6e86a563f4c9c540cc52211fec, type: 3}
+  icon: {fileID: 21300000, guid: 20e4b9e9518f372418c9bb16a0d57f09, type: 3}
   itemName: Ice Axe
   description: 
   price: 10

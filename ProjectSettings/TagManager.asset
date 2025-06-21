@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Weapon
   - Cloth
+  - ConveyorBelt
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - SmallEntities
   - Player
   - Catwalk
-  - 
-  - 
+  - ConveourBelt
+  - Trash
   - 
   - 
   - 

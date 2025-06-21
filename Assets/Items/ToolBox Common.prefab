@@ -1669,6 +1669,11 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 601204725709746812, guid: e91f8cdaac2267245a958be7ab916fc2,
+        type: 3}
+      propertyPath: m_Mass
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3877817667136154232, guid: e91f8cdaac2267245a958be7ab916fc2,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -17,6 +17,9 @@ MonoBehaviour:
   obstructionLayers:
     serializedVersion: 2
     m_Bits: 241
+  obstructionLayersWhenAimedAtPlayer:
+    serializedVersion: 2
+    m_Bits: 641
   minHorizontalAngle: -100
   maxHorizontalAngle: 100
   minVerticalAngle: -80.4

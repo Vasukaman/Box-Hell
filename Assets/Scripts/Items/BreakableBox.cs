@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class BreakableBox : HittableBase
 {
@@ -19,6 +20,7 @@ public class BreakableBox : HittableBase
     // New serialized fields for ground check
     [SerializeField] private float groundCheckRange = 1f;
     [SerializeField] private LayerMask groundCheckMask;
+    [SerializeField] private FloatingText coinsNumberText;
 
     protected override void Break(Vector3 hitPoint)
     {
@@ -35,7 +37,11 @@ public class BreakableBox : HittableBase
     {
         if (coinSpawner != null)
         {
-            coinSpawner.SpawnCoins(Random.Range(lootConfig.minCoins, lootConfig.maxCoins));
+            int coinNumber = Random.Range(lootConfig.minCoins, lootConfig.maxCoins);
+            coinSpawner.SpawnCoins(coinNumber);
+
+            coinsNumberText.FloatText(coinNumber.ToString(), Color.white);
+           
             coinSpawner.ReparentHigher();
         }
 

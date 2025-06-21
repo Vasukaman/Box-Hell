@@ -10,6 +10,7 @@ public class TurretMindSO : ScriptableObject
     public float detectionRange = 30f;
     public float fovAngle = 90f;
     public LayerMask obstructionLayers;
+    public LayerMask obstructionLayersWhenAimedAtPlayer;
 
     [Header("Rotation Limits")]
     public float minHorizontalAngle = -45f;

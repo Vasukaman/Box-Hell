@@ -24,6 +24,13 @@ namespace TheFirstPerson
 
         CharacterController controller;
 
+        // Cumulative external forces (explosions, knockback, etc.)
+        private Vector3 externalVelocity = Vector3.zero;
+
+        // How fast knockback decays (tweak to taste)
+        [Tooltip("How quickly explosion force dissipates (higher = faster).")]
+        public float externalDamping = 5f;
+
 
         [Header("Options")]
         public bool movementEnabled = true;
@@ -261,9 +268,61 @@ namespace TheFirstPerson
 
         TFPInfo controllerInfo;
 
+        [Header("Ground Check Settings")]
+        [SerializeField] private float groundCheckDistance = 0.1f;
+        [SerializeField] private Vector3 boxCastHalfExtents = new Vector3(0.4f, 0.1f, 0.4f);
+        [SerializeField] private LayerMask groundLayerMask;
+        private bool _isGrounded;
+
+        private bool CheckGrounded()
+        {
+            Vector3 rayStart = transform.position + controller.center;
+            float rayLength = controller.height / 2 + groundCheckDistance;
+
+            // Perform box cast downward
+            bool hit = Physics.BoxCast(
+                center: rayStart,
+                halfExtents: boxCastHalfExtents,
+                direction: Vector3.down,
+                orientation: transform.rotation,
+                maxDistance: rayLength,
+                layerMask: groundLayerMask
+            );
+
+            // Visualize in Scene View
+            Debug.DrawRay(rayStart, Vector3.down * rayLength, hit ? Color.green : Color.red);
+            return hit;
+        }
+
+        /// <summary>
+        /// Call this to knock the player away.
+        /// </summary>
+        /// <param name="explosionOrigin">World-space center of the blast</param>
+        /// <param name="force">Peak force magnitude</param>
+        /// <param name="radius">Max effective distance</param>
+        /// <param name="uplift">Extra upward boost</param>
+        public void ApplyExplosion(Vector3 explosionOrigin, float force, float radius, float uplift = 0f)
+        {
+            Vector3 dir = transform.position - explosionOrigin;
+            float dist = dir.magnitude;
+            if (dist > radius) return;
+
+            dir.Normalize();
+            float attenuation = 1f - (dist / radius);
+
+            Vector3 blast = dir * force * attenuation;
+            blast.y *= 6f;
+            blast.y += uplift * attenuation;
+
+            externalVelocity += blast;
+        }
+
+
         void Start()
         {
+       
             controller = GetComponent<CharacterController>();
+            controller.detectCollisions = false;
             //get the transform of a child with a camera component
             if (!customCameraTransform && !thirdPersonMode)
             {
@@ -364,7 +423,7 @@ namespace TheFirstPerson
                 forward = transform.forward;
                 side = transform.right;
                 currentMove = Vector3.zero;
-                grounded = controller.isGrounded;
+                grounded = CheckGrounded();
                 slideMove = Vector3.zero;
                 Vector3 lastMoveH = Vector3.Scale(lastMove, new Vector3(1, 0, 1));
 
@@ -554,6 +613,10 @@ namespace TheFirstPerson
 
                 ExecuteExtension(ExtFunc.PreMove);
 
+                // Add knockback from explosions
+                currentMove += externalVelocity;
+                externalVelocity = Vector3.Lerp(externalVelocity, Vector3.zero, externalDamping * dt);
+
                 currentMove += Vector3.up * yVel;
                 moveDelta = transform.position;
                 controller.Move(currentMove * dt);
@@ -569,6 +632,13 @@ namespace TheFirstPerson
             hitNormal = hit.normal;
             groundAngle = Vector3.Angle(hitNormal, Vector3.up);
             hitPoint = hit.point;
+
+            Rigidbody body = hit.collider.attachedRigidbody;
+            if (body != null && !body.isKinematic)
+            {
+                // No pushing: don’t apply force
+                return;
+            }
         }
 
         void setCurrentMoveVars()
