@@ -291,6 +291,7 @@ namespace TheFirstPerson
 
             // Visualize in Scene View
             Debug.DrawRay(rayStart, Vector3.down * rayLength, hit ? Color.green : Color.red);
+            
             return hit;
         }
 
@@ -424,6 +425,7 @@ namespace TheFirstPerson
                 side = transform.right;
                 currentMove = Vector3.zero;
                 grounded = CheckGrounded();
+                _isGrounded = grounded;
                 slideMove = Vector3.zero;
                 Vector3 lastMoveH = Vector3.Scale(lastMove, new Vector3(1, 0, 1));
 
@@ -737,6 +739,7 @@ namespace TheFirstPerson
         {
             jumping = true;
             yVel = Mathf.Max(yVel, jumpSpeed);
+            grounded = false;
             jumpPressed = 0;
         }
 
